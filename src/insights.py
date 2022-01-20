@@ -139,6 +139,17 @@ def get_min_salary(path):
     return lowest_min_salary
 
 
+def check_job_and_salary(job, salary):
+    return (
+        'min_salary' not in job
+        or 'max_salary' not in job
+        or type(job['max_salary']) is not int
+        or type(job['min_salary']) is not int
+        or job['max_salary'] < job['min_salary']
+        or (type(salary) is not int)
+    )
+
+
 def matches_salary_range(job, salary):
     """Checks if a given salary is in the salary range of a given job
 
@@ -162,7 +173,10 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
+    is_not_valid = check_job_and_salary(job, salary)
+    if is_not_valid is True:
+        raise ValueError('Invalid value')
+    return job['min_salary'] <= salary <= job['max_salary']
 
 
 def filter_by_salary_range(jobs, salary):
@@ -220,4 +234,7 @@ if __name__ == "__main__":
     #         {"id": 12, "industry": "finances"},
     #     ], "agriculture"
     # ))
+    # print(matches_salary_range({
+    #     "max_salary": 1500, "min_salary": 100
+    # }, 1000))
     pass
