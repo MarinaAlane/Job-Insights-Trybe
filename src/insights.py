@@ -1,4 +1,4 @@
-import jobs
+from src import jobs
 
 
 def get_unique_job_types(path):
