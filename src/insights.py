@@ -69,7 +69,7 @@ def get_max_salary(path):
 
 def get_min_salary(path):
     data = read(path)
-    min_salary = 0
+    min_salary = get_max_salary(path)
     for job in data:
         if job["min_salary"].isnumeric():
             if int(job["min_salary"]) < min_salary:
