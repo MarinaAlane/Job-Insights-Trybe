@@ -1,5 +1,4 @@
 def get_unique_job_types(path):
-    print("iniciando projeto")
     """Checks all different job types and returns a list of them
 
     Must call `read`
