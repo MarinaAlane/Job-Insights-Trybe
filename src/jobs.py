@@ -1,5 +1,7 @@
 from functools import lru_cache
 
+# Requisito 1
+
 
 @lru_cache
 def read(path):
