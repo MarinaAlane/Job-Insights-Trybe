@@ -1,10 +1,23 @@
+from functools import lru_cache
 import csv
 
-path = str(input("FILE NAME"))
 
-with open(path, encoding="utf8") as file:
-    info = csv.reader(file, delimiter=",", quotechar='"')
-    header, *data = info
+@lru_cache
+def read(path):
+    """Reads a file from a given path and returns its contents
+    Parameters
+    ----------
+    path : str
+        Full path to file
+    Returns
+    -------
+    list
+        List of rows as dicts
+    """
+    ret = []
+    i = 0
+    with open(path, encoding="utf8") as file:
+        info = list(csv.DictReader(file))
+    return [info]
 
-print(header)
-file.close()
+read("jobs.csv")     
