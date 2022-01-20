@@ -17,10 +17,16 @@ def read(path):
     list
         List of rows as dicts
     """
-    with open(path) as file:
+    with open(path, 'r') as file:
+        result = []
         content = csv.reader(file, delimiter=",", quotechar='"')
-        header, *data = content
-    return header, *data
+        header, *data_list = content
+        for data in data_list:
+            job = dict()
+            for column in header:
+                job.update({column: data[header.index(column)]})
+            result.append(job)
+        return result
 
 
-print(read('jobs.csv'))
+print(read('src/jobs.csv'))
