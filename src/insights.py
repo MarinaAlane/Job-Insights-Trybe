@@ -2,11 +2,11 @@
 
 from src.jobs import read
 
-# path_csv = "/home/monts/Documents/trybe/projetos
-# /sd-011-project-job-insights/src/jobs.csv"
+# path_csv = "/home/monts/Documents/trybe/
+# projetos/sd-011-project-job-insights/src/jobs.csv"
 
 
-def get_unique_job_types(path):
+def get_unique_job_types(path):  # & done
     table = read(path)
     dict_with_all_jobs_types = dict()
     for row in table:
@@ -20,16 +20,18 @@ def get_unique_job_types(path):
     return list_of_jobs
 
 
-def filter_by_job_type(jobs, job_type):
-    table = read(jobs)
-    all_jobs_title = list()
-    for row in table:
+def filter_by_job_type(jobs, job_type):  # & done
+    filtered_jobs = []
+    for row in jobs:
         if job_type == row["job_type"]:
-            all_jobs_title.append(row)
-    return all_jobs_title
+            filtered_jobs.append(row)
+    return filtered_jobs
 
 
-def get_unique_industries(path):
+# print(filter_by_job_type(path_csv, "PART_TIME"))
+
+
+def get_unique_industries(path):  # & done
     table = read(path)
     dict_with_all_industries = dict()
     for row in table:
@@ -59,7 +61,7 @@ def filter_by_industry(jobs, industry):
     return []
 
 
-def get_max_salary(path):
+def get_max_salary(path):  # & done
     table = read(path)
     all_salaries = []
     for row in table:
@@ -70,7 +72,7 @@ def get_max_salary(path):
     return biggest_salary
 
 
-def get_min_salary(path):
+def get_min_salary(path):  # & done
     table = read(path)
     all_salaries = []
     for row in table:
