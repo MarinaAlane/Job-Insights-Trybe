@@ -5,18 +5,7 @@ import csv
 @lru_cache
 def read(path):
     with open(path) as file:
-        jobs_data = csv.reader(file, delimiter=",", quotechar='"')
-        header, *data = jobs_data
-    """Reads a file from a given path and returns its contents
+        jobs_data = csv.DictReader(file, delimiter=",", quotechar='"')
+        jobs_insights = [job for job in jobs_data]
 
-    Parameters
-    ----------
-    path : str
-        Full path to file
-
-    Returns
-    -------
-    list
-        List of rows as dicts
-    """
-    return []
+    return jobs_insights
