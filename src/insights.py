@@ -1,8 +1,8 @@
-from jobs import read
+from src import jobs
 
 
 def get_unique_job_types(path):
-    file = read(path)
+    file = jobs.read(path)
     job_types_list = set()
     for row in file:
         if row["job_type"]:
@@ -29,7 +29,7 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    file = read(path)
+    file = jobs.read(path)
     industries_list = set()
     for row in file:
         if row["industry"]:
@@ -56,30 +56,21 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    file = read(path)
-    salary_list = []
+    file = jobs.read(path)
+    jobs_list = set
     for row in file:
         if row["max_salary"]:
-            salary_list.append(int(row["max_salary"]))
-    return max(salary_list)
+            jobs_list.add(int(row["max_salary"]))
+    return max(jobs_list)
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    file = jobs.read(path)
+    jobs_list = set
+    for row in file:
+        if row["min_salary"]:
+            jobs_list.add(int(row["min_salary"]))
+    return max(jobs_list)
 
 
 def matches_salary_range(job, salary):
