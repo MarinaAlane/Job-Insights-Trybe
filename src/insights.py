@@ -18,7 +18,7 @@ def get_unique_industries(path):
     data = read(path)
     industries = set()
     for job in data:
-        if (job["industry"] != ""):
+        if job["industry"] != "":
             industries.add(job["industry"])
     return list(industries)
 
@@ -49,30 +49,17 @@ def get_min_salary(path):
     return int(min_salary)
 
 
-def matches_salary_range(job, salary):
-    """Checks if a given salary is in the salary range of a given job
-
-    Parameters
-    ----------
-    job : dict
-        The job with `min_salary` and `max_salary` keys
-    salary : int
-        The salary to check if matches with salary range of the job
-
-    Returns
-    -------
-    bool
-        True if the salary is in the salary range of the job, False otherwise
-
-    Raises
-    ------
-    ValueError
-        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-        If `job["min_salary"]` is greather than `job["max_salary"]`
-        If `salary` isn't a valid integer
-    """
-    pass
+def matches_salary_range(job, salary):   
+    if not ("max_salary" in job and "min_salary" in job):
+        raise ValueError("Salário mínimo e máximo são obrigatórios")
+    if (type(job["max_salary"]) is not int or
+            type(job["min_salary"]) is not int):
+        raise ValueError("min and max salary must be int")
+    if (job["max_salary"] < job["min_salary"]):
+        raise ValueError
+    if (type(salary) is not int):
+        raise ValueError
+    return job["max_salary"] >= salary >= job["min_salary"]
 
 
 def filter_by_salary_range(jobs, salary):
