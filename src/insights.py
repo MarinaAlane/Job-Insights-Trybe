@@ -85,7 +85,10 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    return []
+    filtered_jobs_list = [
+        job for job in jobs if job['industry'] == industry
+    ]
+    return filtered_jobs_list
 
 
 def get_max_salary(path):
@@ -200,5 +203,21 @@ if __name__ == "__main__":
     #         {"id": 11, "job_type": "INTERN"},
     #         {"id": 12, "job_type": "INTERN"},
     #     ], "PART_TIME"
+    # ))
+    # print(filter_by_industry(
+    #     [
+    #         {"id": 1, "industry": "agriculture"},
+    #         {"id": 2, "industry": "agriculture"},
+    #         {"id": 3, "industry": "solar energy"},
+    #         {"id": 4, "industry": "solar energy"},
+    #         {"id": 5, "industry": "bank"},
+    #         {"id": 6, "industry": "bank"},
+    #         {"id": 7, "industry": "mechanical engineering"},
+    #         {"id": 8, "industry": "mechanical engineering"},
+    #         {"id": 9, "industry": "translation"},
+    #         {"id": 10, "industry": "translation"},
+    #         {"id": 11, "industry": "finances"},
+    #         {"id": 12, "industry": "finances"},
+    #     ], "agriculture"
     # ))
     pass
