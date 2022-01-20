@@ -1,0 +1,15 @@
+[
+  "Chief Marketing Officer (CMO)",
+  "National Debt Relief",
+  "NY",
+  "New York",
+  "",
+  "",
+  "Who We're Looking For:\n\nThe Chief Marketing Officer (CMO) is an exempt, executive position, responsible for all marketing operations of the company including lead acquisition, sales enablement, communications, retention, and branddvocate to help them reestablish financial stability as quickly as possible.\n\nNational Debt Relief is a certified Great Place to Work®!\n\nNational Debt Relief is an equal opportunity employer and makes employment decisions without regard to race, color, religion, sex, sexual orientation, gender identity, national origin, protected veteran status, disability status, or any other status protected by law\n\n#ZR",
+  "Finance",
+  "4.0",
+  "2020-05-08",
+  "2020-06-07",
+  "FULL_TIME",
+  "0",
+];
