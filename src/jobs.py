@@ -1,20 +1,15 @@
 from functools import lru_cache
+import csv
 
 # Requisito 1
+# Com o DictReader não precisa manipular os índices...
+# ...para acessar os dados das colunas.
+# Uso o list() para transformar o conteudo em uma lista.
 
 
 @lru_cache
 def read(path):
-    """Reads a file from a given path and returns its contents
-
-    Parameters
-    ----------
-    path : str
-        Full path to file
-
-    Returns
-    -------
-    list
-        List of rows as dicts
-    """
-    return []
+    with open(path) as file:
+        get_jobs = csv.DictReader(file, delimiter=",", quotechar='"')
+        content = list(get_jobs)
+    return content
