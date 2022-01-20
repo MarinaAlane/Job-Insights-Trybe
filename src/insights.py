@@ -1,5 +1,6 @@
 from src.jobs import read
 from src.helper.get_unique_func import get_unique_list_from_column
+from src.helper.filter_by_column import filter_by_column
 # from tokenize import Number
 # from jobs import read
 # from helper.get_unique_func import get_unique_list_from_column
@@ -12,12 +13,8 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    filtered_jobs = []
-    for job in jobs:
-        if job['job_type'] == job_type:
-            filtered_jobs.append(job)
-    return filtered_jobs
-
+    data = filter_by_column(jobs, job_type, 'job_type')
+    return data
 
 def get_unique_industries(path):
     jobs_list = read(path)
@@ -26,21 +23,9 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
+    data = filter_by_column(jobs, industry, 'industry')
+    return data
 
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
 
 
 def get_max_salary(path):
@@ -61,26 +46,9 @@ def get_min_salary(path):
             salary.add((int(job['min_salary'])))
             min_salary = min(salary)
     return min_salary
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
-
-
+    
+    
 def matches_salary_range(job, salary):
-
-
     """Checks if a given salary is in the salary range of a given job
 
     Parameters
