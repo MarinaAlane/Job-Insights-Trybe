@@ -156,6 +156,31 @@ https://stackoverflow.com/questions/7781260/how-can-i-represent-an-infinite-numb
     return lowest_min_salary
 
 
+def check_key_presence(dictionary, key):
+    return key not in dictionary
+
+
+def is_not_digit(value):
+    return type(value) is not int
+
+
+def check_salary_range(min_value, max_value):
+    return min_value > max_value
+
+
+def check_job_salary_keys(job):
+    min_salary = "min_salary"
+    max_salary = "max_salary"
+
+    return (
+        check_key_presence(job, min_salary)
+        or check_key_presence(job, max_salary)
+        or is_not_digit(job[min_salary])
+        or is_not_digit(job[max_salary])
+        or check_salary_range(job[min_salary], job[max_salary])
+    )
+
+
 def matches_salary_range(job, salary):
     """Checks if a given salary is in the salary range of a given job
 
@@ -179,7 +204,10 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
+    if check_job_salary_keys(job) or is_not_digit(salary):
+        raise (ValueError())
+
+    return job["min_salary"] <= salary <= job["max_salary"]
 
 
 def filter_by_salary_range(jobs, salary):
