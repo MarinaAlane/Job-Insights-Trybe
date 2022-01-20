@@ -35,8 +35,6 @@ def get_unique_industries(path):
         industry = item["industry"]
         if industry != "":
             industries.add(industry)
-    # del industries[""]
-    print(industries)
     return industries
 
 
