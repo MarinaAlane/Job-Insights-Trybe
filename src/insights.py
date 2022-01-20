@@ -1,4 +1,5 @@
 from src import jobs
+# import jobs
 
 
 def get_unique_job_types(path):
@@ -57,7 +58,12 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
+    file_content = jobs.read(path)
+    industries_set = {
+        content['industry'] for content in file_content if content['industry'] != ''
+    }
+    industries_list = list(industries_set)
+    return industries_list
 
 
 def filter_by_industry(jobs, industry):
@@ -160,3 +166,4 @@ def filter_by_salary_range(jobs, salary):
 
 if __name__ == "__main__":
     print(get_unique_job_types('./src/jobs.csv'))
+    print(get_unique_industries('./src/jobs.csv'))
