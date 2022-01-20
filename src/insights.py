@@ -1,4 +1,4 @@
-from jobs import read
+from src.jobs import read
 
 
 def get_unique_job_types(path):
@@ -99,7 +99,16 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+    list_of_jobs = read(path)
+    result = 0
+    for job in list_of_jobs:
+        if job['max_salary'].isnumeric():
+            if int(job['max_salary']) > result:
+                result = int(job['max_salary'])
+    return result
+
+
+print(get_max_salary('src/jobs.csv'))
 
 
 def get_min_salary(path):
