@@ -14,10 +14,6 @@ def read(path):
     list
         List of rows as dicts
     """
-    ret = []
-    i = 0
     with open(path, encoding="utf8") as file:
         info = list(csv.DictReader(file))
-    return [info]
-
-read("jobs.csv")     
+    return info
