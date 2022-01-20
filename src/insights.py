@@ -28,9 +28,6 @@ def filter_by_job_type(jobs, job_type):  # & done
     return filtered_jobs
 
 
-# print(filter_by_job_type(path_csv, "PART_TIME"))
-
-
 def get_unique_industries(path):  # & done
     table = read(path)
     dict_with_all_industries = dict()
@@ -44,21 +41,11 @@ def get_unique_industries(path):  # & done
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+    filtered_industry = []
+    for row in jobs:
+        if industry == row["industry"]:
+            filtered_industry.append(row)
+    return filtered_industry
 
 
 def get_max_salary(path):  # & done
