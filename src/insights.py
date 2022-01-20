@@ -1,4 +1,5 @@
 from src.jobs import read
+from src.helpers.salary_helpers import get_salary_list
 
 
 def get_unique_job_types(path):
@@ -33,34 +34,14 @@ def filter_by_industry(jobs, industry):
 
 def get_max_salary(path):
     jobs = read(path)
-
-    salaries = [job["max_salary"]
-                for job in jobs
-                if job["max_salary"].strip() != ''
-                and job["max_salary"] != 'invalid']
-
-    max_salaries = set()
-    for salary in salaries:
-        salaryNumber = int(salary)
-        max_salaries.add(salaryNumber)
-
-    return max(max_salaries)
+    salaries = get_salary_list(jobs, "max_salary")
+    return max(salaries)
 
 
 def get_min_salary(path):
     jobs = read(path)
-
-    salaries = [job["min_salary"]
-                for job in jobs
-                if job["min_salary"].strip() != ''
-                and job["min_salary"] != 'invalid']
-
-    min_salaries = set()
-    for salary in salaries:
-        salaryNumber = int(salary)
-        min_salaries.add(salaryNumber)
-
-    return min(min_salaries)
+    salaries = get_salary_list(jobs, "min_salary")
+    return min(salaries)
 
 
 def matches_salary_range(job, salary):
