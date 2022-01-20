@@ -16,6 +16,7 @@ def filter_by_job_type(jobs, job_type):
     data = filter_by_column(jobs, job_type, 'job_type')
     return data
 
+
 def get_unique_industries(path):
     jobs_list = read(path)
     data = get_unique_list_from_column(jobs_list, 'industry')
@@ -25,7 +26,6 @@ def get_unique_industries(path):
 def filter_by_industry(jobs, industry):
     data = filter_by_column(jobs, industry, 'industry')
     return data
-
 
 
 def get_max_salary(path):
@@ -46,8 +46,8 @@ def get_min_salary(path):
             salary.add((int(job['min_salary'])))
             min_salary = min(salary)
     return min_salary
-    
-    
+
+
 def matches_salary_range(job, salary):
     """Checks if a given salary is in the salary range of a given job
 
