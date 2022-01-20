@@ -59,29 +59,23 @@ def get_max_salary(path):
     data = read(path)
     max_salary = 0
     for job in data:
-        if (job["max_salary"] != ""):
-            if (int(job["max_salary"]) > max_salary):
+        if job["max_salary"].isnumeric():
+            if int(job["max_salary"]) > max_salary:
                 max_salary = int(job["max_salary"])
 
-    return max_salary
+    # print({max_salary})
+    return int(max_salary)
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
+    data = read(path)
+    min_salary = 0
+    for job in data:
+        if job["min_salary"].isnumeric():
+            if int(job["min_salary"]) < min_salary:
+                min_salary = int(job["min_salary"])
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    return int(min_salary)
 
 
 def matches_salary_range(job, salary):
