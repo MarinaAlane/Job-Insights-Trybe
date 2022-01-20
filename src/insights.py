@@ -33,6 +33,7 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
+    print('Evaluator não funciona direito')
     """Filters a list of jobs by industry
 
     Parameters
