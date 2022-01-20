@@ -1,17 +1,19 @@
+# from jobs import read
 from src.jobs import read
 
 
 def get_unique_job_types(path):
     table = read(path)
-    list_of_jobs_title = dict()
+    dict_with_all_jobs_title = dict()
     for row in table:
-        if row["job_type"] in list_of_jobs_title:
-            list_of_jobs_title[row["job_type"]] += 1
+        if row["job_type"] in dict_with_all_jobs_title:
+            dict_with_all_jobs_title[row["job_type"]] += 1
         else:
-            list_of_jobs_title[row["job_type"]] = 1
+            dict_with_all_jobs_title[row["job_type"]] = 1
     # .. source: https://www.tutorialspoint.com/
     # .. How-to-convert-Python-Dictionary-to-a-list
-    return list(list_of_jobs_title.keys())
+    list_of_jobs = list(dict_with_all_jobs_title.keys())
+    return list_of_jobs
 
 
 def filter_by_job_type(jobs, job_type):
@@ -33,21 +35,15 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    table = read(path)
+    dict_with_all_industries = dict()
+    for row in table:
+        if row["industry"] in dict_with_all_industries:
+            dict_with_all_industries[row["industry"]] += 1
+        elif len(row["industry"]) > 1:
+            dict_with_all_industries[row["industry"]] = 1
+    list_of_industries = list(dict_with_all_industries.keys())
+    return list_of_industries
 
 
 def filter_by_industry(jobs, industry):
