@@ -59,22 +59,19 @@ def filter_by_industry(jobs, industry):
     return []
 
 
+# usando a condição para não puxar valores vazios ocorre erro:
+# ValueError: invalid literal for int() with base 10: 'invalid'
+# ISNUMERIC() -> usado para evitar esse problema.
+# https://www.w3schools.com/python/ref_string_isnumeric.asp
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    jobs_csv = read(path)
+    max_salary = 0
+    for job in jobs_csv:
+        if job["max_salary"].isnumeric():
+            m_salary = int(job["max_salary"])
+            if m_salary > max_salary:
+                max_salary = m_salary
+    return max_salary
 
 
 def get_min_salary(path):
