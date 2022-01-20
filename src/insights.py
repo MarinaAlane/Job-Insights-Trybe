@@ -1,37 +1,31 @@
 # from jobs import read
+
 from src.jobs import read
+
+# path_csv = "/home/monts/Documents/trybe/projetos/sd-011-project-job-insights/src/jobs.csv"
 
 
 def get_unique_job_types(path):
     table = read(path)
-    dict_with_all_jobs_title = dict()
+    dict_with_all_jobs_types = dict()
     for row in table:
-        if row["job_type"] in dict_with_all_jobs_title:
-            dict_with_all_jobs_title[row["job_type"]] += 1
+        if row["job_type"] in dict_with_all_jobs_types:
+            dict_with_all_jobs_types[row["job_type"]] += 1
         else:
-            dict_with_all_jobs_title[row["job_type"]] = 1
+            dict_with_all_jobs_types[row["job_type"]] = 1
     # .. source: https://www.tutorialspoint.com/
     # .. How-to-convert-Python-Dictionary-to-a-list
-    list_of_jobs = list(dict_with_all_jobs_title.keys())
+    list_of_jobs = list(dict_with_all_jobs_types.keys())
     return list_of_jobs
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    table = read(jobs)
+    all_jobs_title = list()
+    for row in table:
+        if job_type == row["job_type"]:
+            all_jobs_title.append(row)
+    return all_jobs_title
 
 
 def get_unique_industries(path):
@@ -40,7 +34,7 @@ def get_unique_industries(path):
     for row in table:
         if row["industry"] in dict_with_all_industries:
             dict_with_all_industries[row["industry"]] += 1
-        elif len(row["industry"]) > 1:
+        elif len(row["industry"]) > 0:
             dict_with_all_industries[row["industry"]] = 1
     list_of_industries = list(dict_with_all_industries.keys())
     return list_of_industries
@@ -65,39 +59,27 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
+    table = read(path)
+    all_salaries = []
+    for row in table:
+        if row["max_salary"].isnumeric():
+            all_salaries.append(int(row["max_salary"]))
+    all_salaries.sort(reverse=True)
+    biggest_salary = all_salaries[0]
+    return biggest_salary
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+# print(get_max_salary(path_csv))
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    table = read(path)
+    all_salaries = []
+    for row in table:
+        if row["min_salary"].isnumeric():
+            all_salaries.append(int(row["min_salary"]))
+    all_salaries.sort()
+    lowest_salary = all_salaries[0]
+    return lowest_salary
 
 
 def matches_salary_range(job, salary):
