@@ -1,19 +1,18 @@
+from src import jobs
+
+
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
+    all_jobs = jobs.read(path)
+    job_types = set()
+    for job in all_jobs:
+        job_types.add(job["job_type"])
 
-    Must call `read`
+    job_types_counter = {job_type: {"jobs": 0} for job_type in job_types}
+    for job in all_jobs:
+        job_type = job["job_type"]
+        job_types_counter[job_type]["jobs"] += 1
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job typess
-    """
-    return []
+    return job_types_counter
 
 
 def filter_by_job_type(jobs, job_type):
@@ -35,21 +34,19 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
+    all_jobs = jobs.read(path)
+    industries = set()
+    for job in all_jobs:
+        industries.add(job["industry"])
 
-    Must call `read`
+    industry_counter = {industry: {"jobs": 0} for industry in industries
+                        if industry}
+    for job in all_jobs:
+        industry = job["industry"]
+        if industry != '':
+            industry_counter[industry]["jobs"] += 1
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    return industry_counter
 
 
 def filter_by_industry(jobs, industry):
@@ -71,38 +68,22 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
+    all_jobs = jobs.read(path)
+    max_salary = set()
+    for job in all_jobs:
+        if job['max_salary'].isnumeric():
+            max_salary.add(int(job['max_salary']))
+    return max(max_salary)
     pass
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
+    all_jobs = jobs.read(path)
+    min_salary = set()
+    for job in all_jobs:
+        if job['min_salary'].isnumeric():
+            min_salary.add(int(job['min_salary']))
+    return min(min_salary)
     pass
 
 
