@@ -1,3 +1,4 @@
+import math
 from src import jobs
 
 
@@ -134,7 +135,25 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    all_jobs = jobs.read(path)
+
+    """
+How to set a value to infinite in Python.
+Source:
+https://stackoverflow.com/questions/7781260/how-can-i-represent-an-infinite-number-in-python
+    """
+    lowest_min_salary = math.inf
+
+    for job in all_jobs:
+        try:
+            min_salary = int(job["min_salary"])
+
+            if min_salary and min_salary < lowest_min_salary:
+                lowest_min_salary = min_salary
+        except ValueError:
+            pass
+
+    return lowest_min_salary
 
 
 def matches_salary_range(job, salary):
