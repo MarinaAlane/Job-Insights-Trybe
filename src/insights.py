@@ -140,6 +140,11 @@ def get_min_salary(path):
     return result
 
 
+def verify_salary(salary):
+    if not isinstance(salary, int):
+        raise ValueError('Salary is not a valid integer')
+
+
 def matches_salary_range(job, salary):
     """Checks if a given salary is in the salary range of a given job
 
@@ -173,9 +178,8 @@ def matches_salary_range(job, salary):
         raise ValueError('Salary is not numeric')
     if (min_salary > max_salary):
         raise ValueError('Min_salary is greater than max_salary')
-    if not isinstance(salary, int):
-        raise ValueError('Salary is not a valid integer')
-    return job["min_salary"] <= salary <= job["max_salary"]
+    verify_salary(salary)
+    return min_salary <= salary <= max_salary
 
 
 # print(matches_salary_range({"max_salary": 10000, "min_salary": 0}, 300))
