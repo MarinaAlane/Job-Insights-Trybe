@@ -203,12 +203,12 @@ def filter_by_salary_range(jobs, salary):
         Jobs whose salary range contains `salary`
     """
     rigth_jobs = []
+    if not type(salary) == int:
+        return []
     for i in range(len(jobs)):
-        if not type(salary) == int:
-            break
-        try:
-            if matches_salary_range(jobs[i], salary) and type(salary) == int:
-                rigth_jobs.append(jobs[i])
-        except ValueError:
-            pass
+        if (
+            type(salary) == int
+            and jobs[i]["min_salary"] <= salary <= jobs[i]["max_salary"]
+        ):
+            rigth_jobs.append(jobs[i])
     return rigth_jobs
