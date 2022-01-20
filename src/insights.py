@@ -58,7 +58,7 @@ def get_max_salary(path):
     job_data = read(path)
     job_salary = set()
     for job in job_data:
-        if job["max_salary"].isnumeric():            
+        if job["max_salary"].isnumeric():
             job_salary.add(int(job["max_salary"]))
     return max(job_salary)
 
@@ -67,7 +67,7 @@ def get_min_salary(path):
     job_data = read(path)
     job_salary = set()
     for job in job_data:
-        if job["min_salary"].isnumeric():            
+        if job["min_salary"].isnumeric():
             job_salary.add(int(job["min_salary"]))
     return min(job_salary)
 
