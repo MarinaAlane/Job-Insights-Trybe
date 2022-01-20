@@ -1,6 +1,9 @@
+from tokenize import Number
 from src.jobs import read
 from src.helper.get_unique_func import get_unique_list_from_column
-
+# from tokenize import Number
+# from jobs import read
+# from helper.get_unique_func import get_unique_list_from_column
 
 def get_unique_job_types(path):
     jobs_list = read(path)
@@ -38,21 +41,14 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
+    jobs_list = read(path)
+    salary = set()
+    for job in jobs_list:
+        if job['max_salary'].isnumeric():
+            salary.add((int(job['max_salary'])))
+            max_salary = max(salary)
+    return max_salary
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
 
 
 def get_min_salary(path):
