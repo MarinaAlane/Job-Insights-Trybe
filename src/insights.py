@@ -1,4 +1,5 @@
 from src.jobs import read
+# from jobs import read
 
 
 def get_unique_job_types(path):
@@ -20,9 +21,6 @@ def get_unique_job_types(path):
     job_set = {job['job_type'] for job in jobs_list}
 
     return [*job_set]
-
-
-print(get_unique_job_types('src/jobs.csv'))
 
 
 def filter_by_job_type(jobs, job_type):
@@ -58,7 +56,15 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
+    jobs_list = read(path)
+    job_set = {
+        job['industry'] if job['industry'] != '' else None for job in jobs_list
+    }
+
+    return [*job_set]
+
+
+print(get_unique_industries('src/jobs.csv'))
 
 
 def filter_by_industry(jobs, industry):
