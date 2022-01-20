@@ -26,6 +26,12 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
+    job_types_filter = list()
+    for job_types in jobs:
+        if job_types['job_type'] == job_type:
+            job_types_filter.append(job_types)
+    print(job_types_filter)
+    return job_types_filter
     """Filters a list of jobs by job_type
 
     Parameters
@@ -93,6 +99,7 @@ def get_max_salary(path):
         if (salary['max_salary'] != '' and salary['max_salary'] != 'invalid'):
             max_salary.append(int(salary['max_salary']))
     max_salary.sort(reverse=True)
+# Based on w3s. Link: https://www.w3schools.com/python/ref_list_reverse.asp
     return max_salary[0]
     """Get the maximum salary of all jobs
 
