@@ -30,7 +30,6 @@ def filter_by_job_type(jobs, job_type):
     for job_types in jobs:
         if job_types['job_type'] == job_type:
             job_types_filter.append(job_types)
-    print(job_types_filter)
     return job_types_filter
     """Filters a list of jobs by job_type
 
@@ -75,6 +74,12 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
+    industry_types_filter = list()
+    for industry_types in jobs:
+        print("Industry Types", industry_types)
+        if industry_types['industry'] == industry:
+            industry_types_filter.append(industry_types)
+    return industry_types_filter
     """Filters a list of jobs by industry
 
     Parameters
