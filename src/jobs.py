@@ -18,8 +18,7 @@ def read(path):
     """
     arr = []
     with open(path, 'r', newline='') as file:
-        # https://courses.cs.washington.edu/courses/cse140/13wi/csv-parsing.html
-        read = list(csv.DictReader(file))
-        for row in read:
+        read_list = list(csv.DictReader(file))
+        for row in read_list:
             arr.append(row)
     return arr
