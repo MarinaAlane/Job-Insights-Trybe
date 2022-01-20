@@ -27,6 +27,3 @@ def read(path):
                 job.update({column: data[header.index(column)]})
             result.append(job)
         return result
-
-
-print(read('src/jobs.csv'))
