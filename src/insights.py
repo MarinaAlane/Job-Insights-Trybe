@@ -63,13 +63,9 @@ def get_unique_industries(path):
     job_industry = []
     for row in jobs_data:
         industry = row["industry"]
-        if industry not in job_industry or industry != "":
+        if industry not in job_industry and industry != "":
             job_industry.append(industry)
-    print(job_industry)
     return job_industry
-
-
-get_unique_industries("/src/jobs.csv")
 
 
 def filter_by_industry(jobs, industry):
