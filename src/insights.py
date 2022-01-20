@@ -76,10 +76,9 @@ def get_min_salary(path):
 
     for row in data:
         current_salary = row["min_salary"]
-        if not current_salary.strip() == '':
-            if not current_salary == 'invalid':
-                if int(current_salary) < int(min_salary):
-                    min_salary = current_salary
+        if current_salary.strip() != '' and not current_salary == 'invalid':
+            if int(current_salary) < int(min_salary):
+                min_salary = current_salary
     return int(min_salary)
 
 
