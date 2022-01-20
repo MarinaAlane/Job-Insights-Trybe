@@ -40,7 +40,10 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
+    filtered_jobs_list = [
+        job for job in jobs if job['job_type'] == job_type
+    ]
+    return filtered_jobs_list
 
 
 def get_unique_industries(path):
@@ -182,4 +185,20 @@ if __name__ == "__main__":
     # print(get_unique_industries('./src/jobs.csv'))
     # print(get_max_salary('./src/jobs.csv'))
     # print(get_min_salary('./src/jobs.csv'))
+    # print(filter_by_job_type(
+    #     [
+    #         {"id": 1, "job_type": "PART_TIME"},
+    #         {"id": 2, "job_type": "PART_TIME"},
+    #         {"id": 3, "job_type": "OTHER"},
+    #         {"id": 4, "job_type": "OTHER"},
+    #         {"id": 5, "job_type": "FULL_TIME"},
+    #         {"id": 6, "job_type": "FULL_TIME"},
+    #         {"id": 7, "job_type": "CONTRACTOR"},
+    #         {"id": 8, "job_type": "CONTRACTOR"},
+    #         {"id": 9, "job_type": "TEMPORARY"},
+    #         {"id": 10, "job_type": "TEMPORARY"},
+    #         {"id": 11, "job_type": "INTERN"},
+    #         {"id": 12, "job_type": "INTERN"},
+    #     ], "PART_TIME"
+    # ))
     pass
