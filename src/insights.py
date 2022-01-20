@@ -225,4 +225,26 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
+    jobs_with_salary_range = [
+        job
+        for job in jobs
+        if not is_not_digit(job["min_salary"])
+        and not is_not_digit(job["max_salary"])
+    ]
+
+    matched_jobs = []
+
+    for job in jobs_with_salary_range:
+        try:
+            if matches_salary_range(
+                {
+                    "min_salary": job["min_salary"],
+                    "max_salary": job["max_salary"],
+                },
+                salary,
+            ):
+                matched_jobs.append(job)
+        except ValueError:
+            pass
+
+    return matched_jobs
