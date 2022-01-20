@@ -39,7 +39,11 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
+    filter_jobs = []
+    for job in jobs:
+        if job['job_type'] == job_type:
+            filter_jobs.append(job)
+    return filter_jobs
 
 
 def get_unique_industries(path):
@@ -130,7 +134,6 @@ def get_min_salary(path):
         if (item['min_salary'] != '' and item['min_salary'] != 'invalid'):
             min_salaries.append(int(item['min_salary']))
     min_salaries.sort()
-    print(min_salaries)
     return min_salaries[0]
 
 
