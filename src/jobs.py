@@ -7,7 +7,7 @@ def read(path):
     with open(path) as file:
         jobs_reader = csv.DictReader(file)
         data = list(jobs_reader)
-        print(data)
+        # print(data)
     return data
     """Reads a file from a given path and returns its contents
 
