@@ -124,10 +124,10 @@ def get_min_salary(path):
         The minimum salary paid out of all job opportunities
     """
     list_of_jobs = read(path)
-    result = 0
+    result = float("inf")
     for job in list_of_jobs:
         if job['min_salary'].isnumeric():
-            if int(job['min_salary']) > result:
+            if int(job['min_salary']) < result:
                 result = int(job['min_salary'])
     return result
 
