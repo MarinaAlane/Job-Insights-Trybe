@@ -10,3 +10,4 @@ def read(path):
         for item in path_list:
             result.append(item)
     return result
+    
