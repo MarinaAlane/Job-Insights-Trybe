@@ -9,6 +9,7 @@ def read(path):
         header, *data = path_reader
         table = []
         for row in data:
-            a = zip(header, row)
-            table.append(dict(a))
+            # ..source: https://www.w3schools.com/python/ref_func_zip.asp
+            collection = zip(header, row)
+            table.append(dict(collection))
     return table

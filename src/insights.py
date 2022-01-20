@@ -1,19 +1,16 @@
+from src.jobs import read
+
+
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
+    table = read(path)
+    list_of_jobs_title = dict()
+    for row in table:
+        if row["job_type"] in list_of_jobs_title:
+            list_of_jobs_title[row["job_type"]] += 1
+        else:
+            list_of_jobs_title[row["job_type"]] = 1
+    # .. source: https://www.tutorialspoint.com/How-to-convert-Python-Dictionary-to-a-list
+    return list(list_of_jobs_title.keys())
 
 
 def filter_by_job_type(jobs, job_type):
