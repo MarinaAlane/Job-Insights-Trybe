@@ -60,9 +60,9 @@ def get_unique_industries(path):
     list_of_jobs = read(path)
     result = []
     for job in list_of_jobs:
-        if job['industry'] not in result:
-            result.append(job['industry'])
-    result.remove('')
+        if len(job['industry']) > 0:
+            if job['industry'] not in result:
+                result.append(job['industry'])
     return result
 
 
@@ -108,9 +108,6 @@ def get_max_salary(path):
     return result
 
 
-print(get_max_salary('src/jobs.csv'))
-
-
 def get_min_salary(path):
     """Get the minimum salary of all jobs
 
@@ -126,7 +123,13 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    list_of_jobs = read(path)
+    result = 0
+    for job in list_of_jobs:
+        if job['min_salary'].isnumeric():
+            if int(job['min_salary']) > result:
+                result = int(job['min_salary'])
+    return result
 
 
 def matches_salary_range(job, salary):
