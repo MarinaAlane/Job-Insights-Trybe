@@ -1,4 +1,4 @@
-from jobs import read
+from src.jobs import read
 
 
 def get_unique_job_types(path):
@@ -128,7 +128,7 @@ def get_min_salary(path):
     min_salaries = []
     for item in arr_csv:
         if (item['min_salary'] != '' and item['min_salary'] != 'invalid'):
-            min_salaries.append(int(item['max_salary']))
+            min_salaries.append(int(item['min_salary']))
     min_salaries.sort()
     print(min_salaries)
     return min_salaries[0]
