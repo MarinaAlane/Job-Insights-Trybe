@@ -60,7 +60,8 @@ def get_unique_industries(path):
     """
     file_content = jobs.read(path)
     industries_set = {
-        content['industry'] for content in file_content if content['industry'] != ''
+        content['industry']
+        for content in file_content if content['industry'] != ''
     }
     industries_list = list(industries_set)
     return industries_list
@@ -101,7 +102,8 @@ def get_max_salary(path):
     """
     file_content = jobs.read(path)
     max_salaries_set = {
-        int(content['max_salary'], 10) for content in file_content if content['max_salary'].isdecimal()
+        int(content['max_salary'], 10)
+        for content in file_content if content['max_salary'].isdecimal()
     }
     highest_max_salary = max(max_salaries_set)
     return highest_max_salary
@@ -124,7 +126,8 @@ def get_min_salary(path):
     """
     file_content = jobs.read(path)
     min_salaries_set = {
-        int(content['min_salary'], 10) for content in file_content if content['min_salary'].isdecimal()
+        int(content['min_salary'], 10)
+        for content in file_content if content['min_salary'].isdecimal()
     }
     lowest_min_salary = min(min_salaries_set)
     return lowest_min_salary
