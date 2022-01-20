@@ -48,6 +48,7 @@ def filter_by_industry(jobs, industry):
 
     return industry_filter
 
+
 def get_max_salary(path):
     all_jobs = jobs.read(path)
     max_salary = set()
