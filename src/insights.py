@@ -58,7 +58,9 @@ def get_unique_industries(path):
     """
     jobs_dicts_list = src.jobs.read(path)
 
-    industries_set = {job["industry"] for job in jobs_dicts_list if job["industry"] != ''}
+    industries_set = {
+        job["industry"] for job in jobs_dicts_list if job["industry"] != ""
+    }
 
     return [industry for industry in industries_set]
 
