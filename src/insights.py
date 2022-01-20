@@ -63,7 +63,6 @@ def get_max_salary(path):
             if int(job["max_salary"]) > max_salary:
                 max_salary = int(job["max_salary"])
 
-    # print({max_salary})
     return int(max_salary)
 
 
