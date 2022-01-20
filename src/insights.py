@@ -9,7 +9,8 @@ def get_unique_job_types(path):
             list_of_jobs_title[row["job_type"]] += 1
         else:
             list_of_jobs_title[row["job_type"]] = 1
-    # .. source: https://www.tutorialspoint.com/How-to-convert-Python-Dictionary-to-a-list
+    # .. source: https://www.tutorialspoint.com/
+    # .. How-to-convert-Python-Dictionary-to-a-list
     return list(list_of_jobs_title.keys())
 
 
