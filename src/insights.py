@@ -47,7 +47,7 @@ def get_unique_industries(path):
     jobs = read(path)
     industries = set()
     for industry_item in jobs:
-        industry = industry_item["industry"]
+        industry = industry_item['industry']
         if (industry != ''):
             industries.add(industry)
     return industries
@@ -87,6 +87,13 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
+    jobs = read(path)
+    max_salary = []
+    for salary in jobs:
+        if (salary['max_salary'] != '' and salary['max_salary'] != 'invalid'):
+            max_salary.append(int(salary['max_salary']))
+    max_salary.sort(reverse=True)
+    return max_salary[0]
     """Get the maximum salary of all jobs
 
     Must call `read`
