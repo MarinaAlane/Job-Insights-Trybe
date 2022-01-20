@@ -1,4 +1,5 @@
 from src.jobs import read
+
 # from jobs import read
 
 
@@ -18,7 +19,7 @@ def get_unique_job_types(path):
         List of unique job types
     """
     jobs_list = read(path)
-    job_set = {job['job_type'] for job in jobs_list}
+    job_set = {job["job_type"] for job in jobs_list}
 
     return [*job_set]
 
@@ -58,13 +59,10 @@ def get_unique_industries(path):
     """
     jobs_list = read(path)
     job_set = {
-        job['industry'] if job['industry'] != '' else None for job in jobs_list
+        job["industry"] if job["industry"] != "" else None for job in jobs_list
     }
 
     return [*job_set]
-
-
-print(get_unique_industries('src/jobs.csv'))
 
 
 def filter_by_industry(jobs, industry):
@@ -85,6 +83,13 @@ def filter_by_industry(jobs, industry):
     return []
 
 
+def cast_valid_values(string):
+    try:
+        return int(string)
+    except ValueError:
+        return 0
+
+
 def get_max_salary(path):
     """Get the maximum salary of all jobs
 
@@ -100,7 +105,16 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+    jobs_list = read(path)
+    job_max_salary_list = {
+        cast_valid_values(job["max_salary"])
+        for job in jobs_list
+    }
+
+    return max(job_max_salary_list)
+
+
+print(get_max_salary("src/jobs.csv"))
 
 
 def get_min_salary(path):
