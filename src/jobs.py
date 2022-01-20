@@ -6,7 +6,7 @@ import csv
 def read(path):
     rows = []
     with open(path, encoding="utf8", newline="") as file:
-        csvreader = list(csv.DictReader(file))
-        for row in csvreader:
+        csv_reader = list(csv.DictReader(file))
+        for row in csv_reader:
             rows.append(row)
     return rows
