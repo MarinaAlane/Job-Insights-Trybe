@@ -122,7 +122,12 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    file_content = jobs.read(path)
+    min_salaries_set = {
+        int(content['min_salary'], 10) for content in file_content if content['min_salary'].isdecimal()
+    }
+    lowest_min_salary = min(min_salaries_set)
+    return lowest_min_salary
 
 
 def matches_salary_range(job, salary):
@@ -173,4 +178,5 @@ if __name__ == "__main__":
     # print(get_unique_job_types('./src/jobs.csv'))
     # print(get_unique_industries('./src/jobs.csv'))
     # print(get_max_salary('./src/jobs.csv'))
+    # print(get_min_salary('./src/jobs.csv'))
     pass
