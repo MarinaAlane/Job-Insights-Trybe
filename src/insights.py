@@ -2,7 +2,8 @@
 
 from src.jobs import read
 
-# path_csv = "/home/monts/Documents/trybe/projetos/sd-011-project-job-insights/src/jobs.csv"
+# path_csv = "/home/monts/Documents/trybe/projetos
+# /sd-011-project-job-insights/src/jobs.csv"
 
 
 def get_unique_job_types(path):
@@ -67,8 +68,6 @@ def get_max_salary(path):
     all_salaries.sort(reverse=True)
     biggest_salary = all_salaries[0]
     return biggest_salary
-
-# print(get_max_salary(path_csv))
 
 
 def get_min_salary(path):

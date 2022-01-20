@@ -1,1 +1,0 @@
-filter_by_job_type(path_csv, "FULL_TIME")
