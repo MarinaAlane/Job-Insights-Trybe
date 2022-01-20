@@ -1,4 +1,5 @@
 from functools import lru_cache
+import csv
 
 
 @lru_cache
@@ -15,4 +16,12 @@ def read(path):
     list
         List of rows as dicts
     """
-    return []
+    with open(path) as file:
+        jobs_reader = csv.reader(file, delimiter=",", quotechar='"')
+        headers, *data = jobs_reader
+
+    lista = []
+
+    for row in data:
+        lista.append({headers[i]: row[i] for i in range(len(headers))})
+    return lista
