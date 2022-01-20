@@ -28,22 +28,17 @@ def filter_by_job_type(jobs, job_type):
     return []
 
 
+# SET: https://www.w3schools.com/python/ref_func_set.asp
+# ADD: https://www.w3schools.com/python/ref_set_add.asp
+# usando set() para pegar valores unicos
+# usando ADD pois funciona com set(), pois append() não funciona.
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    jobs_csv = read(path)
+    industry_list = set()
+    for job in jobs_csv:
+        if job["industry"] != '':
+            industry_list.add(job["industry"])
+    return industry_list
 
 
 def filter_by_industry(jobs, industry):
