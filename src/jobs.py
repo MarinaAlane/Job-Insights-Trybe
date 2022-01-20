@@ -5,7 +5,7 @@ from functools import lru_cache
 def read(path):
     """Reads a file from a given path and returns its contents
 
-    Parameters
+    Parameters 
     ----------
     path : str
         Full path to file
