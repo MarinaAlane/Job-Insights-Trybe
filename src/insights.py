@@ -1,3 +1,4 @@
+import math
 from src import jobs
 # import jobs
 
@@ -103,7 +104,18 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+
+    maxSalary = 0
+    getJobs = jobs.read(path)
+
+    for job in getJobs:
+        try:
+            salary = int(job['max_salary'])
+            if(salary > maxSalary):
+                maxSalary = salary
+        except ValueError:
+            pass
+    return maxSalary
 
 
 def get_min_salary(path):
@@ -121,7 +133,18 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    getJobs = jobs.read(path)
+    minSalary = int(getJobs[3]['min_salary'])
+
+    for job in getJobs:
+        try:
+            salary = int(job['min_salary'])
+            if(salary < minSalary):
+                minSalary = salary
+
+        except ValueError:
+            pass
+    return minSalary
 
 
 def matches_salary_range(job, salary):
