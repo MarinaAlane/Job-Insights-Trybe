@@ -40,7 +40,7 @@ def get_unique_industries(path):  # & done
     return list_of_industries
 
 
-def filter_by_industry(jobs, industry):
+def filter_by_industry(jobs, industry):  # & done
     filtered_industry = []
     for row in jobs:
         if industry == row["industry"]:
@@ -74,7 +74,7 @@ def matches_salary_range(job, salary):
     """Checks if a given salary is in the salary range of a given job
 
     Parameters
-    ----------
+    -----------
     job : dict
         The job with `min_salary` and `max_salary` keys
     salary : int
