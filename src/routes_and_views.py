@@ -2,6 +2,7 @@ from markdown import markdown
 from flask import Flask, Blueprint, render_template, request
 
 from .jobs import read
+from .more_insights import get_job
 from .insights import (
     get_unique_industries,
     get_unique_job_types,
@@ -57,6 +58,13 @@ def list_jobs():
     }
 
     return render_template("list_jobs.jinja2", ctx=ctx)
+
+
+@bp.route("/job/<index>")
+def job(index):
+    jobs = read("src/jobs.csv")
+    job = get_job(jobs, index)
+    return render_template('job.jinja2', job=job)
 
 
 def init_app(app: Flask):
