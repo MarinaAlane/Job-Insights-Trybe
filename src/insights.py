@@ -153,10 +153,12 @@ def matches_salary_range(job, salary):
     elif not (
             type(job["min_salary"]) is int and type(job["max_salary"]) is int
             ):
+        # Based on explanation src
+        # https://www.geeksforgeeks.org/python-type-function/#:~:text=type()%20method%20returns%20class,(object)%20passed%20as%20parameter.&text=If%20single%20argument%20type(obj,returns%20a%20new%20type%20object.
         raise ValueError('Both salaries must be a integer')
     elif (job["max_salary"] < job["min_salary"]):
         raise ValueError('Min salary must be less than max salary')
-    elif not (salary != type(int)):
+    elif not (type(salary) is int):
         raise ValueError('Salary must be a integer')
     else:
         return job["min_salary"] <= salary <= job["max_salary"]
@@ -187,6 +189,15 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
+    # Based on src https://www.delftstack.com/pt/howto/python/python-pass/
+    salary_range_filter = list()
+    for job in jobs:
+        try:
+            if (matches_salary_range(job, salary)):
+                salary_range_filter.append(job)
+        except ValueError:
+            pass
+    return salary_range_filter
     """Filters a list of jobs by salary range
 
     Parameters
