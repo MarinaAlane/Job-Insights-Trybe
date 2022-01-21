@@ -8,7 +8,7 @@ def get_unique_job_types(path):
         unique_jobs.add(type["job_type"])
 
     return list(unique_jobs)
- 
+
     """Checks all different job types and returns a list of them
 
     Must call `read`
