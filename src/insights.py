@@ -16,8 +16,11 @@ def get_unique_job_types(path):
         List of unique job types
     """
     this_set = set()
-    this_set.add(read(path)[0]["job_title"])
-    print(len(this_set))
+    this_dic = read(path)
+    for row in this_dic:
+        this_set.add(row["job_title"])
+    # this_set.add(read(path)[0]["job_title"])
+    # print(len(this_set))
     return this_set
 
 
