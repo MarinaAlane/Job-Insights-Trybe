@@ -106,15 +106,11 @@ def get_max_salary(path):
         The maximum salary paid out of all job opportunities
     """
     jobs_list = read(path)
-    job_max_salary_list = {
-        cast_valid_values(job["max_salary"])
-        for job in jobs_list
-    }
+    job_max_salary_list = [
+        cast_valid_values(job["max_salary"]) for job in jobs_list
+    ]
 
     return max(job_max_salary_list)
-
-
-print(get_max_salary("src/jobs.csv"))
 
 
 def get_min_salary(path):
@@ -132,7 +128,15 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    jobs_list = read(path)
+    job_min_salary_list = {
+        cast_valid_values(job["min_salary"]) or None for job in jobs_list
+    }
+    remove_zeros = filter(
+        lambda value: value not in [0, None], job_min_salary_list
+    )
+
+    return min(remove_zeros)
 
 
 def matches_salary_range(job, salary):
