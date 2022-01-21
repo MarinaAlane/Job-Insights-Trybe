@@ -1,7 +1,8 @@
 from functools import lru_cache
+import csv
 
 
-@lru_cache
+# @lru_cache
 def read(path):
     """Reads a file from a given path and returns its contents
 
@@ -15,4 +16,13 @@ def read(path):
     list
         List of rows as dicts
     """
-    return []
+    with open(path, "r") as file:
+        csvFile = csv.reader(file, delimiter=',', quotechar='"')
+        headers, *values = csvFile
+        result = [{
+            headers[index]: row[index] for index in range(len(row))
+            } for row in values]
+        return result
+
+
+# print(read("./jobs.csv"))
