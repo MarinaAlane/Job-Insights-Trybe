@@ -86,6 +86,7 @@ def get_max_salary(path):
 
     # Adiciono os valores já inteiros, se sua coluna for max_salary.
     # Senão lanço uma exceção, pois não são valores inteiros.
+    # O comando continue apenas passa para a proxima iteração do laço.
     # Por fim capturo o maior valor com a função max().
     for job in content:
         if job['max_salary']:
@@ -97,21 +98,25 @@ def get_max_salary(path):
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
+    # Requisito 5
 
-    Must call `read`
+    from src.jobs import read
+    content = read(path)
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
+    # Utilizo do conjunto para evitar valores repetidos.
+    get_salaries = set()
 
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    # Adiciono os valores já inteiros, se sua coluna for min_salary.
+    # Senão lanço uma exceção, pois não são valores inteiros.
+    # O comando continue apenas passa para a proxima iteração do laço.
+    # Por fim capturo o menor valor com a função min().
+    for job in content:
+        if job['min_salary']:
+            try:
+                get_salaries.add(int(job['min_salary']))
+            except ValueError:
+                continue
+    return min(get_salaries)
 
 
 def matches_salary_range(job, salary):
