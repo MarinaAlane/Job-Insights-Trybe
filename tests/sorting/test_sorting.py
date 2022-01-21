@@ -97,4 +97,3 @@ def test_sort_by_criteria(jobs):
     assert jobs == ordered_min_salary
     sort_by(jobs, "date_posted")
     assert jobs == ordered_date_posted
-
