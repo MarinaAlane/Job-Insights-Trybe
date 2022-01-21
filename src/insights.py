@@ -60,11 +60,10 @@ def get_unique_industries(path):
         List of unique industries
     """
     jobs_list = read(path)
-    job_set = {
-        job["industry"] if job["industry"] != "" else None for job in jobs_list
-    }
+    job_set = {job["industry"] for job in jobs_list}
+    filter_falsy_values = filter(lambda i: i, job_set)
 
-    return [*job_set]
+    return [*filter_falsy_values]
 
 
 def filter_by_industry(jobs, industry):
@@ -172,10 +171,10 @@ def matches_salary_range(job, salary):
         arg_types = [max_salary, min_salary, salary]
 
         if not all([isinstance(el, int) for el in arg_types]):
-            raise ValueError('All args must be ints')
+            raise ValueError("All args must be ints")
 
         if min_salary > max_salary:
-            raise ValueError('min_salary can not be higher than max_salary')
+            raise ValueError("min_salary can not be higher than max_salary")
 
         return min_salary <= salary <= max_salary
     except KeyError:
