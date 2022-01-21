@@ -10,21 +10,13 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
+    filter_job = list()
 
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
+    for job in jobs:
+        if job["job_type"] == job_type:
+            filter_job.append(job)
 
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    return filter_job
 
 
 def get_unique_industries(path):
@@ -61,7 +53,7 @@ def get_max_salary(path):
     jobs = read(path)
 
     salaries = list()
-# http://www.w3big.com/pt/python/att-string-isnumeric.html
+    # http://www.w3big.com/pt/python/att-string-isnumeric.html
     for salary in jobs:
         if salary["max_salary"].isnumeric():
             salaries.append(int(salary["max_salary"]))
