@@ -39,21 +39,22 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
+    # Requisito 3
 
-    Must call `read`
+    from src.jobs import read
+    content = read(path)
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
+    # Criei um conjunto, onde não haverão itens repetidos.
+    industries = set()
 
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    # Se o nome da industria estiver vazio nada acontece.
+    # Se houver uma industria irá adicioná-la ao conjunto industries
+    for job in content:
+        if job['industry'] == '':
+            pass
+        else:
+            industries.add(job['industry'])
+    return industries
 
 
 def filter_by_industry(jobs, industry):
