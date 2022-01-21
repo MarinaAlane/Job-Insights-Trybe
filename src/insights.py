@@ -27,7 +27,7 @@ def filter_by_job_type(jobs, job_type):
 
     # Primeiro iterei sobre a lista de empregos.
     # Depois fiz um filtro do tipo do emprego, pelo passado por parâmetro.
-    # Se a condição for verdadeira retorne dentro da lista.
+    # Se a condição for verdadeira retorne o emprego filtrado.
     for job in jobs:
         if job['job_type'] == job_type:
             filtered_job_types.append(job)
@@ -54,21 +54,17 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
+    # Requisito 7
 
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
+    filtered_industry = []
 
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+    # Primeiro iterei sobre a lista de empregos.
+    # Depois fiz um filtro de indústrias, pela passada por parâmetro.
+    # Se a condição for verdadeira retorne a industria filtrada.
+    for job in jobs:
+        if job['industry'] == industry:
+            filtered_industry.append(job)
+    return filtered_industry
 
 
 def get_max_salary(path):
