@@ -145,7 +145,7 @@ def get_min_salary(path):
             all_min_salaries.add(int(job["min_salary"]))
         except ValueError:
             pass
-    return max(all_min_salaries)
+    return min(all_min_salaries)
 
 
 def matches_salary_range(job, salary):
