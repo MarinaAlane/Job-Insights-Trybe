@@ -10,7 +10,6 @@ def read(path):
             jobs = []
             for row in jobs_reader:
                 jobs.append(row)
-                print(row["date_posted"])
             return jobs
     except FileNotFoundError:
         print("arquivo inexistente")
