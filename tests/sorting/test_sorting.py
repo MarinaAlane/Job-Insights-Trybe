@@ -1,30 +1,19 @@
 import pytest
 from src.sorting import sort_by
 from mock_test import mocked_jobs
+from mock_response_jobs import mock_response_jobs
 
 
 def test_sort_by_criteria():
     pass
     sort_by(mocked_jobs, "min_salary")
-    assert mocked_jobs == [
-        {"min_salary": 1, "max_salary": 6, "date_posted": "2020-01-01"},
-        {"min_salary": 2, "max_salary": 4, "date_posted": "2020-03-01"},
-        {"min_salary": 3, "max_salary": 5, "date_posted": "2020-02-01"},
-    ]
+    assert mocked_jobs == mock_response_jobs.mock_response_jobs1
 
     sort_by(mocked_jobs, "max_salary")
-    assert mocked_jobs == [
-        {"min_salary": 1, "max_salary": 6, "date_posted": "2020-01-01"},
-        {"min_salary": 3, "max_salary": 5, "date_posted": "2020-02-01"},
-        {"min_salary": 2, "max_salary": 4, "date_posted": "2020-03-01"},
-    ]
+    assert mocked_jobs == mock_response_jobs.mock_response_jobs2
 
     sort_by(mocked_jobs, "date_posted")
-    assert mocked_jobs == [
-        {"min_salary": 2, "max_salary": 4, "date_posted": "2020-03-01"},
-        {"min_salary": 3, "max_salary": 5, "date_posted": "2020-02-01"},
-        {"min_salary": 1, "max_salary": 6, "date_posted": "2020-01-01"},
-    ]
+    assert mocked_jobs == mock_response_jobs.mock_response_jobs3
 
     with pytest.raises(ValueError):
         sort_by(mocked_jobs, "invalid_criteria")
