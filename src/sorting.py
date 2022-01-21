@@ -14,7 +14,7 @@ def max_salary_key(job):
         Dict represeting a job from the dataset.
 
     Returns
-    -------
+    ------
     Job's max salary as an int, or -infinite.
     """
     try:
