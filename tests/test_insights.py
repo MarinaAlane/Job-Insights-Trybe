@@ -1,13 +1,13 @@
 import pytest
 from src.insights import (
-    get_unique_job_types,
-    filter_by_job_type,
-    get_unique_industries,
     filter_by_industry,
+    filter_by_job_type,
+    filter_by_salary_range,
     get_max_salary,
     get_min_salary,
+    get_unique_industries,
+    get_unique_job_types,
     matches_salary_range,
-    filter_by_salary_range,
 )
 
 JOB_TYPES = {

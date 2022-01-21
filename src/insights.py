@@ -5,6 +5,7 @@ from src.jobs import read
 
 # from jobs import read
 
+
 pp = pprint.PrettyPrinter(indent=4)
 
 
@@ -46,9 +47,6 @@ def get_max_salary(path):
     return max_salary
 
 
-# pp.pprint(get_max_salary("src/jobs.csv"))
-
-
 def get_min_salary(path):
     jobs = read(path)
     min_salary = min(
@@ -58,29 +56,22 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
-    """Checks if a given salary is in the salary range of a given job
+    if not ("min_salary" in job and "max_salary" in job):
+        raise ValueError("Job has no salary range")
 
-    Parameters
-    ----------
-    job : dict
-        The job with `min_salary` and `max_salary` keys
-    salary : int
-        The salary to check if matches with salary range of the job
+    min_salary = job["min_salary"]
+    max_salary = job["max_salary"]
 
-    Returns
-    -------
-    bool
-        True if the salary is in the salary range of the job, False otherwise
+    if not (isinstance(min_salary, int) or isinstance(max_salary, int)):
+        raise ValueError("job_salaries must be integers")
 
-    Raises
-    ------
-    ValueError
-        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-        If `job["min_salary"]` is greather than `job["max_salary"]`
-        If `salary` isn't a valid integer
-    """
-    pass
+    if not (isinstance(salary, int)):
+        raise ValueError("salary must be an integer")
+
+    if min_salary > max_salary:
+        raise ValueError("min_salary must be less than max_salary")
+
+    return min_salary <= salary <= max_salary
 
 
 def filter_by_salary_range(jobs, salary):
