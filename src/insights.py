@@ -8,7 +8,6 @@ def get_unique_job_types(path):
         for job in item["job_type"].split(","):
             job_types.add(job)
     return job_types
-    return []
 
 
 def filter_by_job_type(jobs, job_type):
