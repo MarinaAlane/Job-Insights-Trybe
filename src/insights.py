@@ -76,7 +76,6 @@ def get_unique_industries(path):
 def filter_by_industry(jobs, industry):
     industry_types_filter = list()
     for industry_types in jobs:
-        print("Industry Types", industry_types)
         if industry_types['industry'] == industry:
             industry_types_filter.append(industry_types)
     return industry_types_filter
@@ -149,6 +148,19 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
+    if not ("min_salary" in job and "max_salary" in job):
+        raise ValueError('Min salary and max salary must be valid')
+    elif not (
+            type(job["min_salary"]) is int and type(job["max_salary"]) is int
+            ):
+        raise ValueError('Both salaries must be a integer')
+    elif (job["max_salary"] < job["min_salary"]):
+        raise ValueError('Min salary must be less than max salary')
+    elif not (salary != type(int)):
+        raise ValueError('Salary must be a integer')
+    else:
+        return job["min_salary"] <= salary <= job["max_salary"]
+
     """Checks if a given salary is in the salary range of a given job
 
     Parameters
