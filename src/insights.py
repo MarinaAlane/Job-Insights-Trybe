@@ -82,7 +82,9 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    return []
+    filtered_jobs = filter(lambda type: type['industry'] == industry, jobs)
+
+    return [*filtered_jobs]
 
 
 def cast_valid_values(string):
