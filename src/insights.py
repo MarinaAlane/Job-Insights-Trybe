@@ -76,21 +76,24 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
+    # Requisito 4
 
-    Must call `read`
+    from src.jobs import read
+    content = read(path)
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
+    # Utilizo do conjunto para evitar valores repetidos.
+    get_salaries = set()
 
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    # Adiciono os valores já inteiros, se sua coluna for max_salary.
+    # Senão lanço uma exceção, pois não são valores inteiros.
+    # Por fim capturo o maior valor com a função max().
+    for job in content:
+        if job['max_salary']:
+            try:
+                get_salaries.add(int(job['max_salary']))
+            except ValueError:
+                continue
+    return max(get_salaries)
 
 
 def get_min_salary(path):
