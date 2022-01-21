@@ -1,4 +1,3 @@
-from logging import exception
 from src import jobs
 
 # import jobs
