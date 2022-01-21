@@ -1,5 +1,6 @@
 from src.jobs import read
 from src.helpers.salary_helpers import get_salary_list
+from src.helpers.job_helpers import is_valid_job
 
 
 def get_unique_job_types(path):
@@ -11,9 +12,7 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    return [job
-            for job in jobs
-            if job["job_type"] == job_type]
+    return [job for job in jobs if job["job_type"] == job_type]
 
 
 def get_unique_industries(path):
@@ -21,15 +20,13 @@ def get_unique_industries(path):
     unique_industries = set()
     for job in jobs:
         industry = job["industry"].strip()
-        if not industry == '':
+        if not industry == "":
             unique_industries.add(industry)
     return unique_industries
 
 
 def filter_by_industry(jobs, industry):
-    return [job
-            for job in jobs
-            if job["industry"] == industry]
+    return [job for job in jobs if job["industry"] == industry]
 
 
 def get_max_salary(path):
@@ -45,44 +42,28 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
-    """Checks if a given salary is in the salary range of a given job
+    try:
+        min_salary = job["min_salary"]
+        max_salary = job["max_salary"]
 
-    Parameters
-    ----------
-    job : dict
-        The job with `min_salary` and `max_salary` keys
-    salary : int
-        The salary to check if matches with salary range of the job
+        is_valid = is_valid_job(job, salary)
 
-    Returns
-    -------
-    bool
-        True if the salary is in the salary range of the job, False otherwise
+        if not is_valid:
+            raise ValueError()
 
-    Raises
-    ------
-    ValueError
-        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-        If `job["min_salary"]` is greather than `job["max_salary"]`
-        If `salary` isn't a valid integer
-    """
-    pass
+        return min_salary <= salary <= max_salary
+    except KeyError:
+        raise ValueError()
 
 
 def filter_by_salary_range(jobs, salary):
-    """Filters a list of jobs by salary range
+    if not type(salary) is int:
+        return []
 
-    Parameters
-    ----------
-    jobs : list
-        The jobs to be filtered
-    salary : int
-        The salary to be used as filter
+    valid_jobs = [job for job in jobs if is_valid_job(job)]
 
-    Returns
-    -------
-    list
-        Jobs whose salary range contains `salary`
-    """
-    return []
+    jobs_in_salary_range = [
+        job for job in valid_jobs if matches_salary_range(job, salary)
+    ]
+
+    return jobs_in_salary_range
