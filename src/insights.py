@@ -59,34 +59,32 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
-    """Checks if a given salary is in the salary range of a given job
+    #  Para verificar a existencia de uma determinada key em um dict, consultei este topico no StackOverFlow
+    #  https://stackoverflow.com/questions/1602934/check-if-a-given-key-already-exists-in-a-dictionary
+    if not ("min_salary" in job and "max_salary" in job):
+        raise ValueError("Invalid value of salary")
+    if job["min_salary"] == "" and job["max_salary"] == "":
+        raise ValueError("Invalid value of salary")
+    if type(job["min_salary"]) != int and type(job["max_salary"]) != int:
+        raise ValueError("Invalid value of salary")
+    if job["min_salary"] > job["max_salary"]:
+        raise ValueError("Invalid value of salary")
+    if type(salary) != int:
+        raise ValueError("Invalid value of salary")
+    #  EM um dos casos abaixo, lancar value error:
+    #  Se min_salary ou max_salary === "" CHECK
+    #  Se o valor min_salary for maior que o max_salary CHECK
+    #  Se min_salary ou max_salary nao forem numeros CHECK
+    #  Se salary tem que ser obrigatoriamente um INT CHECK
 
-    Parameters
-    ----------
-    job : dict
-        The job with `min_salary` and `max_salary` keys
-    salary : int
-        The salary to check if matches with salary range of the job
-
-    Returns
-    -------
-    bool
-        True if the salary is in the salary range of the job, False otherwise
-
-    Raises
-    ------
-    ValueError
-        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-        If `job["min_salary"]` is greather than `job["max_salary"]`
-        If `salary` isn't a valid integer
-    """
-    pass
+    if job["min_salary"] <= salary <= job["max_salary"]:
+        return True
+    else:
+        return False
 
 
 def filter_by_salary_range(jobs, salary):
     """Filters a list of jobs by salary range
-
     Parameters
     ----------
     jobs : list
