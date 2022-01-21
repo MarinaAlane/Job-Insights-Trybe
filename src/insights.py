@@ -1,3 +1,4 @@
+from logging import exception
 from src import jobs
 
 # import jobs
@@ -85,18 +86,12 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
-    """Filters a list of jobs by salary range
+    jobs_by_salary_range = list()
 
-    Parameters
-    ----------
-    jobs : list
-        The jobs to be filtered
-    salary : int
-        The salary to be used as filter
-
-    Returns
-    -------
-    list
-        Jobs whose salary range contains `salary`
-    """
-    return []
+    for job in jobs:
+        try:
+            if matches_salary_range(job, salary):
+                jobs_by_salary_range.append(job)
+        except ValueError:
+            pass
+    return jobs_by_salary_range
