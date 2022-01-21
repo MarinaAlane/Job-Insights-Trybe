@@ -1,4 +1,3 @@
-import math
 from src.jobs import read
 
 
@@ -12,21 +11,11 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    jobs_filtered = []
+    for job in jobs:
+        if job['job_type'] == job_type:
+            jobs_filtered.append(job)
+    return jobs_filtered
 
 
 def get_unique_industries(path):
@@ -72,7 +61,7 @@ def get_max_salary(path):
 
 def get_min_salary(path):
     list_CSV = read(path)
-    min_salary = math.inf
+    min_salary = 100000000
     for item in list_CSV:
         if (
             item["min_salary"] != ""
