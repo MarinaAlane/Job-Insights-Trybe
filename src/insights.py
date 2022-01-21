@@ -1,18 +1,17 @@
 import pprint
 from collections import Counter
 
-from jobs import read
+from src.jobs import read
+
+# from jobs import read
 
 pp = pprint.PrettyPrinter(indent=4)
 
-# job_title, company, state,city, min_salary,max_salary,job_desc,industry,rating,date_posted,valid_until,job_type,id
+
 def get_unique_job_types(path):
     jobs = read(path)
     unique_jobs = Counter(job["job_type"] for job in jobs)
     return list(unique_jobs.keys())
-
-
-jobs = read("src/jobs.csv")
 
 
 def filter_by_job_type(jobs, job_type):
@@ -24,79 +23,38 @@ def filter_by_job_type(jobs, job_type):
     return specific_job
 
 
-pp.pprint(filter_by_job_type(jobs, "PART_TIME"))
-
-
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    jobs = read(path)
+    unique_industries = Counter(
+        job["industry"] for job in jobs if job["industry"]
+    )
+    ind_list = list(unique_industries.keys())
+    return ind_list
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+    filtered_jobs = [job for job in jobs if job["industry"] == industry]
+    return filtered_jobs
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
+    jobs = read(path)
+    max_salary = max(
+        int(job["max_salary"]) for job in jobs if job["max_salary"].isdigit()
+    )
 
-    Must call `read`
+    return max_salary
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
 
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+# pp.pprint(get_max_salary("src/jobs.csv"))
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    jobs = read(path)
+    min_salary = min(
+        int(job["min_salary"]) for job in jobs if job["min_salary"].isdigit()
+    )
+    return min_salary
 
 
 def matches_salary_range(job, salary):
