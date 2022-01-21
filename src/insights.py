@@ -49,7 +49,7 @@ def get_min_salary(path):
 def matches_salary_range(job, salary):
     """Checks if a given salary is in the salary range of a given job
 
-    Parameters
+    Parameterss
     ----------
     job : dict
         The job with `min_salary` and `max_salary` keys
