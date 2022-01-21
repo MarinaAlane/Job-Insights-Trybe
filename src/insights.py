@@ -1,4 +1,5 @@
 from .jobs import read
+from .Utils.salary_range_validations import salary_range_validation
 
 
 def get_unique_job_types(path):
@@ -59,24 +60,7 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
-    #  Para verificar a existencia de uma determinada key em um dict, consultei este topico no StackOverFlow
-    #  https://stackoverflow.com/questions/1602934/check-if-a-given-key-already-exists-in-a-dictionary
-    if not ("min_salary" in job and "max_salary" in job):
-        raise ValueError("Invalid value of salary")
-    if job["min_salary"] == "" and job["max_salary"] == "":
-        raise ValueError("Invalid value of salary")
-    if type(job["min_salary"]) != int and type(job["max_salary"]) != int:
-        raise ValueError("Invalid value of salary")
-    if job["min_salary"] > job["max_salary"]:
-        raise ValueError("Invalid value of salary")
-    if type(salary) != int:
-        raise ValueError("Invalid value of salary")
-    #  EM um dos casos abaixo, lancar value error:
-    #  Se min_salary ou max_salary === "" CHECK
-    #  Se o valor min_salary for maior que o max_salary CHECK
-    #  Se min_salary ou max_salary nao forem numeros CHECK
-    #  Se salary tem que ser obrigatoriamente um INT CHECK
-
+    salary_range_validation(job, salary)
     if job["min_salary"] <= salary <= job["max_salary"]:
         return True
     else:
