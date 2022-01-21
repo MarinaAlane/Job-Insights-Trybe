@@ -57,20 +57,20 @@ def filter_by_industry(jobs, industry):
 
 def get_max_salary(path):
     file = jobs.read(path)
-    jobs_list = set
-    for row in file:
-        if row["max_salary"]:
-            jobs_list.add(int(row["max_salary"]))
-    return max(jobs_list)
+    salary = 0
+    for job in file:
+        if job["max_salary"].isnumeric() and int(job["max_salary"]) > salary:
+            salary = int(job["max_salary"])
+    return salary
 
 
 def get_min_salary(path):
     file = jobs.read(path)
-    jobs_list = set
-    for row in file:
-        if row["min_salary"]:
-            jobs_list.add(int(row["min_salary"]))
-    return max(jobs_list)
+    salary = get_max_salary("src/jobs.csv")
+    for job in file:
+        if job["min_salary"].isnumeric() and int(job["min_salary"]) < salary:
+            salary = int(job["min_salary"])
+    return salary
 
 
 def matches_salary_range(job, salary):
