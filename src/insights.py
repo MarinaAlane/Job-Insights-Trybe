@@ -1,37 +1,30 @@
+import pprint
+from collections import Counter
+
+from jobs import read
+
+pp = pprint.PrettyPrinter(indent=4)
+
+# job_title, company, state,city, min_salary,max_salary,job_desc,industry,rating,date_posted,valid_until,job_type,id
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
+    jobs = read(path)
+    unique_jobs = Counter(job["job_type"] for job in jobs)
+    return list(unique_jobs.keys())
 
-    Must call `read`
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
+jobs = read("src/jobs.csv")
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
+    specific_job = [
+        {"id": job["id"], "job_type": job["job_type"]}
+        for job in jobs
+        if job["job_type"] == job_type
+    ]
+    return specific_job
 
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
 
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+pp.pprint(filter_by_job_type(jobs, "PART_TIME"))
 
 
 def get_unique_industries(path):
