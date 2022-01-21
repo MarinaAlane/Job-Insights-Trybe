@@ -13,22 +13,35 @@ def get_unique_job_types(path):
     return job_types
 
 
+# JOBS = [
+#   {"id": 1, "job_type": "PART_TIME"},
+#   {"id": 2, "job_type": "PART_TIME"},
+#   {"id": 3, "job_type": "OTHER"},
+#   {"id": 4, "job_type": "OTHER"},
+#   {"id": 5, "job_type": "FULL_TIME"},
+#   {"id": 6, "job_type": "FULL_TIME"},
+#   {"id": 7, "job_type": "CONTRACTOR"},
+#   {"id": 8, "job_type": "CONTRACTOR"},
+#   {"id": 9, "job_type": "TEMPORARY"},
+#   {"id": 10, "job_type": "TEMPORARY"},
+#   {"id": 11, "job_type": "INTERN"},
+#   {"id": 12, "job_type": "INTERN"},
+# ]
+
+
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
+    filtered_jobs = []
 
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
+    for job in jobs:
+        if job["job_type"] == job_type:
+            filtered_jobs.append(job)
 
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    return filtered_jobs
+
+
+# result = filter_by_job_type(JOBS, "")
+
+# print(result)
 
 
 def get_unique_industries(path):
