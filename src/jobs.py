@@ -20,3 +20,7 @@ def read(path):
     with open(path, 'r') as file:
         reader = csv.DictReader(file)
         return [row for row in reader]
+
+# referencia sobre o DictReader:
+# https://courses.cs.washington.edu/courses/cse140/13wi/csv-parsing.html
+# https://docs.python.org/3/library/csv.html
