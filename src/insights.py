@@ -1,3 +1,6 @@
+from src import jobs
+
+
 def get_unique_job_types(path):
     """Checks all different job types and returns a list of them
 
@@ -13,7 +16,11 @@ def get_unique_job_types(path):
     list
         List of unique job types
     """
-    return []
+    jobs_types = set()
+    jobs_list = jobs.read(path)
+    for job in jobs_list:
+        jobs_types.add(job["job_type"])
+    return jobs_types
 
 
 def filter_by_job_type(jobs, job_type):
@@ -31,7 +38,20 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
+    # Inittial solution
+    # filtered_jobs_by_type = []
+    # for job in jobs:
+    #     if job["job_type"] == job_type:
+    #         filtered_jobs_by_type.append(job)
+
+    # return filtered_jobs_by_type
+
+    # New Solution founded in:
+    # https://stackoverflow.com/questions/5640630/array-filter-in-python
+    filtered_jobs_by_type = [
+        job for job in jobs if job["job_type"] == job_type
+    ]
+    return filtered_jobs_by_type
 
 
 def get_unique_industries(path):
