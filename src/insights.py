@@ -39,9 +39,11 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-
-
-    return []
+    this_set = set()
+    this_dic = read(path)
+    for row in this_dic:
+        this_set.add(row["job_type"])
+    return this_set
 
 
 def get_unique_industries(path):
@@ -59,7 +61,11 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
+    this_set = set()
+    this_dic = read(path)
+    for row in this_dic:
+        this_set.add(row["industry"])
+    return this_set
 
 
 def filter_by_industry(jobs, industry):
