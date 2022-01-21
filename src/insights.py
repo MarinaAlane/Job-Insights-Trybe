@@ -1,19 +1,23 @@
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
+    # Requisito 2
 
-    Must call `read`
+    from src.jobs import read
+    content = read(path)
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
+    # Criei um conjunto, onde não haverão itens repetidos.
+    types = set()
 
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
+    # Se o item já estiver no conjunto ignore a condição.
+    # Se o item não estiver no conjunto será adicionado.
+    # Referencia do comando pass abaixo:
+    # https://docs.python.org/pt-br/3/tutorial/controlflow.html#:~:text=%3E%3E%3E%20while%20True%3A%0A...-,pass,-%23%20Busy%2Dwait%20for
+
+    for job in content:
+        if job['job_type'] in types:
+            pass
+        else:
+            types.add(job['job_type'])
+    return types
 
 
 def filter_by_job_type(jobs, job_type):
