@@ -102,7 +102,18 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+
+    data = jobs.read(path)
+
+    highest_salary = 0
+
+    for salary in data:
+        if "max_salary" in salary:  # validaçao - sugestão slack erro int
+            max = salary["max_salary"]
+            if max.isnumeric() and int(max) > highest_salary:
+                highest_salary = int(salary['max_salary'])
+
+    return highest_salary
 
 
 def get_min_salary(path):
