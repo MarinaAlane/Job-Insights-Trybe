@@ -56,7 +56,6 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
-    print(job, salary)
     keys_dict = ["min_salary", "max_salary"]
 
     for key in keys_dict:
@@ -69,6 +68,14 @@ def matches_salary_range(job, salary):
     return salary >= job["min_salary"] and salary <= job["max_salary"]
 
 
-
 def filter_by_salary_range(jobs, salary):
-    pass
+    list_of_valids_jobs = list()
+
+    if type(salary) == int:
+        for job in jobs:
+            try:
+                if(matches_salary_range(job, salary)):
+                    list_of_valids_jobs.append(job)
+            except ValueError:
+                print(f"{job} is invalid")
+    return list_of_valids_jobs
