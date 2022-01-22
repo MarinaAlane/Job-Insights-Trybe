@@ -78,11 +78,11 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
-    if not type(salary) is int:
-        return []
-
     range_job = []
     for job in jobs:
-        if matches_salary_range(job, salary):
-            range_job.append(job)
+        try:
+            if matches_salary_range(job, salary):
+                range_job.append(job)
+        except ValueError:
+            pass
     return range_job
