@@ -63,7 +63,7 @@ def matches_salary_range(job, salary):
     try:
         validate = True
         if (
-            type(min_salary != int
+            type(min_salary) != int
             or type(max_salary) != int
             or min_salary > max_salary
             or type(salary) != int
