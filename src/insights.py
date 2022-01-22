@@ -12,7 +12,7 @@ def get_unique_job_types(path):
 def filter_by_job_type(jobs, job_type):
     filter_jobs = []
     for job in jobs:
-        if job["job_type"] == job_type
+        if job["job_type"] == job_type:
             filter_jobs.append(job)
     return filter_jobs
 
