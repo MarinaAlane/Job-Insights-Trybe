@@ -10,7 +10,7 @@ import csv
 # ZIP: https://pythonhelp.wordpress.com/2013/04/16/funcao-zip-em-python/
 @lru_cache
 def read(path):
-    with open(path, newline='') as file:
+    with open(path, 'r') as file:
         reader_file = csv.reader(file, delimiter=",", quotechar='"')
         header, *data = reader_file
         jobs = []
