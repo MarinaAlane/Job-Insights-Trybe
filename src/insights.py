@@ -58,9 +58,9 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
-    min_salary = job["min_salary"]
-    max_salary = job["max_salary"]
     try:
+        min_salary = job["min_salary"]
+        max_salary = job["max_salary"]
         validate = True
         if (
             type(min_salary) != int
