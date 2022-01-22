@@ -25,7 +25,7 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
+    return [j for j in jobs if j["job_type"] == job_type]
 
 
 def get_unique_industries(path):
@@ -34,6 +34,9 @@ def get_unique_industries(path):
     for job in listJobs:
         setJobs.add(job["industry"])
     return setJobs
+
+
+print((get_unique_industries("src/jobs.csv")))
 
 
 def filter_by_industry(jobs, industry):
