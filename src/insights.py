@@ -61,7 +61,7 @@ def matches_salary_range(job, salary):
         raise ValueError('min_salary e max_salary tem que existir')
     elif not (
         # https://www.w3schools.com/python/ref_func_isinstance.asp
-        # Função ( Parametro a ser checado, tipo da checagem) Se é inteiro ou não;
+        # Função ( Parametro a ser checado, tipo da checagem);
         isinstance(job['min_salary'], int)
         and
         isinstance(job['max_salary'], int)
