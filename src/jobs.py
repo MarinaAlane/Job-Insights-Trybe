@@ -16,15 +16,11 @@ def read(path):
     list
         List of rows as dicts
     """
-    teste = []
+    dict_job_list = []
 
     with open(path) as file:
         jobs_list = csv.DictReader(file, delimiter=",", quotechar='"')
         for job in jobs_list:
-            teste.append(job)
-    print(teste)
+            dict_job_list.append(job)
 
-    return teste
-
-
-read("src/jobs.csv")
+    return dict_job_list
