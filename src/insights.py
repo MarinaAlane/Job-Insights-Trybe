@@ -39,12 +39,15 @@ def get_max_salary(path):
 
 def get_min_salary(path):
     listJobs = read(path)
-    value = 0
+    value = get_max_salary(path)
     for job in listJobs:
         if job["min_salary"] != "":
-            if int(job["min_salary"]) > value:
+            if int(job["min_salary"]) < value:
                 value = int(job["min_salary"])
     return value
+
+
+# print(get_min_salary("src/jobs.csv"))
 
 
 def matches_salary_range(job, salary):
