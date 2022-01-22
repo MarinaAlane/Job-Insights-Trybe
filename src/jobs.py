@@ -1,6 +1,7 @@
 from functools import lru_cache
 import csv
 
+
 @lru_cache
 def read(path):
     my_list = []
@@ -9,5 +10,4 @@ def read(path):
 
         for row in reader:
             my_list.append(row)
-    
     return my_list
