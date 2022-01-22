@@ -1,4 +1,5 @@
 from src import jobs
+import math
 
 
 def get_unique_job_types(path):
@@ -72,21 +73,19 @@ def get_max_salary(path):
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
+    jobs_list = jobs.read(path)
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    # https://stackoverflow.com/questions/7781260/how-can-i-represent-an-infinite-number-in-python
+    # Setar o valor de uma variável como infinito
+    min_salary = math.inf
+    for job in jobs_list:
+        try:
+            salary = int(job["min_salary"])
+            if salary < min_salary:
+                min_salary = salary
+        except ValueError:
+            pass
+    return min_salary
 
 
 def matches_salary_range(job, salary):
