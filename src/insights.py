@@ -1,4 +1,3 @@
-from black import re
 from src.jobs import read
 
 
@@ -10,7 +9,6 @@ def get_unique_job_types(path):
         unique_jobs.add(information["job_type"])
 
     return list(unique_jobs)
-
 
 
 def filter_by_job_type(jobs, job_type):
@@ -42,6 +40,7 @@ def get_unique_industries(path):
 
     return list(unique_industries)
 
+
 def filter_by_industry(jobs, industry):
     """Filters a list of jobs by industry
 
@@ -61,21 +60,15 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
+    informations = read(path)
+    only_salaries = list()
 
-    Must call `read`
+    for information in informations:
+        salary = information["max_salary"]
+        if salary.isdigit():
+            only_salaries.append(int(salary))
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    return max(only_salaries)
 
 
 def get_min_salary(path):
