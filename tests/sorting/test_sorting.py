@@ -40,6 +40,5 @@ def test_sort_by_criteria(jobs):
     sort_by(jobs, "min_salary")
     assert jobs == sort_min_salary
 
-    invalid_criteria = "xablau"
     with pytest.raises(ValueError):
-        assert sort_by(jobs, invalid_criteria)
+        sort_by(jobs, "invalid_criteria")
