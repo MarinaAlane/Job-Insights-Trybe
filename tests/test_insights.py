@@ -101,6 +101,7 @@ def test_filter_by_job_type(jobs_for_filter_by_job_type):
         "INTERN",
     ]
     id_ = 1
+    print(jobs_for_filter_by_job_type)
     for type_ in types:
         jobs = filter_by_job_type(jobs_for_filter_by_job_type, type_)
         assert len(jobs) == 2
