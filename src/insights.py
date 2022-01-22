@@ -1,5 +1,5 @@
 # https://www.w3schools.com/python/python_sets.asp
-from jobs import read
+from src.jobs import read
 
 
 def get_unique_job_types(path):
