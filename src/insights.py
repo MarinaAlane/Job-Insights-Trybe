@@ -68,19 +68,13 @@ def get_max_salary(path):
 
 def get_min_salary(path):
     csv = read(path)
-    higher_salary = 0
-    for item in csv:
-        max_salary = item["min_salary"]
-        if max_salary != '' and max_salary != 'invalid':
-            if int(max_salary) > int(higher_salary):
-                higher_salary = max_salary
-    lower_salary = higher_salary
+    salaries = []
     for item in csv:
         min_salary = item["min_salary"]
         if min_salary != '' and min_salary != 'invalid':
-            if int(min_salary) > int(lower_salary):
-                lower_salary = min_salary
-    return int(min_salary)
+            salaries.append(int(min_salary))
+    salaries.sort()
+    return salaries[0]
 
 
 def matches_salary_range(job, salary):
