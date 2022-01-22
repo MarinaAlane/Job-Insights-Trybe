@@ -6,7 +6,7 @@ def get_unique_job_types(path):
     job_types = set()
     for data in data_job:
         job_types.add(data["job_types"])
-    return []
+    return job_types
 
 
 def filter_by_job_type(jobs, job_type):
