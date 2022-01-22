@@ -31,7 +31,7 @@ def get_unique_industries(path):
     csv = read(path)
     list = set()
     for item in csv:
-        if industry != '':
+        if item["industry"] != '':
             list.add(item["industry"])
     return list
 
