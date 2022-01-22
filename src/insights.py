@@ -73,8 +73,17 @@ def get_max_salary(path):
     return max_salary
 
 
+# inicializando o min_salary com 0 não passa no teste
+# Inicializando com valor que vem em max_salary é possivel fazer a comparação
+# e verificar menor valor.
 def get_min_salary(path):
-    """ asdasdasd """
+    jobs_csv = read(path)
+    min_salary = get_max_salary(path)
+    for job in jobs_csv:
+        if job["min_salary"].isnumeric():
+            if int(job["min_salary"]) < min_salary:
+                min_salary = int(job["min_salary"])
+    return min_salary
 
 
 def matches_salary_range(job, salary):
