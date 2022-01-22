@@ -80,7 +80,23 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
-    jobs_salary_range = []
-    for job in jobs:
-        if matches_salary_range(job, salary):
-            jobs_salary_range.append(job)
+    valid_jobs = [
+        job
+        for job in jobs
+        if not is_value_not_numeric(job["min_salary"])
+        and not is_value_not_numeric(job["max_salary"])
+    ]
+
+    jobs_with_salary_in_range = []
+    for valid_job in valid_jobs:
+        try:
+            if matches_salary_range(
+                {
+                    "min_salary": valid_job["min_salary"],
+                    "max_salary": valid_job["max_salary"]
+                },
+                    salary):
+                jobs_with_salary_in_range.append(valid_job)
+        except ValueError:
+            pass
+    return jobs_with_salary_in_range
