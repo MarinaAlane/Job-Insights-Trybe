@@ -31,8 +31,9 @@ def get_unique_industries(path):
     csv = read(path)
     list = set()
     for item in csv:
-        if item["industry"] != '':
-            list.add(item["industry"])
+        industry = item["industry"]
+        if industry != '':
+            list.add(industry)
     return list
 
 
@@ -55,21 +56,14 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    csv = read(path)
+    higher_salary = 0
+    for item in csv:
+        max_salary = item["max_salary"]
+        if max_salary != '' and max_salary != 'invalid':
+            if int(max_salary) > int(higher_salary):
+                higher_salary = max_salary
+    return higher_salary
 
 
 def get_min_salary(path):
