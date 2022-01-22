@@ -37,13 +37,14 @@ def filter_by_industry(jobs, industry):
 
 def get_max_salary(path):
     all_jobs = read(path)
-    all_jobs_filter = []
+    all_jobs_filter = set()
     for job in all_jobs:
-        if len(job["max_salary"]) > 5:
-            all_jobs_filter.append(job["max_salary"])
-    ints = [int(item) for item in all_jobs_filter]
-    max_salary = max(ints)
-    return max_salary
+        if job["max_salary"]:
+            try:
+                all_jobs_filter.add(int(job["max_salary"]))
+            except ValueError:
+                continue
+    return max(all_jobs_filter)
 
     """Get the maximum salary of all jobs
 
@@ -64,13 +65,14 @@ def get_max_salary(path):
 
 def get_min_salary(path):
     all_jobs = read(path)
-    all_jobs_filter = []
+    all_jobs_filter = set()
     for job in all_jobs:
-        if len(job["min_salary"]) > 0:
-            all_jobs_filter.append(job["min_salary"])
-    ints = [int(item) for item in all_jobs_filter]
-    min_salary = min(ints)
-    return min_salary
+        if job["min_salary"]:
+            try:
+                all_jobs_filter.add(int(job["min_salary"]))
+            except ValueError:
+                continue
+    return min(all_jobs_filter)
     """Get the minimum salary of all jobs
 
     Must call `read`
@@ -89,29 +91,20 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
-    """Checks if a given salary is in the salary range of a given job
-
-    Parameters
-    ----------
-    job : dict
-        The job with `min_salary` and `max_salary` keys
-    salary : int
-        The salary to check if matches with salary range of the job
-
-    Returns
-    -------
-    bool
-        True if the salary is in the salary range of the job, False otherwise
-
-    Raises
-    ------
-    ValueError
-        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-        If `job["min_salary"]` is greather than `job["max_salary"]`
-        If `salary` isn't a valid integer
     """
-    pass
+    if job["min_salary"] < salary < job["max_salary"]:
+        return True
+    elif salary < job["min_salary"] or salary > job["max_salary"]:
+        return False
+    elif job["min_salary"] > job["max_salary"]:
+        raise ValueError("A very specific bad thing happened.")
+    elif type(job["min_salary"]) and type(job["max_salary"]) != int:
+        raise ValueError("A very specific bad thing happened.")
+    elif type(salary) != int:
+        raise ValueError("A very specific bad thing happened.")
+    elif job["min_salary"] or job["max_salary"] is None:
+        raise ValueError("A very specific bad thing happened.")
+    """
 
 
 def filter_by_salary_range(jobs, salary):
