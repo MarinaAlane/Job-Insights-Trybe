@@ -33,9 +33,9 @@ def get_unique_industries(path):
     list_of_dicts_from_csv = read(path)
 
     industries = set()
-    for industry in list_of_dicts_from_csv:
-        if industry["industry"] != "":
-            industries.add(industry["industry"])
+    for job in list_of_dicts_from_csv:
+        if job["industry"] != "":
+            industries.add(job["industry"])
 
     return industries
 
@@ -59,39 +59,29 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
+    list_of_dicts_from_csv = read(path)
 
-    Must call `read`
+    salaries = []
+    for job in list_of_dicts_from_csv:
+        if job["max_salary"] != "":
+            salaries.append(int(job["max_salary"]))
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
+    max_salary = max(salaries)
 
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    return max_salary
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
+    list_of_dicts_from_csv = read(path)
 
-    Must call `read`
+    salaries = []
+    for job in list_of_dicts_from_csv:
+        if job["min_salary"] != "":
+            salaries.append(int(job["min_salary"]))
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
+    min_salary = min(salaries)
 
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    return min_salary
 
 
 def matches_salary_range(job, salary):
