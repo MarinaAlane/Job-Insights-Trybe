@@ -5,11 +5,11 @@ def get_unique_job_types(path):
     listJobs = read(path)
     setJobs = set()
     for job in listJobs:
-        setJobs.add(job['job_type'])
+        setJobs.add(job["job_type"])
     return setJobs
 
 
-print(get_unique_job_types("./src/jobs.csv"))
+get_unique_job_types("./src/jobs.csv")
 
 
 def filter_by_job_type(jobs, job_type):

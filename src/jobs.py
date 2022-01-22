@@ -4,7 +4,8 @@ import csv
 
 @lru_cache
 def read(path):
-    with open(path) as file:
+    openFile = open(path)
+    with openFile as file:
         readerJobs = csv.DictReader(file)
         jobsTable = []
         for row in readerJobs:
