@@ -50,7 +50,10 @@ def get_unique_industries(path):
     """
     jobs_list = read(path)
     unique_industries_set = set()
-    [unique_industries_set.add(job["industry"]) for job in jobs_list if job["industry"]]
+    [unique_industries_set.add(job["industry"])
+        for job in jobs_list
+            if job["industry"]
+    ]
     unique_industries_list = list(unique_industries_set)
     return unique_industries_list
 
@@ -120,8 +123,6 @@ def get_min_salary(path):
             if int(job["min_salary"]) < min_salary:
                 min_salary = int(job["min_salary"])
     return min_salary
-
-
 
 def matches_salary_range(job, salary):
     """Checks if a given salary is in the salary range of a given job
