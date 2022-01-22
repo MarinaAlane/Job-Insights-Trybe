@@ -8,7 +8,6 @@ def get_unique_job_types(path):
     for job in list_of_dicts_from_csv:
         job_types.add(job["job_type"])
 
-    print(f'job_types: {job_types}')
     return job_types
 
 
@@ -31,21 +30,14 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
+    list_of_dicts_from_csv = read(path)
 
-    Must call `read`
+    industries = set()
+    for industry in list_of_dicts_from_csv:
+        if industry["industry"] != "":
+            industries.add(industry["industry"])
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    return industries
 
 
 def filter_by_industry(jobs, industry):
