@@ -47,7 +47,7 @@ def get_max_salary(path):
 
     salaries = []
     for job in list_of_dicts_from_csv:
-        if job["max_salary"] != "":
+        if job["max_salary"].isdigit():
             salaries.append(int(job["max_salary"]))
 
     max_salary = max(salaries)
@@ -60,7 +60,7 @@ def get_min_salary(path):
 
     salaries = []
     for job in list_of_dicts_from_csv:
-        if job["min_salary"] != "":
+        if job["min_salary"].isdigit():
             salaries.append(int(job["min_salary"]))
 
     min_salary = min(salaries)
