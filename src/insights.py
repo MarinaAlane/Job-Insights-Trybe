@@ -41,7 +41,7 @@ def get_min_salary(path):
     listJobs = read(path)
     value = get_max_salary(path)
     for job in listJobs:
-        if job["min_salary"] != "" and job:
+        if job["min_salary"] != "" and job["min_salary"].isnumeric():
             if int(job["min_salary"]) < value:
                 value = int(job["min_salary"])
     return value
