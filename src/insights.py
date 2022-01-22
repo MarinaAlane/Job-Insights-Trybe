@@ -18,11 +18,11 @@ def get_unique_job_types(path):
 def filter_by_job_type(jobs, job_type):
     selected_jobs = []
     for job in jobs:
-        if (job["job_type"] == job_type):
-            try:
+        try:
+            if (job["job_type"] == job_type):
                 selected_jobs.append(job)
-            except ValueError:
-                continue
+        except ValueError:
+            continue
     return selected_jobs
 
 
@@ -41,11 +41,11 @@ def get_unique_industries(path):
 def filter_by_industry(jobs, industry):
     selected_industries = []
     for job in jobs:
-        if (job["industry"] == industry):
-            try:
+        try:
+            if (job["industry"] == industry):
                 selected_industries.append(job)
-            except ValueError:
-                continue
+        except ValueError:
+            continue
     return selected_industries
 
 
@@ -53,12 +53,12 @@ def get_max_salary(path):
     data = read(path)
     salaries = []
     for job in data:
-        if (job["max_salary"] != ""):
-            try:
+        try:
+            if (job["max_salary"] != ""):
                 salary = int(float(job["max_salary"]))
                 salaries.append(salary)
-            except ValueError:
-                continue
+        except ValueError:
+            continue
     return max(salaries)
 
 
@@ -66,12 +66,12 @@ def get_min_salary(path):
     data = read(path)
     salaries = []
     for job in data:
-        if (job["min_salary"] != ""):
-            try:
+        try:
+            if (job["min_salary"] != ""):
                 salary = int(float(job["min_salary"]))
                 salaries.append(salary)
-            except ValueError:
-                continue
+        except ValueError:
+            continue
     return min(salaries)
 
 
