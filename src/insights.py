@@ -63,7 +63,7 @@ def get_max_salary(path):
         if max_salary != '' and max_salary != 'invalid':
             if int(max_salary) > int(higher_salary):
                 higher_salary = max_salary
-    return higher_salary
+    return int(higher_salary)
 
 
 def get_min_salary(path):
