@@ -58,20 +58,18 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
-    if "max_salary" not in job or "min_salary" not in job:
+    min = "min_salary"
+    max = "max_salary"
+    if max not in job or min not in job:
         raise ValueError
-    elif type(job["min_salary"]) is not int:
+    elif type(job[min]) is not int and type(job[max]) is not int:
         raise ValueError
-    elif type(job["max_salary"]) is not int:
-        raise ValueError
-    elif job["min_salary"] > job["max_salary"]:
+    elif job[min] > job[max]:
         raise ValueError
     elif type(salary) is not int:
         raise ValueError
-    elif job["min_salary"] <= salary and salary <= job["max_salary"]:
-        return True
     else:
-        return False
+        return job[min] <= salary and salary <= job[max]
 
 
 def filter_by_salary_range(jobs, salary):
