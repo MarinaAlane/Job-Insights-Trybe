@@ -2,7 +2,7 @@ from functools import lru_cache
 import csv
 
 
-# @lru_cache
+@lru_cache(maxsize=None)
 def read(path):
     """Reads a file from a given path and returns its contents
 
