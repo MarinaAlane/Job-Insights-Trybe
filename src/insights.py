@@ -1,12 +1,7 @@
-# from jobs import read
-
 from src.jobs import read
 
-# path_csv = "/home/monts/Documents/trybe/
-# projetos/sd-011-project-job-insights/src/jobs.csv"
 
-
-def get_unique_job_types(path):  # * done
+def get_unique_job_types(path):
     table = read(path)
     dict_with_all_jobs_types = dict()
     for row in table:
@@ -20,7 +15,7 @@ def get_unique_job_types(path):  # * done
     return list_of_jobs
 
 
-def filter_by_job_type(jobs, job_type):  # * done
+def filter_by_job_type(jobs, job_type):
     filtered_jobs = []
     for row in jobs:
         if job_type == row["job_type"]:
@@ -28,7 +23,7 @@ def filter_by_job_type(jobs, job_type):  # * done
     return filtered_jobs
 
 
-def get_unique_industries(path):  # * done
+def get_unique_industries(path):
     table = read(path)
     dict_with_all_industries = dict()
     for row in table:
@@ -40,7 +35,7 @@ def get_unique_industries(path):  # * done
     return list_of_industries
 
 
-def filter_by_industry(jobs, industry):  # * done
+def filter_by_industry(jobs, industry):
     filtered_industry = []
     for row in jobs:
         if industry == row["industry"]:
@@ -48,7 +43,7 @@ def filter_by_industry(jobs, industry):  # * done
     return filtered_industry
 
 
-def get_max_salary(path):  # * done
+def get_max_salary(path):
     table = read(path)
     all_salaries = []
     for row in table:
@@ -59,7 +54,7 @@ def get_max_salary(path):  # * done
     return biggest_salary
 
 
-def get_min_salary(path):  # * done
+def get_min_salary(path):
     table = read(path)
     all_salaries = []
     for row in table:
@@ -68,7 +63,6 @@ def get_min_salary(path):  # * done
     all_salaries.sort()
     lowest_salary = all_salaries[0]
     return lowest_salary
-
 
 
 def matches_salary_range(job, salary):
@@ -100,18 +94,11 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
-    """Filters a list of jobs by salary range
-
-    Parameters
-    ----------
-    jobs : list
-        The jobs to be filtered
-    salary : int
-        The salary to be used as filter
-
-    Returns
-    -------
-    list
-        Jobs whose salary range contains `salary`
-    """
-    return []
+    list_of_matched_jobs = list()
+    for job in jobs:
+        try:
+            if matches_salary_range(job, salary):
+                list_of_matched_jobs.append(job)
+        except ValueError:
+            continue
+    return list_of_matched_jobs
