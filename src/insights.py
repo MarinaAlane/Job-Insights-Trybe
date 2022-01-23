@@ -70,6 +70,10 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
+    industries_type = [industries for industries in jobs
+                       if industry in industries.values()]
+    # print(industries_type)
+    return industries_type
     """Filters a list of jobs by industry
 
     Parameters
@@ -84,7 +88,6 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    return []
 
 
 # https://www.delftstack.com/pt/howto/python/convert-string-to-int-in-python/
