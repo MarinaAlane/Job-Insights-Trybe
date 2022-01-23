@@ -97,7 +97,13 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+    biggest_salary = 0
+    for job in jobs.read(path):
+        if job["max_salary"] == "" or not job["max_salary"].isdigit():
+            continue
+        elif int(job["max_salary"]) > biggest_salary:
+            biggest_salary = int(job["max_salary"])
+    return biggest_salary
 
 
 def get_min_salary(path):
@@ -115,7 +121,13 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    smallest_salary = get_max_salary(path)
+    for job in jobs.read(path):
+        if job["min_salary"] == "" or not job["min_salary"].isdigit():
+            continue
+        elif int(job["min_salary"]) < smallest_salary:
+            smallest_salary = int(job["min_salary"])
+    return smallest_salary
 
 
 def matches_salary_range(job, salary):
