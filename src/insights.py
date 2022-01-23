@@ -1,3 +1,4 @@
+from multiprocessing.sharedctypes import Value
 from .jobs import read
 
 
@@ -151,7 +152,17 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
+    try:
+        min_salary = int(job["min_salary"])
+        max_salary = int(job["max_salary"])
+        salary = int(salary)
+        if min_salary > max_salary:
+            raise(ValueError)
+    except (KeyError, TypeError):
+        raise(ValueError)
+    if min_salary <= salary < max_salary:
+        return True
+    return False
 
 
 def filter_by_salary_range(jobs, salary):
