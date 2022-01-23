@@ -6,7 +6,7 @@ def get_unique_job_types(path):
     response = []
     for item in list:
         job_type = item["job_type"]
-        if job_type not in response:
+        if job_type and job_type not in response:
             response.append(job_type)
 
     return response
