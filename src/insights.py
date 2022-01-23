@@ -16,9 +16,8 @@ def get_unique_job_types(path):
     list
         List of unique job types
     """
-    jobs_total = jobs.read(path)
     job_types = []
-    for job in jobs_total:
+    for job in jobs.read(path):
         job_types.append(job["job_type"])
     return list(set(job_types))
 
@@ -56,7 +55,13 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
+    industries = []
+    for job in jobs.read(path):
+        if job["industry"] == "" or job["industry"] in industries:
+            pass
+        else:
+            industries.append(job["industry"])
+    return list(set(industries))
 
 
 def filter_by_industry(jobs, industry):
