@@ -1,5 +1,8 @@
 from multiprocessing.sharedctypes import Value
+
+from numpy import math
 from .jobs import read
+from functools import partial
 
 
 def get_unique_job_types(path):
@@ -157,9 +160,9 @@ def matches_salary_range(job, salary):
         max_salary = int(job["max_salary"])
         salary = int(salary)
         if min_salary > max_salary:
-            raise(ValueError)
+            raise (ValueError)
     except (KeyError, TypeError):
-        raise(ValueError)
+        raise (ValueError)
     if min_salary <= salary < max_salary:
         return True
     return False
@@ -180,4 +183,10 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
+    def temp(job):
+        try:
+            return matches_salary_range(job, salary)
+        except ValueError:
+            return False
+
+    return list(filter(temp, jobs))
