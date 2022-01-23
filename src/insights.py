@@ -6,7 +6,8 @@ def get_unique_job_types(path):
         jobs = read(path)
         types = set()
         for job in jobs:
-            types.add(job["job_type"])
+            if (job["job_type"] != ""):
+                types.add(job["job_type"])
         return types
     except FileNotFoundError:
         print("File not fount!!!")
@@ -31,21 +32,15 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    try:
+        jobs = read(path)
+        factories = set()
+        for factory in jobs:
+            if (factory["industry"] != ""):
+                factories.add(factory["industry"])
+        return factories
+    except FileNotFoundError:
+        print("File not fount!!!")
 
 
 def filter_by_industry(jobs, industry):
