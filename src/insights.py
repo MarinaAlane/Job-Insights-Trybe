@@ -83,7 +83,17 @@ def filter_by_industry(jobs, industry):
     return []
 
 
+# https://www.delftstack.com/pt/howto/python/convert-string-to-int-in-python/
+# - converter strint em inteiro
 def get_max_salary(path):
+    all_salaries = read(path)
+    max_salary = [salary["max_salary"] for salary in all_salaries
+                  if salary["max_salary"].isnumeric()
+                  if salary["max_salary"] != ""]
+    max_salary_int = [int(int_salary) for int_salary in max_salary]
+    # max_salary_int = int(max_salary)
+    print(max(max_salary_int))
+    return (max(max_salary_int))
     """Get the maximum salary of all jobs
 
     Must call `read`
@@ -98,10 +108,17 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
 
 
 def get_min_salary(path):
+    all_salaries = read(path)
+    min_salary = [salary["min_salary"] for salary in all_salaries
+                  if salary["min_salary"].isnumeric()
+                  if salary["min_salary"] != ""]
+    min_salary_int = [int(int_salary) for int_salary in min_salary]
+    # max_salary_int = int(max_salary)
+    print(min(min_salary_int))
+    return (min(min_salary_int))
     """Get the minimum salary of all jobs
 
     Must call `read`
@@ -116,7 +133,6 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
 
 
 def matches_salary_range(job, salary):
