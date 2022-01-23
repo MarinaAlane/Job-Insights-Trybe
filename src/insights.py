@@ -105,13 +105,13 @@ def get_max_salary(path):
 
     data = jobs.read(path)
 
-    highest_salary = 0
+    highest_salary = 0  # menor valor possível
 
-    for salary in data:
+    for salary in data:   # itera os nũmeros da data
         if "max_salary" in salary:  # validaçao - sugestão slack erro int
             max = salary["max_salary"]
             if max.isnumeric() and int(max) > highest_salary:
-                highest_salary = int(salary['max_salary'])
+                highest_salary = int(max)  # se maior o substitui
 
     return highest_salary
 
@@ -131,7 +131,17 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    data = jobs.read(path)
+
+    min_salary = float("inf")  # maior valor possível
+
+    for salary in data:  # itera os nũmeros da data
+        if "min_salary" in salary:  # validaçao - sugestão slack erro int
+            min = salary["min_salary"]
+            if min.isnumeric() and int(min) < min_salary:
+                min_salary = int(min)  # se menor que a atribuição o substitui
+
+    return min_salary
 
 
 def matches_salary_range(job, salary):
@@ -176,3 +186,7 @@ def filter_by_salary_range(jobs, salary):
         Jobs whose salary range contains `salary`
     """
     return []
+
+
+#  max - https://www.delftstack.com/pt/howto/python/python-max-value-in-list/
+#  https://pt.stackoverflow.com/questions/216771/como-obter-o-menor-valor-em-uma-lista
