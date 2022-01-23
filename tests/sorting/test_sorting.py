@@ -1,11 +1,16 @@
 from src.sorting import sort_by
 import pytest
 from mocks import (
-  jobs,
   sort_date,
   sort_max_salary,
   sort_min_salary,
 )
+
+jobs = [
+    {"min_salary": 10, "max_salary": 1000, "date_posted": "2021-01-24"},
+    {"min_salary": 1000, "max_salary": 10000, "date_posted": "2020-01-24"},
+    {"min_salary": '', "max_salary": '', "date_posted": ''},
+]
 
 
 def test_sort_by_criteria():
