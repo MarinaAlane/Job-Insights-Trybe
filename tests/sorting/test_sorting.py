@@ -12,8 +12,8 @@ def test_sort_by_criteria():
     """
     Test sort_by() with various criteria.
     """
-    with pytest.raises(ValueError):
-        sort_by(jobs, "invalid")
+    with pytest.raises(TypeError):
+        sort_by(jobs, "invalid", "invalid2")
 
     # Test sort_by() with max_salary
     sort_by(jobs, "max_salary")
