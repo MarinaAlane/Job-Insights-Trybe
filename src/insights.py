@@ -6,7 +6,7 @@ from src.jobs import read
 # projetos/sd-011-project-job-insights/src/jobs.csv"
 
 
-def get_unique_job_types(path):  # & done
+def get_unique_job_types(path):  # * done
     table = read(path)
     dict_with_all_jobs_types = dict()
     for row in table:
@@ -20,7 +20,7 @@ def get_unique_job_types(path):  # & done
     return list_of_jobs
 
 
-def filter_by_job_type(jobs, job_type):  # & done
+def filter_by_job_type(jobs, job_type):  # * done
     filtered_jobs = []
     for row in jobs:
         if job_type == row["job_type"]:
@@ -28,7 +28,7 @@ def filter_by_job_type(jobs, job_type):  # & done
     return filtered_jobs
 
 
-def get_unique_industries(path):  # & done
+def get_unique_industries(path):  # * done
     table = read(path)
     dict_with_all_industries = dict()
     for row in table:
@@ -40,7 +40,7 @@ def get_unique_industries(path):  # & done
     return list_of_industries
 
 
-def filter_by_industry(jobs, industry):  # & done
+def filter_by_industry(jobs, industry):  # * done
     filtered_industry = []
     for row in jobs:
         if industry == row["industry"]:
@@ -48,7 +48,7 @@ def filter_by_industry(jobs, industry):  # & done
     return filtered_industry
 
 
-def get_max_salary(path):  # & done
+def get_max_salary(path):  # * done
     table = read(path)
     all_salaries = []
     for row in table:
@@ -59,7 +59,7 @@ def get_max_salary(path):  # & done
     return biggest_salary
 
 
-def get_min_salary(path):  # & done
+def get_min_salary(path):  # * done
     table = read(path)
     all_salaries = []
     for row in table:
@@ -70,30 +70,43 @@ def get_min_salary(path):  # & done
     return lowest_salary
 
 
+# job_test_dict = {
+#     "min_salary": "1",
+#     "max_salary": "100",
+# }
+
+# salary_test = 3
+
+
 def matches_salary_range(job, salary):
-    """Checks if a given salary is in the salary range of a given job
+    # ..source: https://stackoverflow.com/questions/6130768/
+    # .. return-none-if-dictionary-key-is-not-available
+    min = job.get("min_salary", "empty")
+    max = job.get("max_salary", "empty")
+    if min == "empty" or max == "empty":
+        raise ValueError(
+            "`job['min_salary']` or `job['max_salary']` doesn't exists"
+        )
+    elif not str(min).isnumeric() or not str(max).isnumeric():
+        raise ValueError(
+            "`job['min_salary']` or `job['max_salary']` aren't valid integers"
+        )
+    elif min > max:
+        raise ValueError(
+            "`job['min_salary']` is greather than `job['max_salary']`"
+        )
+    elif not str(salary).lstrip('-').isnumeric():
+        raise ValueError(
+            "`salary` isn't a valid integer"
+        )
+    else:
+        if min <= salary <= max:
+            return True
+        else:
+            return False
 
-    Parameters
-    -----------
-    job : dict
-        The job with `min_salary` and `max_salary` keys
-    salary : int
-        The salary to check if matches with salary range of the job
 
-    Returns
-    -------
-    bool
-        True if the salary is in the salary range of the job, False otherwise
-
-    Raises
-    ------
-    ValueError
-        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-        If `job["min_salary"]` is greather than `job["max_salary"]`
-        If `salary` isn't a valid integer
-    """
-    pass
+# print(matches_salary_range(job_test_dict, salary_test))
 
 
 def filter_by_salary_range(jobs, salary):
