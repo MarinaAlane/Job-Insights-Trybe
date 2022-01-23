@@ -1,8 +1,8 @@
 from functools import lru_cache
-import pandas as pd
+import csv
 
 
-@lru_cache
+# @lru_cache
 def read(path):
     """Reads a file from a given path and returns its contents
 
@@ -16,4 +16,8 @@ def read(path):
     list
         List of rows as dicts
     """
-    return pd.read_csv(path, dtype=str, index_col=False).to_dict("records")
+    with open(path) as file:
+        jobs = csv.DictReader(file)  # retorna lista de tuples
+        return [dict(row) for row in jobs]  # dict() cria um dicionario e
+        # itera nos tuples, pegando primeiro valor como chave e o segundo como
+        # value
