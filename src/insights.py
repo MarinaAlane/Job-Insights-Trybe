@@ -78,4 +78,3 @@ def filter_by_salary_range(jobs, salary):
         except ValueError:
             pass
     return filter_salary_range
-
