@@ -14,6 +14,7 @@ def get_unique_job_types(path):
         List of unique job types
     """
     return []
+# teste 
 
 
 def filter_by_job_type(jobs, job_type):
