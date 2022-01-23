@@ -95,19 +95,30 @@ def matches_salary_range(job, salary):
     return min_salary <= salary <= max_salary
 
 
+jobs = [
+    {"max_salary": 0, "min_salary": 10},
+    {"max_salary": 10, "min_salary": 100},
+    {"max_salary": 10000, "min_salary": 200},
+    {"max_salary": 15000, "min_salary": 0},
+    {"max_salary": 1500, "min_salary": 0},
+    {"max_salary": -1, "min_salary": 10},
+]
+
+
 def filter_by_salary_range(jobs, salary):
-    """Filters a list of jobs by salary range
+    passedJobs = []
 
-    Parameters
-    ----------
-    jobs : list
-        The jobs to be filtered
-    salary : int
-        The salary to be used as filter
+    for job in jobs:
+        if type(salary) == int and salary is not None:
+            if type(job["min_salary"]) or type(job["max_salary"]) == int:
+                if type(job["min_salary"]) \
+                  or type(job["max_salary"]) is not None:
+                    if job["min_salary"] <= salary <= job["max_salary"]:
+                        passedJobs.append(job)
 
-    Returns
-    -------
-    list
-        Jobs whose salary range contains `salary`
-    """
-    return []
+    return passedJobs
+
+
+# result = filter_by_salary_range(jobs, 1000)
+
+# print(result)
