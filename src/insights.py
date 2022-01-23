@@ -70,13 +70,6 @@ def get_min_salary(path):  # * done
     return lowest_salary
 
 
-# job_test_dict = {
-#     "min_salary": "1",
-#     "max_salary": "100",
-# }
-
-# salary_test = 3
-
 
 def matches_salary_range(job, salary):
     # ..source: https://stackoverflow.com/questions/6130768/
@@ -95,18 +88,15 @@ def matches_salary_range(job, salary):
         raise ValueError(
             "`job['min_salary']` is greather than `job['max_salary']`"
         )
-    elif not str(salary).lstrip('-').isnumeric():
-        raise ValueError(
-            "`salary` isn't a valid integer"
-        )
+    # ..source: https://www.codegrepper.com/code-examples/shell/
+    # ..  python+isnumeric+negative+numbers
+    elif not str(salary).lstrip("-").isnumeric():
+        raise ValueError("`salary` isn't a valid integer")
     else:
         if min <= salary <= max:
             return True
         else:
             return False
-
-
-# print(matches_salary_range(job_test_dict, salary_test))
 
 
 def filter_by_salary_range(jobs, salary):
