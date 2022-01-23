@@ -51,7 +51,7 @@ def get_unique_industries(path):
     industry_list = read(path)
     unique_industries = [industry["industry"] for industry in industry_list if
                          industry["industry"] != ""]
-    # print(set(unique_industries))
+    print(set(unique_industries))
     return set(unique_industries)
     """Checks all different industries and returns a list of them
 
@@ -141,8 +141,36 @@ def get_min_salary(path):
         The minimum salary paid out of all job opportunities
     """
 
+# https://stackoverflow.com/questions/2052390/manually-raising-throwing-an-exception-in-python
+# https://www.kite.com/python/answers/how-to-raise-a-valueerror-in-python
+# https://www.geeksforgeeks.org/python-type-function/
+
 
 def matches_salary_range(job, salary):
+    # print("Job:" + str(job))
+    # print("Salary:" + str(salary))
+    if "min_salary" not in job or "max_salary" not in job:
+        raise ValueError()
+    elif type(job["min_salary"]) != int or type(job["max_salary"]) != int:
+        raise ValueError()
+    elif job["min_salary"] > job["max_salary"]:
+        raise ValueError()
+    elif type(salary) != int:
+        raise ValueError()
+    correct_range_value = job["min_salary"] <= salary <= job["max_salary"]
+    # print(correct_range_value)
+    return correct_range_value
+
+    # try:
+    #     print("ola")
+    #     # if "min_salary" or "max_salary" not in job
+    # except AttributeError:
+    #     raise ValueError
+    # else:
+    #     print("ola")
+    # finally:
+    #     print("ola")
+
     """Checks if a given salary is in the salary range of a given job
 
     Parameters
@@ -165,7 +193,6 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
 
 
 def filter_by_salary_range(jobs, salary):
