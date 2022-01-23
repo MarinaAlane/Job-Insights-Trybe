@@ -1,11 +1,12 @@
 from jobs import read
 
-job = []
-
 
 def get_unique_job_types(path):
-        jobs_list = read(path)
-    return []
+    job_type = set()
+    jobs_list = read(path)
+    for job in jobs_list:
+        job_type.add(job["job_type"])
+    return job_type
 
 
 def filter_by_job_type(jobs, job_type):
