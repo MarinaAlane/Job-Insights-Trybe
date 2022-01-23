@@ -64,7 +64,7 @@ def get_unique_industries(path):
 
     industries = set()  # cria listas sem elementos duplicados
     for industry in data:
-        if industry["industry"] != "":  # retira a linha em branco
+        if industry["industry"].strip():  # retira a linha em branco
             industries.add(industry["industry"])
 
     return industries
@@ -195,9 +195,16 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
-
+    filtered_jobs_by_salary = []
+    for job in jobs:
+        try:
+            if matches_salary_range(job, salary):
+                filtered_jobs_by_salary.append(job)
+        except ValueError:
+            pass
+    return filtered_jobs_by_salary
 
 #  max - https://www.delftstack.com/pt/howto/python/python-max-value-in-list/
 #  https://pt.stackoverflow.com/questions/216771/como-obter-o-menor-valor-em-uma-lista
 # https://stackoverflow.com/questions/3501382/checking-whether-a-variable-is-an-integer-or-not
+# https://qastack.com.br/programming/7896495/python-how-to-check-if-a-line-is-an-empty-line
