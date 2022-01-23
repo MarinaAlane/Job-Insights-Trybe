@@ -2,11 +2,14 @@ from src.jobs import read
 
 
 def get_unique_job_types(path):
-    jobs = read(path)
-    types = []
-    for job in jobs:
-        types.append(job["job_type"])
-    return types
+    try:
+        jobs = read(path)
+        types = set()
+        for job in jobs:
+            types.add(job["job_type"])
+        return types
+    except FileNotFoundError:
+        print("File not fount!!!")
 
 
 def filter_by_job_type(jobs, job_type):
