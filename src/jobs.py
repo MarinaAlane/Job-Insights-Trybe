@@ -17,9 +17,4 @@ def read(path):
     list
         List of rows as dicts
     """
-    file = pd.read_csv(path, dtype=str, index_col=False)
-    chaves = file.columns
-    result = []
-    for _, row in file.iterrows():
-        result.append({chave: row[chave] for chave in chaves})
-    return result
+    return pd.read_csv(path, dtype=str, index_col=False).to_dict("records")
