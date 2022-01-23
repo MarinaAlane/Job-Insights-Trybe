@@ -2,20 +2,6 @@ from src import jobs
 
 
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
     job_types = []
     for job in jobs.read(path):
         job_types.append(job["job_type"])
@@ -23,38 +9,14 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
     """
-    return []
+    references:
+    https://www.pythontutorial.net/python-basics/python-filter-list/"""
+    job_by_type = list(filter(lambda job: job["job_type"] == job_type, jobs))
+    return job_by_type
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
     industries = []
     for job in jobs.read(path):
         if job["industry"] == "" or job["industry"] in industries:
@@ -83,20 +45,6 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
     biggest_salary = 0
     for job in jobs.read(path):
         if job["max_salary"] == "" or not job["max_salary"].isdigit():
@@ -107,20 +55,6 @@ def get_max_salary(path):
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
     smallest_salary = get_max_salary(path)
     for job in jobs.read(path):
         if job["min_salary"] == "" or not job["min_salary"].isdigit():
