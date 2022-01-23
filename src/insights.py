@@ -15,12 +15,12 @@ def get_unique_job_types(path):
 
 def filter_by_job_type(jobs, job_type):
     filtered_jobs = []
-    try:
-        for job in jobs:
+    for job in jobs:
+        try:
             if (job["job_type"] == job_type):
                 filtered_jobs.append(job)
-    except ValueError:
-        print("The value of argument is invalid!!!")
+        except ValueError:
+            continue
     return filtered_jobs
 
 
@@ -38,12 +38,9 @@ def get_unique_industries(path):
 
 def filter_by_industry(jobs, industry):
     filtered_industries = []
-    try:
-        for industry in jobs:
-            if (industry["industry"] == industry):
-                filtered_industries.append(industry)
-    except ValueError:
-        print("The value of argument is invalid!!!")
+    for job in jobs:
+        if (job["industry"] == industry):
+            filtered_industries.append(job)
     return filtered_industries
 
 
@@ -56,7 +53,7 @@ def get_max_salary(path):
                 salaries.append(int(float(salary["max_salary"])))
         # https://docs.python.org/pt-br/3/library/exceptions.html#ValueError
         except ValueError:
-            print("The value of argument is invalid!!!")
+            continue
     return max(salaries)
 
 
@@ -68,7 +65,7 @@ def get_min_salary(path):
             if (salary["min_salary"] != ""):
                 salaries.append(int(float(salary["min_salary"])))
         except ValueError:
-            print("The value of argument is invalid!!!")
+            continue
     return min(salaries)
 
 
@@ -96,5 +93,5 @@ def filter_by_salary_range(jobs, salary):
             if (matches_salary_range(salaries, salary)):
                 filtered_salaries.append(salaries)
         except ValueError:
-            print("The value of argument is invalid!!!")
+            continue
     return filtered_salaries
