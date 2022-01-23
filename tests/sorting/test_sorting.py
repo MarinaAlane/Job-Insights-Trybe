@@ -25,7 +25,7 @@ jobs_by_date_posted = [
     ]
 
 
-def test_sort_by_criteria_worng_criteria():
+def test_sort_by_criteria():
     jobs_copy = jobs.copy()
     sort_by(jobs_copy, "min_salary")
     assert jobs_copy == jobs_by_min_salary
