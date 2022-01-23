@@ -11,4 +11,4 @@ def read(path):
         for row in file_reader:
             jobs_list.append(row)
 
-    return len(jobs_list)
+    return jobs_list
