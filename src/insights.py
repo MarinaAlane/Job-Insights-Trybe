@@ -168,7 +168,16 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
+
+    if not isinstance(job.get("min_salary"), int):
+        raise ValueError  # get() checa se a key existe no dicionãrio
+    if not isinstance(job.get("max_salary"), int):
+        raise ValueError
+    if job["min_salary"] > job["max_salary"]:
+        raise ValueError
+    if not isinstance(salary, int):
+        raise ValueError  # verifica se o objeto específico é do tipo indicado
+    return job["max_salary"] >= salary >= job["min_salary"]
 
 
 def filter_by_salary_range(jobs, salary):
@@ -191,3 +200,4 @@ def filter_by_salary_range(jobs, salary):
 
 #  max - https://www.delftstack.com/pt/howto/python/python-max-value-in-list/
 #  https://pt.stackoverflow.com/questions/216771/como-obter-o-menor-valor-em-uma-lista
+# https://stackoverflow.com/questions/3501382/checking-whether-a-variable-is-an-integer-or-not
