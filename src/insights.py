@@ -111,10 +111,8 @@ def filter_by_salary_range(jobs, salary):
     for job in jobs:
         if type(salary) == int and salary is not None:
             if type(job["min_salary"]) or type(job["max_salary"]) == int:
-                if type(job["min_salary"]) \
-                  or type(job["max_salary"]) is not None:
-                    if job["min_salary"] <= salary <= job["max_salary"]:
-                        passedJobs.append(job)
+                if job["min_salary"] <= salary <= job["max_salary"]:
+                    passedJobs.append(job)
 
     return passedJobs
 
