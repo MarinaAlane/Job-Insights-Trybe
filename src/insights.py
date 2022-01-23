@@ -1,23 +1,10 @@
-# from jobs import read
+from jobs import read
 
 job = []
 
 
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
+        jobs_list = read(path)
     return []
 
 
