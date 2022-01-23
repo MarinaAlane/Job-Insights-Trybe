@@ -65,11 +65,7 @@ def get_min_salary(path):
     return lowest_salary
 
 
-def matches_salary_range(job, salary):
-    # ..source: https://stackoverflow.com/questions/6130768/
-    # .. return-none-if-dictionary-key-is-not-available
-    min = job.get("min_salary", "empty")
-    max = job.get("max_salary", "empty")
+def verify_valid_params(min, max, salary):
     if min == "empty" or max == "empty":
         raise ValueError(
             "`job['min_salary']` or `job['max_salary']` doesn't exists"
@@ -86,6 +82,17 @@ def matches_salary_range(job, salary):
     # ..  python+isnumeric+negative+numbers
     elif not str(salary).lstrip("-").isnumeric():
         raise ValueError("`salary` isn't a valid integer")
+
+
+def matches_salary_range(job, salary):
+    # ..source: https://stackoverflow.com/questions/6130768/
+    # .. return-none-if-dictionary-key-is-not-available
+    min = job.get("min_salary", "empty")
+    max = job.get("max_salary", "empty")
+    try:
+        verify_valid_params(min, max, salary)
+    except ValueError:
+        raise ValueError("Oops! Try again...")
     else:
         if min <= salary <= max:
             return True
