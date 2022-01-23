@@ -4,12 +4,14 @@ import csv
 
 @lru_cache
 def read(path):
-    with open(path) as csv_file:
-        jobs_file = csv.DictReader(csv_file, delimiter=",", quotechar='"')
-        jobs = []
-        for index in jobs_file:
-            jobs.append(index)
-    return jobs
-
+    try:
+        with open(path) as csv_file:
+            jobs_file = csv.DictReader(csv_file, delimiter=",", quotechar='"')
+            jobs = []
+            for index in jobs_file:
+                jobs.append(index)
+        return jobs
+    except FileNotFoundError:
+        print("arquivo inexistente")
 
 # read('jobs.csv')
