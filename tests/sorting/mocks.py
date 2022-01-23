@@ -1,5 +1,28 @@
 from datetime import date
 
+jobs = [ 
+    {"min_salary": 10, "max_salary": 1000, "date_posted": "2021-01-24"},
+    {"min_salary": 1000, "max_salary": 10000, "date_posted": "2020-01-24"},
+    {"min_salary": '', "max_salary": '', "date_posted": ''},
+]
+
+sort_date = [
+    {"min_salary": 10, "max_salary": 1000, "date_posted": "2021-01-24"},
+    {"min_salary": 1000, "max_salary": 10000, "date_posted": "2020-01-24"},
+    {"min_salary": '', "max_salary": '', "date_posted": ''},
+]
+
+sort_max_salary = [
+    {"min_salary": 1000, "max_salary": 10000, "date_posted": "2020-01-24"},
+    {"min_salary": 10, "max_salary": 1000, "date_posted": "2021-01-24"},
+    {"min_salary": '', "max_salary": '', "date_posted": ''},
+]
+
+sort_min_salary = [
+    {"min_salary": 1000, "max_salary": 10000, "date_posted": "2020-01-24"},
+    {"min_salary": 10, "max_salary": 1000, "date_posted": "2021-01-24"},
+    {"min_salary": '', "max_salary": '', "date_posted": ''},
+]
 
 def sort_by_any_criteria(jobs, criteria):
 
