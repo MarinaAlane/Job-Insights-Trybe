@@ -29,7 +29,7 @@ def index():
 
 
 @bp.route("/job/<index>")
-def details_job(index):
+def job(index):
     path = "src/jobs.csv"
     data = read(path)
     details = get_job(data, index)
