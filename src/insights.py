@@ -68,7 +68,7 @@ def matches_salary_range(job, salary):
         raise ValueError("Os valores não são inteiros")
     elif job["min_salary"] > job["max_salary"]:
         raise ValueError(
-            "Os valor de min_salary não pode ser maior que max_salary"
+            "O valor de min_salary não pode ser maior que max_salary"
         )
     elif job["min_salary"] <= salary <= job["max_salary"]:
         return True
@@ -76,18 +76,12 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
-    """Filters a list of jobs by salary range
-
-    Parameters
-    ----------
-    jobs : list
-        The jobs to be filtered
-    salary : int
-        The salary to be used as filter
-
-    Returns
-    -------
-    list
-        Jobs whose salary range contains `salary`
-    """
-    return []
+    new_jobs = []
+    for index in jobs:
+        try:
+            save = matches_salary_range(index, salary)
+            if save:
+                new_jobs.append(index)
+        except ValueError:
+            pass
+    return new_jobs
