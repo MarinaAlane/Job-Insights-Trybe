@@ -2,7 +2,7 @@ import src.jobs
 
 
 def get_unique_job_types(path):
-    # Lógica encontrada em https://stackoverflow.com/questions/12897374/get-unique-values-from-a-list-in-python
+    #https://stackoverflow.com/questions/12897374/get-unique-values-from-a-list-in-python
     jobs_in_list = src.jobs.read(path)
     unique_job_type = []
     for job in jobs_in_list:
@@ -66,26 +66,20 @@ def get_max_salary(path):
             greater_salary.append(int(jobs["max_salary"]))
         except ValueError:
             pass
-    # https://www.programiz.com/python-programming/methods/built-in/max
+    #https://www.programiz.com/python-programming/methods/built-in/max
     return max(greater_salary)
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    """Get the minimum salary of all jobs"""
+    jobs_in_list = src.jobs.read(path)
+    minor_salary = []
+    for jobs in jobs_in_list:
+        try:
+            minor_salary.append(int(jobs["min_salary"]))
+        except ValueError:
+            pass
+    return min(minor_salary)
 
 
 def matches_salary_range(job, salary):
