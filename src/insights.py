@@ -2,6 +2,7 @@ def get_unique_job_types(path):
     # Requisito 2
 
     from src.jobs import read
+
     content = read(path)
 
     # Criei um conjunto, onde não haverão itens repetidos.
@@ -13,10 +14,10 @@ def get_unique_job_types(path):
     # https://docs.python.org/pt-br/3/tutorial/controlflow.html#:~:text=%3E%3E%3E%20while%20True%3A%0A...-,pass,-%23%20Busy%2Dwait%20for
 
     for job in content:
-        if job['job_type'] in types:
+        if job["job_type"] in types:
             pass
         else:
-            types.add(job['job_type'])
+            types.add(job["job_type"])
     return types
 
 
@@ -29,7 +30,7 @@ def filter_by_job_type(jobs, job_type):
     # Depois fiz um filtro do tipo do emprego, pelo passado por parâmetro.
     # Se a condição for verdadeira retorne o emprego filtrado.
     for job in jobs:
-        if job['job_type'] == job_type:
+        if job["job_type"] == job_type:
             filtered_job_types.append(job)
     return filtered_job_types
 
@@ -38,6 +39,7 @@ def get_unique_industries(path):
     # Requisito 3
 
     from src.jobs import read
+
     content = read(path)
 
     # Criei um conjunto, onde não haverão itens repetidos.
@@ -46,10 +48,10 @@ def get_unique_industries(path):
     # Se o nome da industria estiver vazio nada acontece.
     # Se houver uma industria irá adicioná-la ao conjunto industries
     for job in content:
-        if job['industry'] == '':
+        if job["industry"] == "":
             pass
         else:
-            industries.add(job['industry'])
+            industries.add(job["industry"])
     return industries
 
 
@@ -62,7 +64,7 @@ def filter_by_industry(jobs, industry):
     # Depois fiz um filtro de indústrias, pela passada por parâmetro.
     # Se a condição for verdadeira retorne a industria filtrada.
     for job in jobs:
-        if job['industry'] == industry:
+        if job["industry"] == industry:
             filtered_industry.append(job)
     return filtered_industry
 
@@ -71,6 +73,7 @@ def get_max_salary(path):
     # Requisito 4
 
     from src.jobs import read
+
     content = read(path)
 
     # Utilizo do conjunto para evitar valores repetidos.
@@ -81,9 +84,9 @@ def get_max_salary(path):
     # O comando continue apenas passa para a proxima iteração do laço.
     # Por fim capturo o maior valor com a função max().
     for job in content:
-        if job['max_salary']:
+        if job["max_salary"]:
             try:
-                get_salaries.add(int(job['max_salary']))
+                get_salaries.add(int(job["max_salary"]))
             except ValueError:
                 continue
     return max(get_salaries)
@@ -93,6 +96,7 @@ def get_min_salary(path):
     # Requisito 5
 
     from src.jobs import read
+
     content = read(path)
 
     # Utilizo do conjunto para evitar valores repetidos.
@@ -103,38 +107,30 @@ def get_min_salary(path):
     # O comando continue apenas passa para a proxima iteração do laço.
     # Por fim capturo o menor valor com a função min().
     for job in content:
-        if job['min_salary']:
+        if job["min_salary"]:
             try:
-                get_salaries.add(int(job['min_salary']))
+                get_salaries.add(int(job["min_salary"]))
             except ValueError:
                 continue
     return min(get_salaries)
 
 
 def matches_salary_range(job, salary):
-    """Checks if a given salary is in the salary range of a given job
+    # Requisito 08
+    # Ajuda do Rahel e Rodrigo no plantão para...
+    # ...reduzir a complexidade das condições da minha função.
 
-    Parameters
-    ----------
-    job : dict
-        The job with `min_salary` and `max_salary` keys
-    salary : int
-        The salary to check if matches with salary range of the job
+    # O retorno da linha 127 é implicito, ele avalia a condição...
+    # ...e retorna True se verdadeira, e False se falsa.
 
-    Returns
-    -------
-    bool
-        True if the salary is in the salary range of the job, False otherwise
-
-    Raises
-    ------
-    ValueError
-        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-        If `job["min_salary"]` is greather than `job["max_salary"]`
-        If `salary` isn't a valid integer
-    """
-    pass
+    # Como as exceções do requisito são iguais, criei um...
+    # ...lançamento de erro genérico retornando ValueError.
+    try:
+        if int(job["min_salary"]) > int(job["max_salary"]):
+            raise ValueError
+        return int(job["max_salary"]) >= int(salary) >= int(job["min_salary"])
+    except Exception:
+        raise ValueError
 
 
 def filter_by_salary_range(jobs, salary):
