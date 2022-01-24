@@ -1,7 +1,6 @@
-from pytest import fixture
 from flask import Flask
 from flask.testing import FlaskClient
-
+from pytest import fixture
 from src.app import create_app
 
 TOTAL_JOBS = 3323
@@ -75,8 +74,9 @@ def test_job_route_exists(app: Flask):
 
 
 def test_job_view_exists(app: Flask):
-    from src.routes_and_views import job  # noqa
     import inspect
+
+    from src.routes_and_views import job  # noqa
 
     args = inspect.getfullargspec(job)[0]
     assert len(args) == 1, 'Parameter "index" not found'
@@ -90,4 +90,4 @@ def test_job_view_status_200(client: FlaskClient):
 
 def test_job_view_has_job_information(client: FlaskClient):
     with open("tests/mocks/job_1.html") as file:
-        assert file.read() == client.get("/job/1").get_data(as_text=True)
+        assert file.read() == client.get("/job/1").get_data(as_text=False)

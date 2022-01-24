@@ -11,7 +11,12 @@ from .insights import (
     get_unique_job_types,
 )
 from .jobs import read
-from .more_insights import build_jobs_urls, get_int_from_args, slice_jobs
+from .more_insights import (
+    build_jobs_urls,
+    get_int_from_args,
+    get_job,
+    slice_jobs,
+)
 
 bp = Blueprint("client", __name__, template_folder="templates")
 
@@ -61,9 +66,9 @@ def list_jobs():
 
 @bp.route("/job/<index>")
 def job(index):
-    jobs = read(path="src/jobs.csv")
-    selected_job = [job for i, job in enumerate(jobs) if i == int(index)]
-    return render_template("job.jinja2", job=selected_job[0])
+    jobs = read("src/jobs.csv")
+    selected_job = get_job(jobs, index)
+    return render_template("job.jinja2", job=selected_job)
 
 
 def init_app(app: Flask):
