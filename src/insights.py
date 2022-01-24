@@ -1,19 +1,14 @@
+import src.jobs
+
+
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
+    # Lógica encontrada em https://stackoverflow.com/questions/12897374/get-unique-values-from-a-list-in-python
+    jobs_in_list = src.jobs.read(path)
+    unique_job_type = []
+    for job in jobs_in_list:
+        if job["job_type"] not in unique_job_type:
+            unique_job_type.append(job["job_type"])
+    return unique_job_type
 
 
 def filter_by_job_type(jobs, job_type):
@@ -35,21 +30,13 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    """Checks all different industries and returns a list of them"""
+    jobs_in_list = src.jobs.read(path)
+    unique_industries_type = []
+    for job in jobs_in_list:
+        if job["industry"] not in unique_industries_type:
+            unique_industries_type.append(job["industry"])
+    return unique_industries_type
 
 
 def filter_by_industry(jobs, industry):
@@ -71,21 +58,16 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    """Get the maximum salary of all jobs"""
+    jobs_in_list = src.jobs.read(path)
+    greater_salary = []
+    for jobs in jobs_in_list:
+        try:
+            greater_salary.append(int(jobs["max_salary"]))
+        except ValueError:
+            pass
+    # https://www.programiz.com/python-programming/methods/built-in/max
+    return max(greater_salary)
 
 
 def get_min_salary(path):
