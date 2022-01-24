@@ -7,7 +7,9 @@ import csv
 def read(path):
     content = []
 
-    with open(path) as csv_file:
+    # o `enconding` foi uma dica postada pelo Erick Marinho
+    # no canal da turma 11 no slack
+    with open(path, 'r', encoding='iso-8859-1') as csv_file:
         reader = csv.DictReader(csv_file)
         for row in reader:
             content.append(row)
