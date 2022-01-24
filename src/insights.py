@@ -5,7 +5,8 @@ def get_unique_job_types(path):
     jobs_reader = read(path)
     job_types = []
     for job in jobs_reader:
-        job_types.append(job["job_type"])
+        if job["job_type"] not in job_types:
+            job_types.append(job["job_type"])
     return job_types
 
 
