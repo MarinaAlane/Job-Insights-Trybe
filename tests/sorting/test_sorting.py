@@ -7,14 +7,14 @@ jobs_list = [
 ]
 
 list_min_salary = [
-    {'min_salary': 1594, 'max_salary': 2015, 'date_posted': '2020-04-19'},
     {'min_salary': 2547, 'max_salary': 5000, 'date_posted': '2019-01-19'},
+    {'min_salary': 1594, 'max_salary': 2015, 'date_posted': '2020-04-19'},
     {'min_salary': 3698, 'max_salary': 7952, 'date_posted': '2021-01-21'},
 ]
 
 list_max_salary = [
-    {'min_salary': 3698, 'max_salary': 7952, 'date_posted': '2021-01-21'},
     {'min_salary': 2547, 'max_salary': 5000, 'date_posted': '2019-01-19'},
+    {'min_salary': 3698, 'max_salary': 7952, 'date_posted': '2021-01-21'},
     {'min_salary': 1594, 'max_salary': 2015, 'date_posted': '2020-04-19'},
 ]
 
