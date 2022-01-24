@@ -47,3 +47,14 @@ def test_sort_by_criteria(jobs):
 
     with pytest.raises(ValueError):
         sort_by([], "try_error")
+
+
+"""
+    A plus for this test would be using 'copy()' in the main list
+    as it's seen here:
+    https://github.com/tryber/sd-011-project-job-insights/blob/arthur-hc-job-insights-project/tests/sorting/test_sorting.py
+    Reading some documentation:
+    https://www.w3schools.com/python/python_lists_copy.asp
+    the 'copy()' function as it's name copy a list what wouldn't happend
+    if I try something like 'list1 = list2'
+"""

@@ -70,6 +70,12 @@ def get_min_salary(path):
     return lowest_salary
 
 
+"""
+    Python has the philosophy not to force things so as another way to
+    do this would be using try and except - A more pythonic way to do
+"""
+
+
 def verify_valid_params(min, max, salary):
     if min == "empty" or max == "empty":
         raise ValueError(
@@ -103,6 +109,15 @@ def matches_salary_range(job, salary):
             return True
         else:
             return False
+
+
+"""
+    this one is good, instead of use if's could be create little functions
+    that would return true or false
+    as used here:
+    https://github.com/tryber/sd-011-project-job-insights/blob/luiz-wendel-job-insights-project/src/insights.py
+    this is way better to reduce it's complexity
+"""
 
 
 def filter_by_salary_range(jobs, salary):
