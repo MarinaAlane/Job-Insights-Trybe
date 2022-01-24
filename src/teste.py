@@ -1,18 +1,35 @@
-from jobs import read
+# from jobs import read
 
 
-def get_max_salary(path):
-    file = read(path)
-    max_salary = []
-    for index in file:
-        if index["max_salary"].isdigit():
-            salary_info = index["max_salary"]
-            max_salary.append(salary_info)
-    print(max(max_salary))
-    return(max(max_salary))
+# def get_max_salary(path):
+#     file = read(path)
+#     max_salary = []
+#     for index in file:
+#         if index["max_salary"]:
+#             salary_info = int(index["max_salary"])
+#             max_salary.append(salary_info)
+#     print(max(max_salary))
+#     return(max(max_salary))
 
 
-get_max_salary("jobs.csv")
+# get_max_salary("jobs.csv")
+
+
+# def get_max_salary(path):
+#     jobs_info = read(path)
+#     max_salary = []
+#     for job in jobs_info:
+#         if job["max_salary"]:
+#             try:
+#                 salary = int(job["max_salary"])
+#             except ValueError:
+#                 continue
+#             max_salary.append(salary)
+#     print(max(max_salary))
+#     return max(max_salary)
+
+
+# get_max_salary("jobs.csv")
 
 
 # def get_min_salary(path):

@@ -91,39 +91,45 @@ def get_max_salary(path):
     max_salary = []
     for index in file:
         if index["max_salary"].isdigit():  # 1
-            salary_info = index["max_salary"]
-            max_salary.append(salary_info)  # 2
+            salary_info = int(index["max_salary"])  # 2
+            max_salary.append(salary_info)  # 3
     # print(max(max_salary))
-    return(max(max_salary))
+    return(max(max_salary))  # 4
 
 
 # get_max_salary("jobs.csv")
 
 """
 -> Função - get_max_salary()
-1 - Verifica se o index[max_salary] é um digito 
-2 - Caso seja verdadeiro ele adiciona essa infomação na lista max_salary
+1 - Verifica se o index[max_salary] é um digito
+2 - Transforma as informaçõs em int caso ele não seja esse tipo de dado
+3 - Adiciona o valor na lista max_salary
+4 - Retorna o maior salario usando a função Max
 """
 
 # ---------------------------------------------------------------------------------
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
+    file = read(path)
+    min_salary = []
+    for index in file:
+        if index["min_salary"].isdigit():  # 1
+            salary_info = int(index["min_salary"])  # 2
+            min_salary.append(salary_info)  # 3
+    # print(min(min_salary))
+    return(min(min_salary))  # 4
 
-    Must call `read`
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
+# get_min_salary("jobs.csv")
 
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+"""
+-> Função - get_min_salary()
+1 - Verifica se o index[min_salary] existe
+2 - Transforma as informaçõs em int caso ele não seja esse tipo de dado
+3 - Adiciona o valor na lista min_salary
+4 - Retorna o maior salario usando a função Min
+"""
 
 # ---------------------------------------------------------------------------------
 
