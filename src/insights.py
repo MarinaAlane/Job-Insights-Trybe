@@ -30,20 +30,20 @@ def get_max_salary(path):
     data = read(path)
     salaries = []
     for information_salary in data:
-        if (information_salary["max_salary"] != ""):
+        if (information_salary["max_salary"].isdigit()):
             salary = (information_salary["max_salary"])
             salaries.append(int(salary))
-    return salaries
+    return max(salaries)
 
 
 def get_min_salary(path):
     data = read(path)
     salaries = []
     for information_salary in data:
-        if (information_salary["min_salary"] != ""):
+        if (information_salary["min_salary"].isdigit()):
             salary = (information_salary["min_salary"])
             salaries.append(int(salary))
-    return salaries
+    return min(salaries)
 
 
 def matches_salary_range(job, salary):
