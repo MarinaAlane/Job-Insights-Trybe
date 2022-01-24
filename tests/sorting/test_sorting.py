@@ -128,15 +128,14 @@ def test_sort_by_criteria(mocked_jobs):
     sort_by(copied_mock, "max_salary")
     assert (copied_mock) == mocked_max_salary
 
-    # copied_mock = copy(mocked_jobs)
-    # sort_by(copied_mock, "date_posted")
-    # assert (copied_mock) == mocked_date_posted
+    copied_mock = copy(mocked_jobs)
+    sort_by(copied_mock, "date_posted")
+    assert (copied_mock) == mocked_date_posted
 
-    # copied_mock = copy(mocked_jobs)
-    # sort_by(copied_mock, "min_salary")
-    # assert (copied_mock) == mocked_min_salary
+    copied_mock = copy(mocked_jobs)
+    sort_by(copied_mock, "min_salary")
+    assert (copied_mock) == mocked_min_salary
 
-
-# with pytest.raises(ValueError, match="invalid sorting criteria: invalid"):
-#     copied_mock = copy(mocked_jobs)
-#     sort_by(copied_mock, "invalid")
+    with pytest.raises(ValueError, match="invalid sorting criteria: invalid"):
+        copied_mock = copy(mocked_jobs)
+        sort_by(copied_mock, "invalid")
