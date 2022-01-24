@@ -80,9 +80,9 @@ def filter_by_salary_range(jobs, salary):
     for job in jobs:
         min_salary = job['min_salary']
         max_salary = job['max_salary']
-        if type(min_salary) != int or type(salary) != int or type(max_salary) != int:
+        if type(min_salary) != int or type(salary) != int \
+        or type(max_salary) != int:
             pass
         elif min_salary <= salary <= max_salary:
             filtered_jobs.append(job)
     return filtered_jobs
-    
