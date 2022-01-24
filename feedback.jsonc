@@ -1,12 +1,12 @@
 {
     // Coloque seu nome para sabermos de quem foi o comentário =D (opcional)
-    "nome": "",
+    "nome": "Igor Marcos Riegle",
     // Dê uma nota ao projeto *^* (int de 0 a 10) (obrigatório)
-    "nota": ,
+    "nota": 10,
     // O que você mais gostou no projeto? (obrigatório, mas pode colocar "não há")
-    "pontos_positivos": "",
+    "pontos_positivos": "Gostei muito que é Python, tô acostumado a mexer com um monte de abstrações por causa do Pandas/Numpy, bibliotecas de plot, mexer com a parte mais crua da linguagem é maravilhoso, só me dá mais certeza de como Python é poderoso.",
     // O que você menos gostou no projeto? (obrigatório, mas pode colocar "não há")
-    "pontos_negativos": "",
+    "pontos_negativos": "Algumas pessoas podem achar ruim mexer com Flask sem ter visto em aula, mas eu achei ótimo, é bom ter esse tipo de abordagem pra galera ir se ligando e pesquisando por conta própria as coisas.",
     // Comentário livre sobre o que você achou do projeto (opcional)
-    "comentário": ""
+    "comentário": "As aulas estão sendo ótimas, e os plantões que permitem discussões mais amplas sobre a linguagem e até sobre a programação como um todo também."
 }
