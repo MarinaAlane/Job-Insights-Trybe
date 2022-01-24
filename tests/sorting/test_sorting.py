@@ -33,3 +33,4 @@ def test_sort_by_criteria(jobs_for_sort_by_criteria):
         {"date_posted": "2020-09-25", "max_salary": 150, "min_salary": 100},
         {"date_posted": "2020-05-17", "max_salary": 15, "min_salary": 10},
     ]
+    
