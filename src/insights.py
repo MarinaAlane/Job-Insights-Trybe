@@ -15,8 +15,8 @@ def get_unique_job_types(path):
 """
 -> Função - get_unique_job_types()
 1 - Quando se usa o set() nao incluimos os repetidos
-(tentei com job_types = [] + appende pegou todos repetido)
-2 - Linha 8 - pegamamos todos os [job types] dentro de cada iteração no index
+    (tentei com job_types = [] + appende pegou todos repetido)
+2 - pegamamos todos os [job types] dentro de cada iteração no index
 3 - Adiciona cada job_type distintos dentro do conjunto jobs_types
 """
 
@@ -129,48 +129,34 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
-    """Checks if a given salary is in the salary range of a given job
+    if "max_salary" not in job or "min_salary" not in job:  # 1
+        raise ValueError
+    else:
+        max_salary = job["max_salary"]  # 2
+        min_salary = job["min_salary"]
+    if not type(max_salary) == int or not type(min_salary) == int:  # 3
+        raise ValueError
+    elif min_salary > max_salary:  # 4
+        raise ValueError
+    if min_salary <= salary <= max_salary:  # 5
+        return True
+    return False
 
-    Parameters
-    ----------
-    job : dict
-        The job with `min_salary` and `max_salary` keys
-    salary : int
-        The salary to check if matches with salary range of the job
 
-    Returns
-    -------
-    bool
-        True if the salary is in the salary range of the job, False otherwise
-
-    Raises
-    ------
-    ValueError
-        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-        If `job["min_salary"]` is greather than `job["max_salary"]`
-        If `salary` isn't a valid integer
-    """
-    pass
+'''
+-> Função - matches_salary_range()
+1 - Se nao houver dentro de job os "max_salary ou min_salary envia um erro"
+2 - Senão armazena os valores dentro das variaveis max_salary e min_salary
+3 - Caso esses valores nao sejam inteiros envia um erro
+4 - Se por acaso o min_salary for menor que o max_salary envia um KeyError
+5 - Caso o salario esteja entre o min_salary e o max_salary retorna
+    True senão retorna False
+'''
 
 # ---------------------------------------------------------------------------------
 
 
 def filter_by_salary_range(jobs, salary):
-    """Filters a list of jobs by salary range
+    pass
 
-    Parameters
-    ----------
-    jobs : list
-        The jobs to be filtered
-    salary : int
-        The salary to be used as filter
-
-    Returns
-    -------
-    list
-        Jobs whose salary range contains `salary`
-    """
-    return []
-
-    # ---------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------
