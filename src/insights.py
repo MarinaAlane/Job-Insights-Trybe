@@ -1,6 +1,23 @@
-def get_unique_job_types(path):
+from src.jobs import read
 
-    return []
+
+def get_unique_job_types(path):
+    file = read(path)
+    jobs_types = set()  # 1
+    for index in file:
+        if index["job_type"] != "":  # 2
+            jobs_types.add(index["job_type"])  # 3
+    return jobs_types
+
+
+# get_unique_job_types('jobs.csv')
+
+"""
+1 - Quando se usa o set() nao incluimos os repetidos (
+    tentei com job_types = [] + appende pegou todos repetido )
+2 - Linha 8 - pegamamos todos os [job types] dentro de cada iteração no index
+3 - Adiciona cada job_type distintos dentro do conjunto jobs_types
+"""
 
 
 def filter_by_job_type(jobs, job_type):

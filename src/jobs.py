@@ -12,6 +12,7 @@ def read(path):
                 jobs.append(index)
         return jobs
     except FileNotFoundError:
-        print("arquivo inexistente")
+        print("Arquivo não encontrado")
 
-# read('jobs.csv')
+
+# print(read('jobs.csv'))
