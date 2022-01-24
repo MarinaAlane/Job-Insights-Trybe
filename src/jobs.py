@@ -11,3 +11,16 @@ def read(path):
             jobs_dict_list.append(row)
 
     return jobs_dict_list
+
+
+def valid(value):
+    for val in value:
+        if isinstance(val, int):
+            return True
+        else:
+            raise ValueError
+
+
+def check(min, max):
+    if min > max:
+        raise ValueError

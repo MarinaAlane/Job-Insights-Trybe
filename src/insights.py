@@ -1,4 +1,4 @@
-from src.jobs import read
+from src.jobs import read, valid, check
 
 
 def get_unique_job_types(path):
@@ -91,6 +91,16 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
+    try:
+        valid([job["min_salary"], job["max_salary"], salary])
+    except KeyError:
+        raise ValueError
+    check(job["min_salary"], job["max_salary"])
+    if job["min_salary"] <= salary <= job["max_salary"]:
+        return True
+    elif salary < job["min_salary"] or salary > job["max_salary"]:
+        return False
+
     """
     if job["min_salary"] < salary < job["max_salary"]:
         return True
