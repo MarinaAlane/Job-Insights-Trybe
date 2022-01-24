@@ -2,7 +2,7 @@ import src.jobs
 
 
 def get_unique_job_types(path):
-    #https://stackoverflow.com/questions/12897374/get-unique-values-from-a-list-in-python
+    # https://stackoverflow.com/questions/12897374/get-unique-values-from-a-list-in-python
     jobs_in_list = src.jobs.read(path)
     unique_job_type = []
     for job in jobs_in_list:
@@ -66,7 +66,7 @@ def get_max_salary(path):
             greater_salary.append(int(jobs["max_salary"]))
         except ValueError:
             pass
-    #https://www.programiz.com/python-programming/methods/built-in/max
+    # https://www.programiz.com/python-programming/methods/built-in/max
     return max(greater_salary)
 
 
