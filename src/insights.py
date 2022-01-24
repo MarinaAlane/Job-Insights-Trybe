@@ -29,6 +29,7 @@ def get_unique_industries(path):
 
 def filter_by_industry(jobs, industry):
     list_industry = []
+    
     for job in jobs:
         if job["industry"] == industry:
             list_industry.append(job)
