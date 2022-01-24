@@ -13,11 +13,14 @@ def get_unique_job_types(path):
 # get_unique_job_types('jobs.csv')
 
 """
+-> Função - get_unique_job_types()
 1 - Quando se usa o set() nao incluimos os repetidos
 (tentei com job_types = [] + appende pegou todos repetido)
 2 - Linha 8 - pegamamos todos os [job types] dentro de cada iteração no index
 3 - Adiciona cada job_type distintos dentro do conjunto jobs_types
 """
+
+# ---------------------------------------------------------------------------------
 
 
 def filter_by_job_type(jobs, job_type):
@@ -37,19 +40,30 @@ def filter_by_job_type(jobs, job_type):
     """
     return []
 
+# ---------------------------------------------------------------------------------
+
 
 def get_unique_industries(path):
     file = read(path)
-    distinct_industries = set()
+    distinct_industries = set()  # 1
     for index in file:
-        if index["industry"] != "":
-            distinct_industries.add(index["industry"])
+        if index["industry"] != "":  # 2
+            distinct_industries.add(index["industry"])  # 3
     # print(distinct_industries)
 
     return distinct_industries
 
 
 # get_unique_industries('jobs.csv')
+
+"""
+-> Função - get_unique_industries()
+1 - Quando se usa o set() nao incluimos os repetidos
+(tentei com job_types = [] + appende pegou todos repetido)
+2 - Linha 8 - pegamamos todos os [job types] dentro de cada iteração no index
+3 - Adiciona cada job_type distintos dentro do conjunto jobs_types
+"""
+# ---------------------------------------------------------------------------------
 
 
 def filter_by_industry(jobs, industry):
@@ -69,23 +83,29 @@ def filter_by_industry(jobs, industry):
     """
     return []
 
+# ---------------------------------------------------------------------------------
+
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
+    file = read(path)
+    max_salary = []
+    for index in file:
+        if index["max_salary"].isdigit():  # 1
+            salary_info = index["max_salary"]
+            max_salary.append(salary_info)  # 2
+    # print(max(max_salary))
+    return(max(max_salary))
 
-    Must call `read`
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
+# get_max_salary("jobs.csv")
 
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+"""
+-> Função - get_max_salary()
+1 - Verifica se o index[max_salary] é um digito 
+2 - Caso seja verdadeiro ele adiciona essa infomação na lista max_salary
+"""
+
+# ---------------------------------------------------------------------------------
 
 
 def get_min_salary(path):
@@ -104,6 +124,8 @@ def get_min_salary(path):
         The minimum salary paid out of all job opportunities
     """
     pass
+
+# ---------------------------------------------------------------------------------
 
 
 def matches_salary_range(job, salary):
@@ -131,6 +153,8 @@ def matches_salary_range(job, salary):
     """
     pass
 
+# ---------------------------------------------------------------------------------
+
 
 def filter_by_salary_range(jobs, salary):
     """Filters a list of jobs by salary range
@@ -148,3 +172,5 @@ def filter_by_salary_range(jobs, salary):
         Jobs whose salary range contains `salary`
     """
     return []
+
+    # ---------------------------------------------------------------------------------

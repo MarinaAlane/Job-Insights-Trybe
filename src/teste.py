@@ -1,27 +1,33 @@
 from jobs import read
 
 
-# def get_unique_job_types(path):
-#     file = read(path)
-#     jobs_types = set()
-#     for index in file:
-#         if index["job_type"] != "":
-#             jobs_types.add(index["job_type"])
-#     return jobs_types
-
-
-# get_unique_job_types('jobs.csv')
-
-
-def get_unique_industries(path):
+def get_max_salary(path):
     file = read(path)
-    distinct_industries = set()
+    max_salary = []
     for index in file:
-        if index["industry"] != "":
-            distinct_industries.add(index["industry"])
-    print(distinct_industries)
+        if index["max_salary"].isdigit():
+            salary_info = index["max_salary"]
+            max_salary.append(salary_info)
+    print(max(max_salary))
+    return(max(max_salary))
 
-    return distinct_industries
+
+get_max_salary("jobs.csv")
 
 
-get_unique_industries('jobs.csv')
+# def get_min_salary(path):
+#     """Get the minimum salary of all jobs
+
+#     Must call `read`
+
+#     Parameters
+#     ----------
+#     path : str
+#         Must be passed to `read`
+
+#     Returns
+#     -------
+#     int
+#         The minimum salary paid out of all job opportunities
+#     """
+#     pass
