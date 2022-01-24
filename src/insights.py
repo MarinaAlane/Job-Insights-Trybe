@@ -5,14 +5,19 @@ def get_unique_job_types(path):
     table = read(path)
     dict_with_all_jobs_types = dict()
     for row in table:
-        if row["job_type"] in dict_with_all_jobs_types:
-            dict_with_all_jobs_types[row["job_type"]] += 1
-        else:
-            dict_with_all_jobs_types[row["job_type"]] = 1
+        dict_with_all_jobs_types[row["job_type"]] = 1
     # .. source: https://www.tutorialspoint.com/
     # .. How-to-convert-Python-Dictionary-to-a-list
     list_of_jobs = list(dict_with_all_jobs_types.keys())
     return list_of_jobs
+
+
+"""
+    It's possible to reduce complexity using set() insted of dict()
+    would be necessary to transforme it into a list and as a note
+    dict don't need to use this verification about if the key already exists
+    (already fixed)
+"""
 
 
 def filter_by_job_type(jobs, job_type):
