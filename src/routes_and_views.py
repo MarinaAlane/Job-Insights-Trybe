@@ -1,5 +1,6 @@
 from markdown import markdown
 from flask import Flask, Blueprint, render_template, request
+from src.more_insights import get_job
 
 from .jobs import read
 from .insights import (
@@ -21,6 +22,14 @@ def index():
     with open("README.md", encoding="UTF-8") as file:
         md = markdown(file.read())
     return render_template("index.jinja2", md=md)
+
+
+@bp.route("/job/<index>")
+def job_details(index):
+    job = []
+    with open(read("/src/jobs.csv")) as jobs:
+        job = get_job(jobs, index)
+    return render_template("job.jinja2", job=job)
 
 
 @bp.route("/jobs")
