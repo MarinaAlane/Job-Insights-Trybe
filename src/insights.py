@@ -26,7 +26,10 @@ def get_unique_industries(path):
     jobs_in_list = src.jobs.read(path)
     unique_industries_type = []
     for job in jobs_in_list:
-        if job["industry"] not in unique_industries_type and job["industry"] != "":
+        if (
+            job["industry"] not in unique_industries_type
+            and job["industry"] != ""
+        ):
             unique_industries_type.append(job["industry"])
     return unique_industries_type
 
