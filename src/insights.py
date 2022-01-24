@@ -32,8 +32,13 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
-    # print(industry)
-    # print(industry)
+    data = []
+    for job in jobs:
+        if job["industry"] == industry:
+            data.append(job)
+    return data
+    # print(jobs)
+    # print('aaaaaa', industry)
     """Filters a list of jobs by industry
 
     Parameters
@@ -57,7 +62,6 @@ def get_max_salary(path):
     for index in data:
         if index["max_salary"].isdigit():
             max_salary.add(int(index["max_salary"]))
-    print(max(list(max_salary)))
     return max(list(max_salary))
     
     """Get the maximum salary of all jobs
@@ -83,7 +87,6 @@ def get_min_salary(path):
     for index in data:
         if index["min_salary"].isdigit():
             min_salary.add(int(index["min_salary"]))
-    print(min(list(min_salary)))
     return min(list(min_salary))
     """Get the minimum salary of all jobs
 
