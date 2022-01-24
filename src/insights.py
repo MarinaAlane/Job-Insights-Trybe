@@ -91,7 +91,7 @@ def filter_by_industry(jobs, industry):
 
 
 # https://www.delftstack.com/pt/howto/python/convert-string-to-int-in-python/
-# - converter strint em inteiro
+# - converter string em inteiro
 def get_max_salary(path):
     all_salaries = read(path)
     max_salary = [salary["max_salary"] for salary in all_salaries
@@ -123,8 +123,7 @@ def get_min_salary(path):
                   if salary["min_salary"].isnumeric()
                   if salary["min_salary"] != ""]
     min_salary_int = [int(int_salary) for int_salary in min_salary]
-    # max_salary_int = int(max_salary)
-    print(min(min_salary_int))
+    # print(min(min_salary_int))
     return (min(min_salary_int))
     """Get the minimum salary of all jobs
 
@@ -150,13 +149,13 @@ def matches_salary_range(job, salary):
     # print("Job:" + str(job))
     # print("Salary:" + str(salary))
     if "min_salary" not in job or "max_salary" not in job:
-        raise ValueError()
+        raise ValueError
     elif type(job["min_salary"]) != int or type(job["max_salary"]) != int:
-        raise ValueError()
+        raise ValueError
     elif job["min_salary"] > job["max_salary"]:
-        raise ValueError()
+        raise ValueError
     elif type(salary) != int:
-        raise ValueError()
+        raise ValueError
     correct_range_value = job["min_salary"] <= salary <= job["max_salary"]
     # print(correct_range_value)
     return correct_range_value
@@ -196,6 +195,17 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
+    job_list = list()
+    for all_jobs in jobs:
+        try:
+            if matches_salary_range(all_jobs, salary):
+                job_list.append(all_jobs)
+        except ValueError:
+            continue
+
+    # print(job_list)
+    return job_list
+
     """Filters a list of jobs by salary range
 
     Parameters
@@ -210,4 +220,3 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
