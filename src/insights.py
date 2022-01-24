@@ -70,17 +70,14 @@ def get_max_salary(path):
 
 
 def get_min_salary(path):
-    mim_salary = 10000000000
+    mim_salary = []
     jobs = read(path)
     for job in jobs:
         job_salary = job["min_salary"]
-        if (
-            job_salary != ""
-            and job_salary != "invalid"
-            and int(job["min_salary"]) < mim_salary
-        ):
-            mim_salary = int(job["min_salary"])
-    return mim_salary
+        if job_salary != "" and job_salary != "invalid":
+            mim_salary.append(int(job["min_salary"]))
+    mim_salary.sort()
+    return mim_salary[0]
 
 
 def matches_salary_range(job, salary):
