@@ -13,8 +13,8 @@ def get_unique_job_types(path):
 # get_unique_job_types('jobs.csv')
 
 """
-1 - Quando se usa o set() nao incluimos os repetidos (
-    tentei com job_types = [] + appende pegou todos repetido )
+1 - Quando se usa o set() nao incluimos os repetidos
+(tentei com job_types = [] + appende pegou todos repetido)
 2 - Linha 8 - pegamamos todos os [job types] dentro de cada iteração no index
 3 - Adiciona cada job_type distintos dentro do conjunto jobs_types
 """
@@ -39,21 +39,17 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
+    file = read(path)
+    distinct_industries = set()
+    for index in file:
+        if index["industry"] != "":
+            distinct_industries.add(index["industry"])
+    # print(distinct_industries)
 
-    Must call `read`
+    return distinct_industries
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
 
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+# get_unique_industries('jobs.csv')
 
 
 def filter_by_industry(jobs, industry):
