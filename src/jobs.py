@@ -1,18 +1,16 @@
+# https://docs.python.org/pt-br/3/library/exceptions.html#bltin-exceptions
 from functools import lru_cache
+import csv
 
 
 @lru_cache
 def read(path):
-    """Reads a file from a given path and returns its contents
-
-    Parameters
-    ----------
-    path : str
-        Full path to file
-
-    Returns
-    -------
-    list
-        List of rows as dicts
-    """
-    return []
+    try:
+        with open(path) as file:
+            jobs_dict = csv.DictReader(file, delimiter=",", quotechar='"')
+            jobs_list = []
+            for job in jobs_dict:
+                jobs_list.append(job)
+            return jobs_list
+    except FileNotFoundError:
+        print("File not found!!!")
