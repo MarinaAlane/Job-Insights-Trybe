@@ -115,7 +115,18 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+
+    jobs_salary = []
+
+    jobs_list = read(path)
+
+    for job in jobs_list:
+        if job["max_salary"].isdigit():
+            jobs_salary.append(int(job["max_salary"]))
+
+    maximum_salary = max(jobs_salary)
+
+    return maximum_salary
 
 
 def get_min_salary(path):
@@ -133,7 +144,17 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    jobs_salary = []
+
+    jobs_list = read(path)
+
+    for job in jobs_list:
+        if job["min_salary"].isdigit():
+            jobs_salary.append(int(job["min_salary"]))
+
+    minimun_salary = min(jobs_salary)
+
+    return minimun_salary
 
 
 def matches_salary_range(job, salary):
@@ -159,7 +180,19 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
+
+    max_salary = int(job["max_salary"])
+    min_salary = int(job["min_salary"])
+
+    try:
+        salary_range = range(min_salary, max_salary)
+        for sal in salary_range:
+            if not salary == sal:
+                raise Exception("Invalid salary")
+    except ValueError as error:
+        raise error
+    else:
+        return True
 
 
 def filter_by_salary_range(jobs, salary):
@@ -177,4 +210,7 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
+
+    jobs_filtered = [job for job in jobs if job["max_salary"] == salary]
+
+    return jobs_filtered
