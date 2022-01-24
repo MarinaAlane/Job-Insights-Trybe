@@ -24,21 +24,18 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
+    jobs_filter = []
+    for index in jobs:
+        if job_type == index["job_type"]:  # 1
+            jobs_filter.append(index)  # 2
+    return jobs_filter
 
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
 
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+'''
+-> Função - filter_by_job_type()
+1 - Se o parametro job_type for igual a iteração com o ["job_type"]
+2 - Adiciona a iteração do index no jobs a lista jobs_filter
+'''
 
 # ---------------------------------------------------------------------------------
 
@@ -67,21 +64,18 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
+    jobs_filter = []
+    for index in jobs:
+        if industry == index["industry"]:  # 1
+            jobs_filter.append(index)  # 2
+    return jobs_filter
 
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
 
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+'''
+-> Função - filter_by_industry()
+1 - Se o parametro industry for igual a iteração com o ["industry"]
+2 - Adiciona a iteração do index no jobs a lista jobs_filter
+'''
 
 # ---------------------------------------------------------------------------------
 
@@ -125,7 +119,7 @@ def get_min_salary(path):
 
 """
 -> Função - get_min_salary()
-1 - Verifica se o index[min_salary] existe
+1 - Verifica se o index[min_salary] é um digito
 2 - Transforma as informaçõs em int caso ele não seja esse tipo de dado
 3 - Adiciona o valor na lista min_salary
 4 - Retorna o maior salario usando a função Min
