@@ -70,21 +70,19 @@ def get_max_salary(path):
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
+    jobs_dict = jobs.read(path)
+    salaries = list()
+    for job in jobs_dict:
+        try:
+            salary = job["min_salary"]
+            if salary != '':
+                salaries.append(int(salary))
+        except ValueError:
+            pass
 
-    Must call `read`
+    salaries.sort()
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    return salaries[0]
 
 
 def matches_salary_range(job, salary):
