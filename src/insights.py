@@ -131,14 +131,17 @@ def get_min_salary(path):
 def matches_salary_range(job, salary):
     if "max_salary" not in job or "min_salary" not in job:  # 1
         raise ValueError
-    else:
-        max_salary = job["max_salary"]  # 2
-        min_salary = job["min_salary"]
-    if not type(max_salary) == int or not type(min_salary) == int:  # 3
+    if (
+        not type(job["max_salary"]) == int
+        or
+        not type(job["min_salary"]) == int
+        or
+        not type(salary) == int
+    ):  # 2
         raise ValueError
-    elif min_salary > max_salary:  # 4
+    elif job["min_salary"] > job["max_salary"]:  # 3
         raise ValueError
-    if min_salary <= salary <= max_salary:  # 5
+    if job["min_salary"] <= salary <= job["max_salary"]:  # 4
         return True
     return False
 
@@ -146,10 +149,9 @@ def matches_salary_range(job, salary):
 '''
 -> Função - matches_salary_range()
 1 - Se nao houver dentro de job os "max_salary ou min_salary envia um erro"
-2 - Senão armazena os valores dentro das variaveis max_salary e min_salary
-3 - Caso esses valores nao sejam inteiros envia um erro
-4 - Se por acaso o min_salary for menor que o max_salary envia um KeyError
-5 - Caso o salario esteja entre o min_salary e o max_salary retorna
+2 - Caso esses valores nao sejam inteiros envia um erro
+3 - Se por acaso o min_salary for menor que o max_salary envia um KeyError
+4 - Caso o salario esteja entre o min_salary e o max_salary retorna
     True senão retorna False
 '''
 
@@ -157,6 +159,24 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
-    pass
+    jobs_filter = []
+    for index in jobs:
+        try:
+            if matches_salary_range(index, salary):  # 1
+                jobs_filter.append(index)  # 2
+        except ValueError:  # 3
+            continue
+    return jobs_filter  # 4
+
+
+'''
+-> Função - filter_by_salary_range()
+1 - Tenta verificar se chamando a função matches_salary_range()
+    enviando os parametros ele retorna True
+2 - Caso seja True inclui o valor iterado dentro da lista jobs_filter
+3 - Se algo ocorra errado emite um erro
+4 - Retorna a lista com o salarios filtrados
+'''
+
 
 # ---------------------------------------------------------------------------------
