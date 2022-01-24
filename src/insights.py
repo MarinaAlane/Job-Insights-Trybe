@@ -5,8 +5,8 @@ def get_unique_job_types(path):
     file = jobs.read(path)
     job_types_list = set()
     for row in file:
-        if row["job_type"]:
-            job_types_list.add(row["job_type"])
+        if row["date_posted"]:
+            job_types_list.add(row["date_posted"])
     return job_types_list
 
 
