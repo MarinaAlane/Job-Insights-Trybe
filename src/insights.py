@@ -98,7 +98,15 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+    jobs_list = jobs.read(path)
+    max_salary = 0
+    for job in jobs_list:
+        try:
+            if int(job["max_salary"]) > max_salary:
+                max_salary = int(job["max_salary"])
+        except ValueError:
+            continue
+    return max_salary
 
 
 def get_min_salary(path):
@@ -116,7 +124,15 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    jobs_list = jobs.read(path)
+    min_salary = float('inf')  # aqui estou usando o infinito do python
+    for job in jobs_list:
+        try:
+            if int(job["min_salary"]) < min_salary:
+                min_salary = int(job["min_salary"])
+        except ValueError:
+            continue
+    return min_salary
 
 
 def matches_salary_range(job, salary):
