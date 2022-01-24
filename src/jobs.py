@@ -1,4 +1,5 @@
 from functools import lru_cache
+""" iniciando projeto """
 
 
 @lru_cache
