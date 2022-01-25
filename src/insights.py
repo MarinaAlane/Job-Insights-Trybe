@@ -1,4 +1,4 @@
-from src.jobs import read
+from jobs import read
 
 
 def get_unique_job_types(path):
@@ -64,8 +64,8 @@ def get_unique_industries(path):
     this_dic = read(path)
     for row in this_dic:
         this_set.add(row["industry"])
+    this_set = list(filter(None, this_set))
     return this_set
-
 
 def filter_by_industry(jobs, industry):
     """Filters a list of jobs by industry
