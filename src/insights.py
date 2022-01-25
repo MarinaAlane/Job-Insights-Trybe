@@ -1,19 +1,14 @@
+from jobs import read
+
+
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
+    all_jobs_list = read(path)
+    unique_job = set()
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
+    for job in all_jobs_list:
+        if job['job_type'] is not None:
+            unique_job.add(job['job_type'])
+    return unique_job
 
 
 def filter_by_job_type(jobs, job_type):
