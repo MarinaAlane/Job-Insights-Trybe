@@ -67,6 +67,7 @@ def get_unique_industries(path):
     this_set = list(filter(None, this_set))
     return this_set
 
+
 def filter_by_industry(jobs, industry):
     """Filters a list of jobs by industry
 
