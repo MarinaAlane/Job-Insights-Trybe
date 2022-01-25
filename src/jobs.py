@@ -1,6 +1,7 @@
 from functools import lru_cache
 import csv
 
+
 # ref: https://stackoverflow.com/a/50402818 (csv file to list of dictionaries)
 @lru_cache
 def read(path):
