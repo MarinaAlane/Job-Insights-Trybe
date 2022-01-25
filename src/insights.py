@@ -67,21 +67,14 @@ def get_max_salary(path):
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    csv_array = read(path)
+    menor_salarios = []
+    for item in csv_array:
+        if (item['min_salary'] != '' and item['min_salary'] != 'invalid'):
+            menor_salarios.append(int(item['min_salary']))
+    menor_salarios.sort()
+    print(menor_salarios)
+    return menor_salarios[0]
 
 
 def matches_salary_range(job, salary):
