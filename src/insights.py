@@ -161,7 +161,31 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
+
+    ERRORS = {
+        'missing_key': 'Keys "min_salary" or "max_salary" doesn\'t exists',
+        'not_str': 'Keys "min_salary" or "max_salary" not a number',
+        'inconsistent_values': '"min_salary" is greather than "max_salary"',
+        'invalid_salary': '"salary" isn\'t a valid integer',
+    }
+
+    if 'min_salary' not in job.keys() or 'max_salary' not in job.keys():
+        raise ValueError(ERRORS['missing_key'])
+
+    # https://www.w3schools.com/python/ref_func_isinstance.asp
+    if (
+        not isinstance(job['min_salary'], int) or
+        not isinstance(job['max_salary'], int)
+    ):
+        raise ValueError(ERRORS['not_str'])
+
+    if job['min_salary'] > job['max_salary']:
+        raise ValueError(ERRORS['inconsistent_values'])
+
+    if not isinstance(salary, int):
+        raise ValueError(ERRORS['invalid_salary'])
+
+    return job['min_salary'] <= salary <= job['max_salary']
 
 
 def filter_by_salary_range(jobs, salary):
