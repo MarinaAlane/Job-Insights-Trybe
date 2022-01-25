@@ -84,31 +84,25 @@ def get_min_salary(path):
 def matches_salary_range(job, salary):
     """Checks if a given salary is in the salary range of a given job
 
-        Parameters
-        ----------
-        job : dict
-            The job with `min_salary` and `max_salary` keys
-        salary : int
-            The salary to check if matches with salary range of the job
+    Parameters
+    ----------
+    job : dict
+        The job with `min_salary` and `max_salary` keys
+    salary : int
+        The salary to check if matches with salary range of the job
 
-        Returns
-        -------
-        bool
-            True if the salary is in the salary range of the job, False otherwise
+    Returns
+    -------
+    bool
+        True if the salary is in the salary range of the job, False otherwise
 
-        Raises
-        ------
-        ValueError
-            If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-            If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-            If `job["min_salary"]` is greather than `job["max_salary"]`
-            If `salary` isn't a valid integer
-
-            A função retorna o booleano correto
-    A função lança um ValueError se o valor de min_salary for maior que o valor de max_salary
-    A função lança um ValueError se as chaves min_salary ou max_salary tiverem valores não numéricos
-    A função lança um ValueError se o parâmetro salary tiver valor não numérico
-    A função lança um ValueError se as chaves min_salary ou max_salary estiverem ausentes no dicionár
+    Raises
+    ------
+    ValueError
+        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
+        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
+        If `job["min_salary"]` is greather than `job["max_salary"]`
+        If `salary` isn't a valid integer
     """
     try:
         int(job["min_salary"])
