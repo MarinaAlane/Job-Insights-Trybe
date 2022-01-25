@@ -101,7 +101,13 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+    this_set = set()
+    this_dic = read(path)
+    for row in this_dic:
+        this_set.add(row["max_salary"])
+    this_set = list(filter(None, this_set))
+    maxxx = max(this_set)
+    return maxxx
 
 
 def get_min_salary(path):
@@ -119,7 +125,13 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    this_set = set()
+    this_dic = read(path)
+    for row in this_dic:
+        this_set.add(row["min_salary"])
+    this_set = list(filter(None, this_set))
+    minnn = min(this_set)
+    return minnn
 
 
 def matches_salary_range(job, salary):
