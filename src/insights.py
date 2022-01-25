@@ -69,7 +69,7 @@ def get_unique_industries(path):
     industries_list = read(path)
 
     for industry in industries_list:
-        if industry["industry"] != '':
+        if industry["industry"] != "":
             industries.append(industry["industry"])
 
     set_industries_list = set(industries)
@@ -93,9 +93,7 @@ def filter_by_industry(jobs, industry):
         List of jobs with provided industry
     """
 
-    jobs_list = [
-        job for job in jobs if job["industry"] == industry
-    ]
+    jobs_list = [job for job in jobs if job["industry"] == industry]
 
     return jobs_list
 
@@ -186,9 +184,18 @@ def matches_salary_range(job, salary):
     try:
         if int(job["min_salary"]) > int(job["max_salary"]):
             raise ValueError
-        return int(job["max_salary"]) >= int(salary) >= int(job["min_salary"])
+        return int(job["min_salary"]) <= int(salary) <= int(job["max_salary"])
     except Exception:
         raise ValueError
+
+
+def validate_match_salary_range(job, salary):
+    try:
+        matches_salary_range(job, salary)
+    except Exception:
+        return False
+    else:
+        return True
 
 
 def filter_by_salary_range(jobs, salary):
@@ -207,6 +214,16 @@ def filter_by_salary_range(jobs, salary):
         Jobs whose salary range contains `salary`
     """
 
-    jobs_filtered = [job for job in jobs if job["max_salary"] == salary]
+    valid_jobs = []
+
+    for job in jobs:
+        if validate_match_salary_range(job, salary):
+            valid_jobs.append(job)
+
+    jobs_filtered = [
+        job
+        for job in valid_jobs
+        if int(job["min_salary"]) <= int(salary) <= int(job["max_salary"])
+    ]
 
     return jobs_filtered
