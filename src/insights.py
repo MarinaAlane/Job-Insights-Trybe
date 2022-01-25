@@ -94,7 +94,8 @@ def matches_salary_range(job, salary):
     Returns
     -------
     bool
-        True if the salary is in the salary range of the job, False otherwise
+        True if the salary is in the salary range of the job,
+        False otherwise
 
     Raises
     ------
@@ -104,19 +105,22 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    try:
-        int(job["min_salary"])
-        int(job["max_salary"])
-        int(salary)
-    except (TypeError, ValueError, KeyError):
+    if "min_salary" not in job:
         raise ValueError
-
+    if "max_salary" not in job:
+        raise ValueError
+    if not isinstance(job["min_salary"], int):
+        raise ValueError
+    if not isinstance(job["max_salary"], int):
+        raise ValueError
+    if not isinstance(salary, int):
+        raise ValueError
     if job["min_salary"] > job["max_salary"]:
         raise ValueError
 
     return job["min_salary"] <= salary <= job["max_salary"]
 
-
+# Comments: Ajuda do Rahel Martim no plantão do dia 25/12/2022 as 13:40
 def filter_by_salary_range(jobs, salary):
     """Filters a list of jobs by salary range
 
@@ -132,4 +136,11 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
+    salary_range = []
+    for job in jobs:
+        try:
+            if matches_salary_range(job, salary):
+                salary_range.append(job)
+        except ValueError:
+            pass
+    return salary_range
