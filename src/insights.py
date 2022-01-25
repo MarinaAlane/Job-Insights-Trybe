@@ -118,7 +118,13 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    data = read(path)
+    min = 999999999999999999999999999
+    for job in data:
+        sal = job["min_salary"]
+        if sal.isdigit() and min > float(sal):
+            min = float(sal)
+    return min
 
 
 def matches_salary_range(job, salary):
