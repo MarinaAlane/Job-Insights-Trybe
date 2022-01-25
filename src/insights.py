@@ -121,7 +121,6 @@ def matches_salary_range(job, salary):
     return job["min_salary"] <= salary <= job["max_salary"]
 
 
-# Comments: Ajuda do Rahel Martim no plantão do dia 25/12/2022 as 13:40
 def filter_by_salary_range(jobs, salary):
     """Filters a list of jobs by salary range
 
