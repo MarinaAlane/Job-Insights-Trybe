@@ -10,7 +10,7 @@ def read(path):
     path : str
         Full path to file
 
-    Returns
+    Return
     -------
     list
         List of rows as dicts
