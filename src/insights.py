@@ -106,6 +106,16 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
+    if job["max_salary"].get or job["min_salary"].get:
+        raise ValueError("dont exist")
+    elif isinstance(job["max_salary"], int) or isinstance(job["min_salary"], int):
+        raise ValueError("not are number")
+    elif job["max_salary"] > job["min_salary"]:
+        raise ValueError("the min_value not can be highest than the max_value")
+    elif isinstance(salary, int):
+        raise ValueError("salary must be a number")
+    elif: 
+         
     """Checks if a given salary is in the salary range of a given job
 
     Parameters
