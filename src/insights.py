@@ -15,7 +15,7 @@ def filter_by_job_type(jobs, job_type):
     for job in jobs:
         if job["job_type"] == job_type:
             arr.append(job)
-    
+
     return arr
 
 
@@ -34,7 +34,7 @@ def filter_by_industry(jobs, industry):
     for job in jobs:
         if job["industry"] == industry:
             arr.append(job)
-    
+
     return arr
 
 
@@ -62,8 +62,12 @@ def get_min_salary(path):
 
 def matches_salary_range(job, salary):
     if "max_salary" not in job or "min_salary" not in job:
-       raise ValueError("As chaves não existem")
-    elif type(job["max_salary"]) != int or type(job["min_salary"]) != int or type(salary) != int:
+        raise ValueError("As chaves não existem")
+    elif (
+        type(job["max_salary"]) != int
+        or type(job["min_salary"]) != int
+        or type(salary) != int
+    ):
         raise ValueError("As chaves não são numericos")
     elif job["max_salary"] < job["min_salary"]:
         raise ValueError("Salario invalido")
@@ -71,6 +75,7 @@ def matches_salary_range(job, salary):
         pass
 
     return salary >= job["min_salary"] and salary <= job["max_salary"]
+
 
 def filter_by_salary_range(jobs, salary):
     jobs_arr = []
@@ -80,5 +85,5 @@ def filter_by_salary_range(jobs, salary):
                 jobs_arr.append(job)
         except ValueError:
             pass
-    
+
     return jobs_arr
