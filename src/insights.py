@@ -62,7 +62,7 @@ def get_max_salary(path):
     job_salary_from_csv = set()
 
     for job in jobs_salaries_csv["max_salary"]:
-        if job:
+        if job.isnumeric():
             job_salary_from_csv.add(int(job["max_salary"]))
 
     return max(job_salary_from_csv)
@@ -73,7 +73,7 @@ def get_min_salary(path):
     job_salary_from_csv = set()
 
     for job in jobs_salaries_csv["min_salary"]:
-        if job:
+        if job.isnumeric():
             job_salary_from_csv.add(int(job["min_salary"]))
 
     return min(job_salary_from_csv)
