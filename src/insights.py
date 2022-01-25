@@ -1,19 +1,17 @@
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
+    from src.jobs import read
 
-    Must call `read`
+    content = read(path)
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
+    types = set()  # Conjuto de Jobs
+    # Referencia do comando Pass:
+    # www.delftstack.com/pt/howto/python/python-pass/#:text=A%20instru%C3%A7%C3%A3o%20pass%20%C3%A9%20usada,que%20o%20programa%20fa%C3%A7a%20nada.
+    for job in content:
+        if job["job_type"] in types:
+            pass
+        else:
+            types.add(job["job_type"])
+    return types
 
 
 def filter_by_job_type(jobs, job_type):
