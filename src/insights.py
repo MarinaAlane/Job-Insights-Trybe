@@ -70,21 +70,20 @@ def get_max_salary(path):
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
+    fileContent = read(path)  # leio o arquivo
+    min_salary = []  # crio uma variavel p/ armazenar salarios
+    for salary in fileContent:  # pra cada salary na minha lista lida
+        payment = salary["min_salary"]
+        # defino como payment o valor da chave 'min salary' do item
+        if payment != '' and payment != 'invalid':
+            # se payment for = a vazio ou invalido não entra na equação
+            min_salary.append(int(payment))
+            # adiciona a lista o valor INT de payment
+    return min(min_salary)
+    # função min que retorna o menor valor do iteravel
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+# Referencia para utilziação da função min:
+# https://www.w3schools.com/python/ref_func_min.asp
 
 
 def matches_salary_range(job, salary):
