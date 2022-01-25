@@ -13,6 +13,7 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
+    # Ref: https://www.pythontutorial.net/python-basics/python-filter-list/
     by_job_type = list(filter(lambda job: job["job_type"] == job_type, jobs))
     return by_job_type
 
@@ -29,6 +30,7 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
+    # Ref: https://www.pythontutorial.net/python-basics/python-filter-list/
     by_industry = filter(lambda job: job["industry"] == industry, jobs)
     return list(by_industry)
 
