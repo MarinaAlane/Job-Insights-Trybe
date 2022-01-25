@@ -40,5 +40,5 @@ def test_sort_by_criteria():
     sort_by(jobs_copy, "date_posted")
     assert jobs_copy == jobs_date_posted
 
-    with pytest.raises(ValueError, match="invalid sorting criteria: wrong"):
-        sort_by(jobs, "wrong")
+    with pytest.raises(ValueError):
+        sort_by(jobs, "Error")
