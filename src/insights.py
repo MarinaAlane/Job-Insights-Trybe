@@ -2,10 +2,10 @@ from src.jobs import read
 
 
 def get_unique_job_types(path):
-    jobs_list = read(path)  # leio o arquivo
-    jobs_types = set()  # crio uma coleção vazia que ira armazenar
-    for job in jobs_list:  # pra cada job na minha lista lida
-        jobs_types.add(job["job_type"])  # add na coleção
+    jobs_list = read(path)
+    jobs_types = set()
+    for job in jobs_list:
+        jobs_types.add(job["job_type"])
     return jobs_types
 
 
@@ -28,11 +28,11 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    fileContent = read(path)  # leio o arquivo
-    industries = set()  # crio uma coleção vazia que ira armazenar
-    for industry in fileContent:  # pra cada job na minha lista lida
+    fileContent = read(path)
+    industries = set()
+    for industry in fileContent:
         if industry["industry"] != '':
-            industries.add(industry["industry"])  # add na coleção
+            industries.add(industry["industry"])
     return industries
 
 
@@ -66,7 +66,7 @@ def get_max_salary(path):
                 # se o int de payment é maior que o valor armazenado em max_sal
                 max_salary = payment  # add na coleção
                 # altero a variavel para o novo valor
-    return max_salary
+    return int(max_salary)
 
 
 def get_min_salary(path):
