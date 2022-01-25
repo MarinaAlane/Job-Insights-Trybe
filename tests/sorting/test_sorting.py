@@ -1,5 +1,5 @@
-from src.sorting import sort_by
 import pytest
+from src.sorting import sort_by
 
 
 jobs = [
