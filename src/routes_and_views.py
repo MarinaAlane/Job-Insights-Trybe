@@ -33,7 +33,7 @@ def job(index):
     path = "src/jobs.csv"
     data = read(path)
     details_job = get_job(data, index)
-    return render_template("job.jinja2", details_job)
+    return render_template("job.jinja2", job=details_job)
 
 
 @bp.route("/jobs")
