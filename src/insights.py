@@ -108,7 +108,7 @@ def get_max_salary(path):
     for job in data:
         if job['max_salary'] and job['max_salary'] != 'invalid':
             salaries.append(int(job['max_salary']))
-    
+
     for salary in salaries:
         if salary > max_salary:
             max_salary = salary
