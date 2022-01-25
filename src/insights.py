@@ -1,4 +1,4 @@
-from jobs import read
+from src.jobs import read
 
 
 def get_unique_job_types(path):
@@ -34,7 +34,8 @@ def get_unique_industries(path):
     industry_values = set()
 
     for job in all_jobs_list:
-        industry_values.add(job['industry'])
+        if job['industry'] != '':
+            industry_values.add(job['industry'])
     return industry_values
 
 
@@ -71,7 +72,12 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+    # all_jobs_list = read(path)
+    # all_salaries = set()
+
+    # for job in all_jobs_list:
+    #     all_salaries.add(int(job['max_salary']))
+    # return max(all_salaries)
 
 
 def get_min_salary(path):
