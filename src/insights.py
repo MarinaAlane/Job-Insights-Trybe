@@ -55,21 +55,18 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    fileContent = read(path)  # leio o arquivo
+    max_salary = 0  # crio uma variavel p/ armazenar maior salario
+    for salary in fileContent:  # pra cada salary na minha lista lida
+        payment = salary["max_salary"]
+        # defino como payment o valor da chave 'max salary' do item
+        if payment != '' and payment != 'invalid':
+            # se payment for = a vazio ou invalido não entra na equação
+            if int(payment) > int(max_salary):
+                # se o int de payment é maior que o valor armazenado em max_sal
+                max_salary = payment  # add na coleção
+                # altero a variavel para o novo valor
+    return max_salary
 
 
 def get_min_salary(path):
