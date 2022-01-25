@@ -72,13 +72,13 @@ def get_max_salary(path):
 
 def get_min_salary(path):
     list_of_jobs = jobs.read(path)
-    salary = 0
+    salary_min = get_max_salary(path)
     for job in list_of_jobs:
         if job["min_salary"] == "" or not job["min_salary"].isnumeric():
             continue
-        elif int(job["min_salary"]) < salary:
-            salary = int(job["min_salary"])
-    return salary
+        elif int(job["min_salary"]) < salary_min:
+            salary_min = int(job["min_salary"])
+    return salary_min
 
 
 def matches_salary_range(job, salary):
