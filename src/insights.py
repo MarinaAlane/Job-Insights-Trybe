@@ -1,3 +1,4 @@
+from multiprocessing.sharedctypes import Value
 from .jobs import read
 
 
@@ -23,7 +24,7 @@ def get_unique_industries(path):
     data = read(path)
     industry_type_index = set()
     for index in data:
-        if index["industry"] != '':
+        if index["industry"] != "":
             industry_type_index.add(index["industry"])
     return list(industry_type_index)
 
@@ -147,9 +148,15 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
-
-    """Filters a list of jobs by salary range
-
+    lista = []
+    for job in jobs:
+        try:
+            if matches_salary_range(job, salary):
+                lista.append(job)
+        except ValueError:
+            pass
+    return lista
+"""Filters a list of jobs by salary range
     Parameters
     ----------
     jobs : list
@@ -162,4 +169,3 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
