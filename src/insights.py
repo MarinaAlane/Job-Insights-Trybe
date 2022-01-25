@@ -16,7 +16,7 @@ def filter_by_job_type(jobs, job_type):
     filtered = []
     for index in jobs:
         if index["job_type"] == job_type:
-          filtered.append(index)
+            filtered.append(index)
     return filtered
 
 
@@ -30,21 +30,11 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+    filtered = []
+    for index in jobs:
+        if index["industry"] == industry:
+            filtered.append(index)
+        return filtered
 
 
 def get_max_salary(path):
@@ -68,29 +58,21 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
-    """Checks if a given salary is in the salary range of a given job
-
-    Parameters
-    ----------
-    job : dict
-        The job with `min_salary` and `max_salary` keys
-    salary : int
-        The salary to check if matches with salary range of the job
-
-    Returns
-    -------
-    bool
-        True if the salary is in the salary range of the job, False otherwise
-
-    Raises
-    ------
-    ValueError
-        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-        If `job["min_salary"]` is greather than `job["max_salary"]`
-        If `salary` isn't a valid integer
-    """
-    pass
+    if not ("max_salary" in job and "min_salary" in job):
+        raise ValueError("As chaves não estão no dict")
+    elif (
+         type(job["max_salary"]) != int
+         or type(job["min_salary"]) != int
+         or type(salary) != int
+     ):
+        raise ValueError("Os valores não são inteiros")
+    elif job["min_salary"] > job["max_salary"]:
+        raise ValueError(
+            "O valor de min_salary não pode ser maior que max_salary"
+          )
+    elif job["min_salary"] <= salary <= job["max_salary"]:
+        return True
+    return False
 
 
 def filter_by_salary_range(jobs, salary):
