@@ -1,5 +1,5 @@
 from functools import lru_cache
-import csv 
+import csv
 
 
 @lru_cache
@@ -10,5 +10,5 @@ def read(path):
             view_file = list(csv.DictReader(file))
             for row in view_file:
                 arrary.append(row)
-        finally: 
+        finally:
             return arrary
