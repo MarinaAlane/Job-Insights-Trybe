@@ -53,7 +53,6 @@ def get_min_salary(path):
         if (item['min_salary'] != '' and item['min_salary'] != 'invalid'):
             menor_salarios.append(int(item['min_salary']))
     menor_salarios.sort()
-    print(menor_salarios)
     return menor_salarios[0]
 
 
