@@ -37,7 +37,8 @@ def filter_by_job_type(jobs, job_type):
     -------
     list
         List of jobs with provided job_type
-    REF:. https://stackoverflow.com/questions/8653516/python-list-of-dictionaries-search
+    REF:. https://stackoverflow.com/questions/
+    8653516/python-list-of-dictionaries-search
     REF:. https://www.w3schools.com/python/python_lambda.asp
     """
     # dis_list = []
