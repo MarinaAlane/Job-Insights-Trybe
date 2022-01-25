@@ -34,6 +34,56 @@ def get_unique_industries(path):
     return industries
 
 
+def get_max_salary(path):
+    """Get the maximum salary of all jobs
+
+    Must call `read`
+
+    Parameters
+    ----------
+    path : str
+        Must be passed to `read`
+
+    Returns
+    -------
+    int
+        The maximum salary paid out of all job opportunities
+    """
+    jobs_data = read(path)
+    max_salaries = set()
+    for job in jobs_data:
+        try:
+            max_salaries.add(int(job["max_salary"]))
+        except ValueError:
+            pass
+    return max(max_salaries)
+
+
+def get_min_salary(path):
+    """Get the minimum salary of all jobs
+
+    Must call `read`
+
+    Parameters
+    ----------
+    path : str
+        Must be passed to `read`
+
+    Returns
+    -------
+    int
+        The minimum salary paid out of all job opportunities
+    """
+    jobs_data = read(path)
+    min_salaries = set()
+    for job in jobs_data:
+        try:
+            min_salaries.add(int(job["min_salary"]))
+        except ValueError:
+            pass
+    return min(min_salaries)
+
+
 def filter_by_job_type(jobs, job_type):
     """Filters a list of jobs by job_type
 
@@ -68,42 +118,6 @@ def filter_by_industry(jobs, industry):
         List of jobs with provided industry
     """
     return []
-
-
-def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
-
-
-def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
 
 
 def matches_salary_range(job, salary):
