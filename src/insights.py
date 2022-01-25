@@ -10,21 +10,12 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    #  o primeiro parametro que recebe já é uma lista
+    list_jobs = []
+    for job in jobs:
+        if job["job_type"] == job_type:  # se for = ao do parametro
+            list_jobs.append(job)
+    return list_jobs
 
 
 def get_unique_industries(path):
@@ -55,32 +46,24 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    fileContent = read(path)  # leio o arquivo
-    max_salary = 0  # crio uma variavel p/ armazenar maior salario
-    for salary in fileContent:  # pra cada salary na minha lista lida
+    fileContent = read(path)
+    max_salary = 0
+    for salary in fileContent:
         payment = salary["max_salary"]
-        # defino como payment o valor da chave 'max salary' do item
         if payment != '' and payment != 'invalid':
-            # se payment for = a vazio ou invalido não entra na equação
             if int(payment) > int(max_salary):
-                # se o int de payment é maior que o valor armazenado em max_sal
-                max_salary = payment  # add na coleção
-                # altero a variavel para o novo valor
+                max_salary = payment
     return int(max_salary)
 
 
 def get_min_salary(path):
-    fileContent = read(path)  # leio o arquivo
-    min_salary = []  # crio uma variavel p/ armazenar salarios
-    for salary in fileContent:  # pra cada salary na minha lista lida
+    fileContent = read(path)
+    min_salary = []
+    for salary in fileContent:
         payment = salary["min_salary"]
-        # defino como payment o valor da chave 'min salary' do item
         if payment != '' and payment != 'invalid':
-            # se payment for = a vazio ou invalido não entra na equação
             min_salary.append(int(payment))
-            # adiciona a lista o valor INT de payment
     return min(min_salary)
-    # função min que retorna o menor valor do iteravel
 
 # Referencia para utilziação da função min:
 # https://www.w3schools.com/python/ref_func_min.asp
