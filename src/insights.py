@@ -1,19 +1,14 @@
+from src.jobs import read
+
+
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
+    jobs_csv = read(path)
+    job_types_from_csv = set()
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
+    for job in jobs_csv:
+        job_types_from_csv.add(job["job_type"])
+              
+    return job_types_from_csv
 
 
 def filter_by_job_type(jobs, job_type):
@@ -35,21 +30,13 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
+    jobs_industries_csv = read(path)
+    job_industry_from_csv = set()
 
-    Must call `read`
+    for job in jobs_industries_csv["industry"]:
+        job_industry_from_csv.add(job["industry"])
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    return job_industry_from_csv
 
 
 def filter_by_industry(jobs, industry):
@@ -71,39 +58,25 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
+    jobs_salaries_csv = read(path)
+    job_salary_from_csv = set()
 
-    Must call `read`
+    for job in jobs_salaries_csv["max_salary"]:
+        if job:
+            job_salary_from_csv.add(int(job["max_salary"]))
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    return max(job_salary_from_csv)
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
+    jobs_salaries_csv = read(path)
+    job_salary_from_csv = set()
 
-    Must call `read`
+    for job in jobs_salaries_csv["min_salary"]:
+        if job:
+            job_salary_from_csv.add(int(job["min_salary"]))
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    return min(job_salary_from_csv)
 
 
 def matches_salary_range(job, salary):
