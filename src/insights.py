@@ -27,6 +27,8 @@ def get_unique_industries(path):
 
     content = read(path)
 
+    industries = set()
+
     for job in content:
         if job["industry"] == "":  # Excluindo registros vazios
             pass
