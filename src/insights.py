@@ -1,4 +1,3 @@
-from multiprocessing.sharedctypes import Value
 from src.jobs import read
 
 
