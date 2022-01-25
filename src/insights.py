@@ -63,7 +63,7 @@ def get_max_salary(path):
         if index["max_salary"].isdigit():
             max_salary.add(int(index["max_salary"]))
     return max(list(max_salary))
-    
+
     """Get the maximum salary of all jobs
 
     Must call `read`
@@ -102,20 +102,25 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
 
 
 def matches_salary_range(job, salary):
-    if job["max_salary"].get or job["min_salary"].get:
-        raise ValueError("dont exist")
-    elif isinstance(job["max_salary"], int) or isinstance(job["min_salary"], int):
-        raise ValueError("not are number")
-    elif job["max_salary"] > job["min_salary"]:
-        raise ValueError("the min_value not can be highest than the max_value")
-    elif isinstance(salary, int):
-        raise ValueError("salary must be a number")
-    elif: 
-         
+    max_salary, min_salary = job.get("max_salary"), job.get("min_salary")
+    if type(max_salary) != int or type(min_salary) != int:
+        raise ValueError
+    elif max_salary < min_salary:
+        raise ValueError
+    elif type(salary) != int:
+        raise ValueError
+    elif min_salary <= salary <= max_salary:
+        return True
+    return False
+
+    # lembrar de perguntar sobre a função isinstance e o porque ela não
+    # estava funcionando! o que ela retorna!
+    #  também perguntar como fazer as coisas com try e se
+    # dava pra fazer de outra forma,
+    #  e como quebrar linhas em um if
     """Checks if a given salary is in the salary range of a given job
 
     Parameters
@@ -142,6 +147,7 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
+
     """Filters a list of jobs by salary range
 
     Parameters
