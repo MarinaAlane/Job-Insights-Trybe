@@ -34,7 +34,7 @@ def filter_by_industry(jobs, industry):
     for index in jobs:
         if index["industry"] == industry:
             filtered.append(index)
-        return filtered
+    return filtered
 
 
 def get_max_salary(path):
@@ -76,18 +76,12 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
-    """Filters a list of jobs by salary range
-
-    Parameters
-    ----------
-    jobs : list
-        The jobs to be filtered
-    salary : int
-        The salary to be used as filter
-
-    Returns
-    -------
-    list
-        Jobs whose salary range contains `salary`
-    """
-    return []
+    new_jobs = []
+    for index in jobs:
+        try:
+            data = matches_salary_range(index, salary)
+            if data:
+                new_jobs.append(index)
+        except ValueError:
+            pass
+    return new_jobs
