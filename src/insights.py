@@ -37,12 +37,16 @@ def filter_by_job_type(jobs, job_type):
     -------
     list
         List of jobs with provided job_type
+    REF:. https://stackoverflow.com/questions/8653516/python-list-of-dictionaries-search
+    REF:. https://www.w3schools.com/python/python_lambda.asp
     """
-    this_set = set()
-    this_dic = read()
-    for row in this_dic:
-        this_set.add(row["job_type"])
-    return this_set
+    # dis_list = []
+    # for value in jobs():
+    #     if job_type in value:
+    #         dis_list.append(value)
+    # print("PORRA")
+    # return dis_list
+    return list(filter(lambda teste: teste['job_type'] == job_type, jobs))
 
 
 def get_unique_industries(path):
