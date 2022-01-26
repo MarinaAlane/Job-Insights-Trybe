@@ -176,6 +176,11 @@ def filter_by_salary_range(jobs, salary):
     """
     if not isinstance(salary, int):
         return []
-    x = list(filter(lambda teste: teste['max_salary'] > salary >= teste['min_salary'], jobs))
+    a = 'max_salary'
+    b = 'min_salary'
+    x = list(
+        filter(
+            lambda teste: teste[a] > salary >= teste[b], jobs
+            ))
     print(x, salary, 'mark')
     return x
