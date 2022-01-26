@@ -87,4 +87,3 @@ def filter_by_salary_range(jobs, salary):
         ):
             list_jobs.append(job)
     return list_jobs
-
