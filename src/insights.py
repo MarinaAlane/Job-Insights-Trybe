@@ -1,4 +1,4 @@
-from src.jobs import read
+from .jobs import read
 
 
 def get_unique_job_types(path):
@@ -7,62 +7,38 @@ def get_unique_job_types(path):
 
     for job in jobs_csv:
         job_types_from_csv.add(job["job_type"])
-              
+             
     return job_types_from_csv
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
+    filter_result = [job for job in jobs if job["job_type"] == job_type]
 
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    return filter_result
 
 
 def get_unique_industries(path):
     jobs_industries_csv = read(path)
     job_industry_from_csv = set()
 
-    for job in jobs_industries_csv["industry"]:
+    for job in jobs_industries_csv:
         job_industry_from_csv.add(job["industry"])
 
     return job_industry_from_csv
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
+    filter_result = [job for job in jobs if job["industry"] == industry]
 
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+    return filter_result
 
 
 def get_max_salary(path):
     jobs_salaries_csv = read(path)
     job_salary_from_csv = set()
 
-    for job in jobs_salaries_csv["max_salary"]:
-        if job.isnumeric():
+    for job in jobs_salaries_csv:
+        if job["max_salary"].isnumeric():
             job_salary_from_csv.add(int(job["max_salary"]))
 
     return max(job_salary_from_csv)
@@ -72,8 +48,8 @@ def get_min_salary(path):
     jobs_salaries_csv = read(path)
     job_salary_from_csv = set()
 
-    for job in jobs_salaries_csv["min_salary"]:
-        if job.isnumeric():
+    for job in jobs_salaries_csv:
+        if job["min_salary"].isnumeric():
             job_salary_from_csv.add(int(job["min_salary"]))
 
     return min(job_salary_from_csv)
