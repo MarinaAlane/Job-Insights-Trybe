@@ -9,7 +9,6 @@ def get_unique_job_types(path):
         if row["job_type"] not in unique_jobs_types:
             unique_jobs_types.append(row["job_type"])
 
-    print(unique_jobs_types)
     return unique_jobs_types
 
 
@@ -32,21 +31,14 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
+    file_content = read(path)
+    unique_industries = []
 
-    Must call `read`
+    for row in file_content:
+        if row["industry"] not in unique_industries and row["industry"] != "":
+            unique_industries.append(row["industry"])
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    return unique_industries
 
 
 def filter_by_industry(jobs, industry):
