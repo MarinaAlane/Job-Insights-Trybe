@@ -11,7 +11,7 @@ def get_unique_job_types(path):  # ok
     return unique_job
 
 
-def filter_by_job_type(jobs, job_type):
+def filter_by_job_type(jobs, job_type):  # ok
     job_list = [job for job in jobs if job['job_type'] == job_type]
     return job_list
 
@@ -27,21 +27,8 @@ def get_unique_industries(path):  # ok
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+    job_list = [job for job in jobs if job['industry'] == industry]
+    return job_list
 
 
 def get_max_salary(path):  # ok
