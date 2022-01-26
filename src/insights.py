@@ -41,12 +41,6 @@ def filter_by_job_type(jobs, job_type):
     8653516/python-list-of-dictionaries-search
     REF:. https://www.w3schools.com/python/python_lambda.asp
     """
-    # dis_list = []
-    # for value in jobs():
-    #     if job_type in value:
-    #         dis_list.append(value)
-    # print("PORRA")
-    # return dis_list
     return list(filter(lambda teste: teste['job_type'] == job_type, jobs))
 
 
@@ -180,4 +174,8 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
+    if not isinstance(salary, int):
+        return []
+    x = list(filter(lambda teste: teste['max_salary'] > salary >= teste['min_salary'], jobs))
+    print(x, salary, 'mark')
+    return x
