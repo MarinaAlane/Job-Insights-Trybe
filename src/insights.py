@@ -1,4 +1,20 @@
+from src.jobs import read
+
+
 def get_unique_job_types(path):
+    jobs = read(path)
+    job_types = set()
+    for job in jobs:
+        job_types.add(job['job_type'])
+    return list(job_types)
+
+    ''' try:
+    except AttributeError:
+        # será executado caso haja uma exceção
+        print("arquivo inexistente")
+    finally:
+        # será sempre executado, independentemente de erro
+        print("Tentativa de abrir arquivo") '''
     """Checks all different job types and returns a list of them
 
     Must call `read`
@@ -13,7 +29,6 @@ def get_unique_job_types(path):
     list
         List of unique job types
     """
-    return []
 
 
 def filter_by_job_type(jobs, job_type):
