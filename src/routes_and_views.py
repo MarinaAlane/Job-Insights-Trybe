@@ -13,6 +13,8 @@ from .insights import (
 )
 from .more_insights import slice_jobs, get_int_from_args, build_jobs_urls
 
+from .more_insights import get_job
+
 bp = Blueprint("client", __name__, template_folder="templates")
 
 
@@ -57,6 +59,18 @@ def list_jobs():
     }
 
     return render_template("list_jobs.jinja2", ctx=ctx)
+
+
+# from .more_insights import get_job
+# ref:
+# https://github.com/tryber/sd-010-a-project-job-insights/pull/119/files
+
+
+@bp.route("/job/<index>")
+def job(index):
+    list = read("src/jobs.csv")
+    by_index = get_job(list, index)
+    return render_template("job.jinja2", job=by_index)
 
 
 def init_app(app: Flask):
