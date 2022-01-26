@@ -32,21 +32,13 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
+    get_industries_data = read(path)
+    result = []
+    for get_industry_data in get_industries_data:
+        if get_industry_data["industry"] != "":
+            result.append(get_industry_data["industry"])
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    return set(result)
 
 
 def filter_by_industry(jobs, industry):
@@ -149,3 +141,4 @@ def filter_by_salary_range(jobs, salary):
 
 if __name__ == "__main__":
     print(read(get_unique_job_types("src/jobs.csv")[0]))
+    print(read(get_unique_industries("src/jobs.csv")[0]))
