@@ -37,5 +37,7 @@ def test_sort_by_criteria():
         {'min_salary': 1000, 'max_salary': 2000, 'date_posted': '2021-12-15'},
         {'min_salary': 100, 'max_salary': 1000, 'date_posted': '2022-02-02'},
     }]
+
     sort_by(unordened_jobs, "date_posted")
     assert unordened_jobs == ordened_job_by_date_posted
+
