@@ -1,19 +1,13 @@
+from src.jobs import read
+
+
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
+    content = read(path)
+    jobs_type = []
+    for row in content:
+        if row["job_type"] not in jobs_type:
+            jobs_type.append(row["job_type"])
+    return jobs_type
 
 
 def filter_by_job_type(jobs, job_type):
@@ -35,21 +29,12 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    content = read(path)
+    industries = []
+    for row in content:
+        if row["industry"] not in industries and row["industry"] != "":
+            industries.append(row["industry"])
+    return industries
 
 
 def filter_by_industry(jobs, industry):
@@ -71,39 +56,21 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    content = read(path)
+    salaries = []
+    for row in content:
+        if row["max_salary"].isdigit():
+            salaries.append(int(row["max_salary"]))
+    return max(salaries)
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    content = read(path)
+    salaries = []
+    for row in content:
+        if row["min_salary"].isdigit():
+            salaries.append(int(row["min_salary"]))
+    return min(salaries)
 
 
 def matches_salary_range(job, salary):
