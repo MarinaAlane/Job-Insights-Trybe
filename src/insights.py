@@ -178,4 +178,10 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
+    def wrapper(job, salary):
+        try:
+            return matches_salary_range(job, salary)
+        except ValueError:
+            pass
+
+    return [job for job in jobs if wrapper(job, salary)]
