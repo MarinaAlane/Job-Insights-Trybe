@@ -103,7 +103,6 @@ def filter_by_job_type(jobs, job_type):
     for job in jobs:
         if job["job_type"] == job_type:
             jobs_types.append(job)
-    print(jobs_types)
     return jobs_types
 
 
@@ -122,7 +121,12 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    return []
+    industries = []
+    for job in jobs:
+        if job["industry"] == industry:
+            industries.append(job)
+    print(industries)
+    return industries
 
 
 def matches_salary_range(job, salary):
