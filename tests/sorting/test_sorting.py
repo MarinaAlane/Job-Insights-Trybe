@@ -6,25 +6,25 @@ from src.sorting import sort_by
 DATA_JOBS = [
     {
         "title": "Full stack end developer",
-        "min_salary": "4000",
+        "min_salary": "1000",
         "max_salary": "2000",
         "date_posted": "2022-08-07",
     },
     {
         "title": "Back end developer",
-        "min_salary": "3000",
+        "min_salary": "2000",
         "max_salary": "3000",
         "date_posted": "2022-08-08",
     },
     {
         "title": "Web developer",
-        "min_salary": "2000",
+        "min_salary": "3000",
         "max_salary": "4000",
         "date_posted": "2022-08-09",
     },
     {
         "title": "Front end developer",
-        "min_salary": "1000",
+        "min_salary": "4000",
         "max_salary": "5000",
         "date_posted": "2022-08-10",
     },
