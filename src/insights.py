@@ -6,8 +6,7 @@ def get_unique_job_types(path):
     job_types_from_csv = set()
 
     for job in jobs_csv:
-        if job["industry"] not in job_types_from_csv and job["industry"] != "":
-            job_types_from_csv.add(job["job_type"])          
+        job_types_from_csv.add(job["job_type"])  
     return job_types_from_csv
 
 
@@ -22,9 +21,7 @@ def get_unique_industries(path):
     job_industry = set()
 
     for job in jobs_industries_csv:
-        if job["insdustry"]:
-            job_industry.add(job["industry"])
-
+        job_industry.add(job["industry"])
     return job_industry
 
 
