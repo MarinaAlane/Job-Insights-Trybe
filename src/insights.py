@@ -156,6 +156,8 @@ def filter_by_salary_range(jobs, salary):
         except ValueError:
             pass
     return lista
+
+
 """Filters a list of jobs by salary range
     Parameters
     ----------
