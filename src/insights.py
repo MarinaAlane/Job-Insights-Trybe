@@ -21,7 +21,7 @@ def get_unique_industries(path):
     job_industry = set()
 
     for job in jobs_industries_csv:
-        if job["insdustry"] not in job_industry and job["industry"] != "":
+        if job["insdustry"]:
             job_industry.add(job["industry"])
 
     return job_industry
@@ -75,8 +75,8 @@ def filter_by_salary_range(jobs, salary):
     data_salary = []
     for job in jobs:
         try:
-            if matches_salary_range(jobs, salary):
+            if matches_salary_range(job, salary):
                 data_salary.append(job)
         except ValueError:
-
-            return data_salary
+            pass
+    return data_salary
