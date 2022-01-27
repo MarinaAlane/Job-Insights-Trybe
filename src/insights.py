@@ -127,8 +127,8 @@ def get_min_salary(path):
     this_set = set()
     this_dic = read(path)
     for row in this_dic:
-        this_set.add(row["min_salary"])
-    this_set = list(filter(None, this_set))
+        if row["min_salary"].isnumeric():
+            this_set.add(int(row["min_salary"]))
     minnn = min(this_set)
     return minnn
 
