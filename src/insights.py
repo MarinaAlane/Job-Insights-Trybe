@@ -99,7 +99,12 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
+    jobs_types = []
+    for job in jobs:
+        if job["job_type"] == job_type:
+            jobs_types.append(job)
+    print(jobs_types)
+    return jobs_types
 
 
 def filter_by_industry(jobs, industry):
