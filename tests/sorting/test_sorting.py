@@ -36,3 +36,5 @@ def test_sort_by_criteria(jobs):
     assert jobs == max_salary_sorting
     sort_by(jobs, "date_posted")
     assert jobs == date_posted_sorting
+    with pytest.raises(ValueError):
+        sort_by(jobs, "wrong_criteria")
