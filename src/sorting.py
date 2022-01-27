@@ -86,6 +86,8 @@ def sort_by(jobs, criteria):
         "min_salary": min_salary_key,
     }
 
+    print('criteria', criteria)
+
     try:
         key = criteria_keys[criteria]
     except KeyError:
