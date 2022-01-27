@@ -19,13 +19,13 @@ def filter_by_job_type(jobs, job_type):
 
 def get_unique_industries(path):
     jobs_industries_csv = read(path)
-    job_industry_from_csv = set()
+    job_industry = set()
 
     for job in jobs_industries_csv:
-        if job["insdustry"] not in job_industry_from_csv and job["industry"] != "":
-            job_industry_from_csv.append(job["industry"])
+        if job["insdustry"] not in job_industry and job["industry"] != "":
+            job_industry.add(job["industry"])
 
-    return job_industry_from_csv
+    return job_industry
 
 
 def filter_by_industry(jobs, industry):
@@ -57,8 +57,21 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
-    jobs_salaries = read(job, salary)
+    if "min_salary" not in job or "max_salary" not in job:
+        raise ValueError()
+    
+    if (
+        type(job["min_salary"]) != int
+        or type(job["max_salary"]) != int
+        or type(salary) != int
+    ):
+        raise ValueError()
+    
+    if int(job["min_salary"]) > int(job["max_salary"]):
+        raise ValueError
 
+    return int(job["min_salary"]) <= salary <= int(job["max_salary"])
+    
 
 def filter_by_salary_range(jobs, salary):
-    
+    pass
