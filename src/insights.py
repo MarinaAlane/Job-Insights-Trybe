@@ -10,22 +10,13 @@ def get_unique_job_types(path):
     return list(job_types)
 
 
+# Solução para filtrar encontrada em:
+# https://stackoverflow.com/questions/32474022/filter-list-of-dictionaries
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    if job_type == '':
+        return []
+    filtered_job_type = [job for job in jobs if job['job_type'] == job_type]
+    return filtered_job_type
 
 
 # Solução if encontrada em:
