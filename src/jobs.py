@@ -1,18 +1,18 @@
 from functools import lru_cache
+import csv
+
+# referencia do codigo:
+# https://stackoverflow.com/questions/21572175/convert-csv-file-to-list-of-dictionaries/46969915
 
 
 @lru_cache
 def read(path):
-    """Reads a file from a given path and returns its contents
+    list_jobs = []
+    with open(path, "r", encoding="utf8") as file:
+        jobs_result = csv.DictReader(file, delimiter=",")
+        for row in jobs_result:
+            list_jobs.append(row)
+    return list_jobs
 
-    Parameters
-    ----------
-    path : str
-        Full path to file
 
-    Returns
-    -------
-    list
-        List of rows as dicts
-    """
-    return []
+print(read("src/jobs.csv"))
