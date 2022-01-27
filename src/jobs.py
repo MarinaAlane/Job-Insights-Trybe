@@ -1,5 +1,5 @@
-from functools import lru_cache;
-import csv;
+from functools import lru_cache
+import csv
 
 
 @lru_cache
