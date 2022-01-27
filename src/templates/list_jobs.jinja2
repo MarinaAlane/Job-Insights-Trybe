@@ -100,7 +100,7 @@
                 {{ job["id"] }}
                 {% endif %}
             </td>
-            <td scope="row">{{ job["job_title"] }}</td>
+            <td scope="row"><a href="/job/{{ job["id"] }}">{{ job["job_title"] }}</a></td>
             <td scope="row">{{ job["company"] }}</td>
             <td scope="row">{{ job["industry"] }}</td>
             <td scope="row">{{ job["job_type"] }}</td>
