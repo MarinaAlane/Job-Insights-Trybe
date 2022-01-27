@@ -24,9 +24,6 @@ def get_unique_job_types(path):
     """
 
 
-# print(get_unique_job_types('./jobs.csv'))
-
-
 def filter_by_job_type(jobs, job_type):
     """Filters a list of jobs by job_type
 
@@ -85,7 +82,7 @@ def get_max_salary(path):
     jobs_list = read(path)
     salaries = []
     for job in jobs_list:
-        if job["max_salary"] != "":
+        if job["max_salary"] != "" and job["max_salary"] != "invalid":
             salaries.append(int(job["max_salary"]))
     return max(salaries)
     """Get the maximum salary of all jobs
@@ -102,8 +99,6 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-
-# print(get_max_salary('jobs.csv'))
 
 
 def get_min_salary(path):
