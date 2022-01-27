@@ -28,15 +28,6 @@ def test_sort_by_criteria(jobs__unsorted,
                           jobs__sorted_by_max_salary,
                           jobs__sorted_by_min_salary,
                           jobs__sorted_by_date_posted):
-
-    invalid_criterias = ['job_type', 'industry', 'company', 'state', 'city',
-                         'job_desc', 'rating', 'valid_until', 'id']
-
-    for criteria in invalid_criterias:
-        with raises(ValueError,
-                    match=f'invalid sorting criteria: {criteria}'):
-            sort_by(jobs__unsorted, criteria)
-
     jobs_to_sort = deepcopy(jobs__unsorted)
     sort_by(jobs_to_sort, 'max_salary')
     assert(jobs_to_sort) == jobs__sorted_by_max_salary
@@ -48,5 +39,13 @@ def test_sort_by_criteria(jobs__unsorted,
     jobs_to_sort = deepcopy(jobs__unsorted)
     sort_by(jobs_to_sort, 'date_posted')
     assert(jobs_to_sort) == jobs__sorted_by_date_posted
+
+    invalid_criterias = ['job_type', 'industry', 'company', 'state', 'city',
+                         'job_desc', 'rating', 'valid_until', 'id']
+
+    for criteria in invalid_criterias:
+        with raises(ValueError,
+                    match=f'invalid sorting criteria: {criteria}'):
+            sort_by(jobs__unsorted, criteria)
 
     pass
