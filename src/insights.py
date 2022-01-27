@@ -6,8 +6,7 @@ def get_unique_job_types(path):
     job_types_from_csv = set()
 
     for job in jobs_csv:
-        job_types_from_csv.add(job["job_type"])
-             
+        job_types_from_csv.add(job["job_type"])          
     return job_types_from_csv
 
 
@@ -59,14 +58,13 @@ def get_min_salary(path):
 def matches_salary_range(job, salary):
     if "min_salary" not in job or "max_salary" not in job:
         raise ValueError()
-    
     if (
         type(job["min_salary"]) != int
         or type(job["max_salary"]) != int
         or type(salary) != int
     ):
         raise ValueError()
-    
+
     if int(job["min_salary"]) > int(job["max_salary"]):
         raise ValueError
 
