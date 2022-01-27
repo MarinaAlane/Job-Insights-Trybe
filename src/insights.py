@@ -103,8 +103,8 @@ def get_max_salary(path):
     this_set = set()
     this_dic = read(path)
     for row in this_dic:
-        this_set.add(row["max_salary"])
-    this_set = list(filter(None, this_set))
+        if row["max_salary"].isnumeric():
+            this_set.add(int(row["max_salary"]))
     maxxx = max(this_set)
     return maxxx
 
@@ -182,5 +182,4 @@ def filter_by_salary_range(jobs, salary):
         filter(
             lambda teste: teste[a] > salary >= teste[b], jobs
             ))
-    print(x, salary, 'mark')
     return x
