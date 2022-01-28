@@ -2,20 +2,6 @@ from src.jobs import read
 
 
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
     data = read(path)
     res = list(set(job['job_type'] for job in data))
 
@@ -41,20 +27,6 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
     data = read(path)
 
     all_industries = list(set(job['industry'] for job in data))
@@ -82,21 +54,21 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
+    data = read(path)
 
-    Must call `read`
+    max_salary_list = filter(
+        None,
+        list(set(job['max_salary'] for job in data))
+    )
+    filter_list = filter(
+        lambda value: value.isnumeric(),
+        list(max_salary_list)
+    )
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
+    integer_list = list(map(int, filter_list))
+    max_salary = max(integer_list)
 
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    return max_salary
 
 
 def get_min_salary(path):
