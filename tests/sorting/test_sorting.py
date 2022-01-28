@@ -1,4 +1,5 @@
 import pytest
+from copy import copy 
 from src.sorting import sort_by
 
 mockingbird = [
@@ -28,8 +29,17 @@ date_posted_mock = [
 
 def test_sort_by():
     pass
-    sort_by(mockingbird, "min_salary")
-    assert mockingbird == min_salary_mock
+    x = copy(mockingbird)
+    sort_by(x, "min_salary")
+    assert x == min_salary_mock
+
+    x = copy(mockingbird)
+    sort_by(x, "max_salary")
+    assert x == max_salary_mock
+
+    x = copy(mockingbird)
+    sort_by(x, "date_posted")
+    assert x == date_posted_mock
 
     with pytest.raises(ValueError):
         sort_by(mockingbird, "invalid")
