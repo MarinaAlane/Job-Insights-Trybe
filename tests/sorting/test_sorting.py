@@ -78,9 +78,9 @@ def test_sort_by_criteria():
 
     sort_by(job_list, "min_salary")
     assert job_list == order_by_min_salary
-   
+
     sort_by(job_list, "date_posted")
     assert job_list == order_by_date_posted
-    
+
     with pytest.raises(ValueError, match="invalid sorting criteria: 1234"):
         sort_by(job_list, "1234")
