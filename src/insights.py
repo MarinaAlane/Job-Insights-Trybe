@@ -154,4 +154,4 @@ def filter_by_salary_range(jobs, salary):
     return []
 
 
-get_max_salary("/home/silva_enilsom/trybe/projetos/sd-011-project-job-insights/src/jobs.csv")
+# get_max_salary("/home/silva_enilsom/trybe/projetos/sd-011-project-job-insights/src/jobs.csv")
