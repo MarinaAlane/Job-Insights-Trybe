@@ -69,45 +69,21 @@ def get_max_salary(path):
     for salary in salaries_list:
         if salary >= biggest_salary:
             biggest_salary = salary
-    """ for salary in salaries:
-        if int(salary) >= biggest_salary:
-            biggest_salary = int(salary) """
-
-    print(biggest_salary)
     return biggest_salary
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
+    salaries = get_unique_list(path, "min_salary")
+    salaries_list = list()
+    for salary in salaries:
+        if salary.isnumeric():
+            salaries_list.append(int(salary))
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    smallest_salary = salaries_list[0]
+    for salary in salaries_list:
+        if salary <= smallest_salary:
+            smallest_salary = salary
+    return smallest_salary
 
 
 def matches_salary_range(job, salary):
@@ -153,5 +129,5 @@ def filter_by_salary_range(jobs, salary):
     """
     return []
 
-
+# python3 -m pytest -k nome_da_func_de_tests
 # get_max_salary("/home/silva_enilsom/trybe/projetos/sd-011-project-job-insights/src/jobs.csv")
