@@ -1,4 +1,4 @@
-# import pytest
+import pytest
 from src.sorting import sort_by
 
 mockingbird = [
@@ -29,3 +29,6 @@ date_posted_mock = [
 def test_sort_by():
     sort_by(mockingbird, "min_salary")
     assert mockingbird == min_salary_mock
+
+    with pytest.raises(ValueError):
+        sort_by(mockingbird, "invalid")
