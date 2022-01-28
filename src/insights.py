@@ -1,4 +1,5 @@
 from src.jobs import read
+arrayjobs = read("src/jobs.csv")
 
 
 def get_unique_job_types(path):
@@ -28,21 +29,12 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+    filter_industries = []
+    for job in jobs:
+        if job["industry"] == industry:
+            filter_industries.append(job)
+            print(job)
+    return filter_industries
 
 
 """ função max consultada no site
@@ -65,9 +57,6 @@ def get_min_salary(path):
         if row["min_salary"].isdigit() and row["min_salary"] != "":
             smaller_salary.append(int(row["min_salary"]))
     return min(smaller_salary)
-
-
-print(get_min_salary("src/jobs.csv"))
 
 
 def matches_salary_range(job, salary):
