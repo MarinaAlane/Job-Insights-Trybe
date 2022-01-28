@@ -11,7 +11,3 @@ def read(path):
             result.append(job)
 
     return result
-
-
-if __name__ == "__main__":
-    print(read("src/jobs.csv")[0])
