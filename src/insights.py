@@ -35,7 +35,7 @@ def get_unique_industries(path):
     for row in all_jobs:
         if row['industry'] != '' and row['industry'] not in industries_list:
             industries_list.append(row['industry'])
-        
+
     return industries_list
 
 
