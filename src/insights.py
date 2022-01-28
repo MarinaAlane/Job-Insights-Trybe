@@ -59,6 +59,22 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
+    salaries = get_unique_list(path, "max_salary")
+    biggest_salary = 0
+    salaries_list = list()
+    for salary in salaries:
+        if salary.isnumeric():
+            salaries_list.append(int(salary))
+
+    for salary in salaries_list:
+        if salary >= biggest_salary:
+            biggest_salary = salary
+    """ for salary in salaries:
+        if int(salary) >= biggest_salary:
+            biggest_salary = int(salary) """
+
+    print(biggest_salary)
+    return biggest_salary
     """Get the maximum salary of all jobs
 
     Must call `read`
@@ -138,4 +154,4 @@ def filter_by_salary_range(jobs, salary):
     return []
 
 
-# get_unique_job_types("/home/silva_enilsom/trybe/projetos/sd-011-project-job-insights/src/jobs.csv")
+get_max_salary("/home/silva_enilsom/trybe/projetos/sd-011-project-job-insights/src/jobs.csv")
