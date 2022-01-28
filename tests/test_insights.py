@@ -126,6 +126,7 @@ def test_get_unique_industries():
     assert "solar energy" in result
 
 
+
 @pytest.fixture()
 def jobs_for_filter_by_industry():
     return [
