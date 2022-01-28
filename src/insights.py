@@ -125,7 +125,6 @@ def filter_by_industry(jobs, industry):
     for job in jobs:
         if job["industry"] == industry:
             industries.append(job)
-    print(industries)
     return industries
 
 
@@ -152,7 +151,21 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
+    if not ("max_salary" in job and "min_salary" in job):
+        raise ValueError("As chaves min_salary ou max_salary não existem")
+    elif (
+        type(job["max_salary"]) != int
+        or type(job["min_salary"]) != int
+        or type(salary) != int
+    ):
+        raise ValueError("O valor passado não foi passado valido")
+    elif job["min_salary"] > job["max_salary"]:
+        raise ValueError(
+            "O valor de min_salary não pode ser maior que max_salary"
+        )
+    elif job["min_salary"] <= salary <= job["max_salary"]:
+        return True
+    return False
 
 
 def filter_by_salary_range(jobs, salary):
