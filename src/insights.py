@@ -1,4 +1,4 @@
-from jobs import read
+from src.jobs import read
 
 
 def get_unique_job_types(path):
@@ -63,30 +63,21 @@ def get_max_salary(path):
     salary = read(path)
     bigger_salary = []
     for row in salary:
-        if row["max_salary"] != "":
+        if row["max_salary"].isdigit() and row["max_salary"] != "":
             bigger_salary.append(int(row["max_salary"]))
     return max(bigger_salary)
 
 
-print(get_max_salary("src/jobs.csv"))
-
-
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
+    salary = read(path)
+    smaller_salary = []
+    for row in salary:
+        if row["min_salary"] != "":
+            smaller_salary.append(int(row["min_salary"]))
+    return max(smaller_salary)
 
-    Must call `read`
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+print(get_min_salary("src/jobs.csv"))
 
 
 def matches_salary_range(job, salary):
