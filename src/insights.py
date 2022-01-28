@@ -5,17 +5,17 @@ def get_unique_job_types(path):
     jobs = read(path)
     job_types = set()
     for job in jobs:
-        if job['job_type'] != '':
-            job_types.add(job['job_type'])
+        if job["job_type"] != "":
+            job_types.add(job["job_type"])
     return list(job_types)
 
 
 # Solução para filtrar encontrada em:
 # https://stackoverflow.com/questions/32474022/filter-list-of-dictionaries
 def filter_by_job_type(jobs, job_type):
-    if job_type == '':
+    if job_type == "":
         return []
-    filtered_job_type = [job for job in jobs if job['job_type'] == job_type]
+    filtered_job_type = [job for job in jobs if job["job_type"] == job_type]
     return filtered_job_type
 
 
@@ -26,15 +26,15 @@ def get_unique_industries(path):
     jobs = read(path)
     industry_types = set()
     for job in jobs:
-        if job['industry'] != '':
-            industry_types.add(job['industry'])
+        if job["industry"] != "":
+            industry_types.add(job["industry"])
     return list(industry_types)
 
 
 def filter_by_industry(jobs, industry):
-    if industry == '':
+    if industry == "":
         return []
-    filtered_industry = [job for job in jobs if job['industry'] == industry]
+    filtered_industry = [job for job in jobs if job["industry"] == industry]
     return filtered_industry
 
 
@@ -42,8 +42,8 @@ def get_max_salary(path):
     jobs = read(path)
     higher_salary = set()
     for salary in jobs:
-        if salary['max_salary'].isdigit():
-            higher_salary.add(int((salary['max_salary'])))
+        if salary["max_salary"].isdigit():
+            higher_salary.add(int((salary["max_salary"])))
     return max(list(higher_salary))
 
 
@@ -51,35 +51,30 @@ def get_min_salary(path):
     jobs = read(path)
     lower_salary = set()
     for salary in jobs:
-        if salary['min_salary'].isdigit():
-            lower_salary.add(int((salary['min_salary'])))
+        if salary["min_salary"].isdigit():
+            lower_salary.add(int((salary["min_salary"])))
     return min(list(lower_salary))
 
 
 def matches_salary_range(job, salary):
-    """Checks if a given salary is in the salary range of a given job
-
-    Parameters
-    ----------
-    job : dict
-        The job with `min_salary` and `max_salary` keys
-    salary : int
-        The salary to check if matches with salary range of the job
-
-    Returns
-    -------
-    bool
-        True if the salary is in the salary range of the job, False otherwise
-
-    Raises
-    ------
-    ValueError
-        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-        If `job["min_salary"]` is greather than `job["max_salary"]`
-        If `salary` isn't a valid integer
-    """
-    pass
+    if "min_salary" not in job or "max_salary" not in job:
+        raise ValueError("doesn't exists")
+    elif (
+        job["min_salary"] is None
+        or job["max_salary"] is None
+        or salary is None
+    ):
+        raise ValueError("aren't valid integers")
+    elif (
+        type(job["min_salary"]) is not int
+        or type(job["max_salary"]) is not int
+        or type(salary) is not int
+    ):
+        raise ValueError("aren't valid integers")
+    elif job["min_salary"] > job["max_salary"]:
+        raise ValueError("isn't a valid integer")
+    else:
+        return job["min_salary"] <= salary <= job["max_salary"]
 
 
 def filter_by_salary_range(jobs, salary):
