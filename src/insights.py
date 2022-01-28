@@ -72,9 +72,9 @@ def get_min_salary(path):
     salary = read(path)
     smaller_salary = []
     for row in salary:
-        if row["min_salary"] != "":
+        if row["min_salary"].isdigit() and row["min_salary"] != "":
             smaller_salary.append(int(row["min_salary"]))
-    return max(smaller_salary)
+    return min(smaller_salary)
 
 
 print(get_min_salary("src/jobs.csv"))
