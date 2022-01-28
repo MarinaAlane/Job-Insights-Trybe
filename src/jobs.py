@@ -1,6 +1,10 @@
 from functools import lru_cache
 import csv
 
+# Desenvolvi este codigo tendo como base o PR do colega Luiz Wendell, que sanou
+# algumas duvidas referentes a como criar a estrutura do arquivo. Pr do colega
+# https://github.com/tryber/sd-011-project-job-insights/pull/3
+
 
 @lru_cache
 def read(path):
