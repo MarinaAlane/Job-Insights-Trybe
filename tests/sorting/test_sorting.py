@@ -1,5 +1,5 @@
 import pytest
-from copy import copy
+from copy import deepcopy
 from src.sorting import sort_by
 
 mockingbird = [
@@ -28,16 +28,15 @@ date_posted_mock = [
 
 
 def test_sort_by():
-    pass
-    x = copy(mockingbird)
+    x = deepcopy(mockingbird)
     sort_by(x, "min_salary")
     assert x == min_salary_mock
 
-    x = copy(mockingbird)
+    x = deepcopy(mockingbird)
     sort_by(x, "max_salary")
     assert x == max_salary_mock
 
-    x = copy(mockingbird)
+    x = deepcopy(mockingbird)
     sort_by(x, "date_posted")
     assert x == date_posted_mock
 
