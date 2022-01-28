@@ -7,6 +7,7 @@ from src.insights import (
     filter_by_job_type,
     filter_by_industry,
     matches_salary_range,
+    filter_by_salary_range
 )
 
 read("src/jobs.csv")
@@ -26,3 +27,5 @@ filter_by_industry(read("src/jobs.csv"), "Manufacturing")
 salarys = {"max_salary": 10, "min_salary": 0}
 
 matches_salary_range(salarys, 1000)
+
+filter_by_salary_range(read("src/jobs.csv"), 1000)
