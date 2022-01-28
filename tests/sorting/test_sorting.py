@@ -27,6 +27,7 @@ date_posted_mock = [
 
 
 def test_sort_by():
+    pass
     sort_by(mockingbird, "min_salary")
     assert mockingbird == min_salary_mock
 
