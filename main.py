@@ -1,3 +1,5 @@
 from src.jobs import read
+from src.insights import get_unique_job_types
 
-print(read('./src/jobs.csv'))
+read('./src/jobs.csv')
+get_unique_job_types('./tests/mocks/jobs_with_types.csv')
