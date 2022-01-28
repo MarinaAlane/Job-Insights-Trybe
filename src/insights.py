@@ -70,8 +70,8 @@ def check_salary(job, salary):
 
 def matches_salary_range(job, salary):
     check_salary(job, salary)
-    max_salary = job['max_salary']
-    min_salary = job['min_salary']
+    max_salary = job.get('max_salary', None)
+    min_salary = job.get('min_salary', None)
     if(max_salary >= salary >= min_salary):
         return True
     else:
@@ -79,18 +79,26 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
-    """Filters a list of jobs by salary range
-
-    Parameters
-    ----------
-    jobs : list
-        The jobs to be filtered
-    salary : int
-        The salary to be used as filter
-
-    Returns
-    -------
-    list
-        Jobs whose salary range contains `salary`
-    """
-    return []
+    # codigo que eu estava ussando antes
+    # list_jobs = []
+    # count = 0
+    # for job in jobs:
+    #     check_salary(job, salary)
+    #     max_salary = job['max_salary']
+    #     min_salary = job['min_salary']
+    #     while count <= len(jobs):
+    #         if(int(max_salary) < salary < int(min_salary)):
+    #             list_jobs.append((int(max_salary), int(min_salary)))
+    #         count = count + 1
+    # return list_jobs
+    # codigo retirado do
+    #  https://github.com/tryber/sd-011-project-job-insights/pull/111/files
+    # - Jorge Meyrelles Jr
+    list_jobs = []
+    for job in jobs:
+        try:
+            if matches_salary_range(job, salary):
+                list_jobs.append(job)
+        except ValueError:
+            pass
+    return list_jobs
