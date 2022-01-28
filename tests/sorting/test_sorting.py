@@ -1,5 +1,5 @@
 import pytest
-from copy import copy 
+from copy import copy
 from src.sorting import sort_by
 
 mockingbird = [
