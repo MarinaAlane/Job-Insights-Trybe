@@ -10,7 +10,6 @@ def get_unique_job_types(path):
             job_type.append(job['job_type'])
 
     return job_type
-print(get_unique_job_types('src/jobs.csv'))
 
 def filter_by_job_type(jobs, job_type):
     """Filters a list of jobs by job_type
@@ -69,22 +68,14 @@ def get_max_salary(path):
     return max(salary_list)
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
 
-    Must call `read`
+    list_dict = read(path)
+    salary_list = []
+    for salary in list_dict:
+        if salary["min_salary"].isdigit():
+            salary_list.append(int(salary["min_salary"]))
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
-
+    return min(salary_list)
 
 def matches_salary_range(job, salary):
     """Checks if a given salary is in the salary range of a given job
