@@ -91,6 +91,19 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
+    filtered_jobs_by_salary_range = list()
+
+    for offer in jobs:
+        try:
+            is_valid_salary = matches_salary_range(offer, salary)
+            if is_valid_salary:
+                filtered_jobs_by_salary_range.append(offer)
+
+        except ValueError:
+            pass
+
+    return filtered_jobs_by_salary_range
+
     """Filters a list of jobs by salary range
 
     Parameters
@@ -105,7 +118,7 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
+    # return []
 
 
 # python3 -m pytest -k nome_da_func_de_tests
