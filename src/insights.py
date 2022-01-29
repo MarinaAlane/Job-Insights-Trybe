@@ -11,21 +11,8 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    filtered_job = filter(lambda job: (job["job_type"] == job_type), jobs)
+    return list(filtered_job)
 
 
 def remove_empty(array):
@@ -71,15 +58,11 @@ def get_max_salary(path):
     array_of_salaries = set()
     for item in document:
         try:
-            array_of_salaries.add(item["max_salary"])
-            filtered_salaries = filter(remove_empty, array_of_salaries)
-            new_array_of_salaries = set()
-            for salary in filtered_salaries:
-                new_array_of_salaries.add(int(salary))
+            array_of_salaries.add(int(item["max_salary"]))
         except ValueError:
-            print("Invalid number")
+            pass
 
-    return max(new_array_of_salaries)
+    return max(array_of_salaries)
 
 
 def get_min_salary(path):
@@ -87,15 +70,11 @@ def get_min_salary(path):
     array_of_salaries = set()
     for item in document:
         try:
-            array_of_salaries.add(item["min_salary"])
-            filtered_salaries = filter(remove_empty, array_of_salaries)
-            new_array_of_salaries = set()
-            for salary in filtered_salaries:
-                new_array_of_salaries.add(int(salary))
+            array_of_salaries.add(int(item["min_salary"]))
         except ValueError:
-            print("Invalid number")
+            pass
 
-    return min(new_array_of_salaries)
+    return min(array_of_salaries)
 
 
 def matches_salary_range(job, salary):
