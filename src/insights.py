@@ -75,7 +75,7 @@ def matches_salary_range(job, salary):
         return True
     else:
         return False
-       
+
 
 def filter_by_salary_range(jobs, salary):
     list_jobs = []
