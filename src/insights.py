@@ -48,9 +48,6 @@ def get_unique_industries(path):
     return list(filtered_industries)
 
 
-get_unique_industries("src/jobs.csv")
-
-
 def filter_by_industry(jobs, industry):
     """Filters a list of jobs by industry
 
@@ -85,25 +82,20 @@ def get_max_salary(path):
     return max(new_array_of_salaries)
 
 
-print(get_max_salary("src/jobs.csv"))
-
-
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
+    document = read(path)
+    array_of_salaries = set()
+    for item in document:
+        try:
+            array_of_salaries.add(item["min_salary"])
+            filtered_salaries = filter(remove_empty, array_of_salaries)
+            new_array_of_salaries = set()
+            for salary in filtered_salaries:
+                new_array_of_salaries.add(int(salary))
+        except ValueError:
+            print("Invalid number")
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    return min(new_array_of_salaries)
 
 
 def matches_salary_range(job, salary):
