@@ -1,8 +1,6 @@
-import pytest
 from src.sorting import sort_by
 
 
-# @pytest.fixture
 def jobs_list():
     return [
         {"min_salary": 2000, "max_salary": 3000, "data-posted": "2022-01-27"},
