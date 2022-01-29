@@ -12,13 +12,18 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-
+    
     return []
 
 
 def get_unique_industries(path):
+    csv_file = read(path)
 
-    return []
+    list_industries = []
+    for row in csv_file:
+        list_industries.append(row["industry"])
+
+    return list(dict.fromkeys(list_industries))
 
 
 def filter_by_industry(jobs, industry):
@@ -27,8 +32,15 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
+    csv_file = read(path)
 
-    pass
+    list_max_salary = []
+
+    for row in csv_file:
+        if row["max_salary"].isdigit():
+            list_max_salary.append(int(row["max_salary"], base=10))
+
+    return max(list_max_salary, key=int) 
 
 
 def get_min_salary(path):
