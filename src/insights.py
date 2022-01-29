@@ -12,8 +12,13 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    
-    return []
+    jobs_filtered = []
+
+    for job in jobs:
+        if job["job_type"] == job_type:
+            jobs_filtered.append(job)
+
+    return jobs_filtered
 
 
 def get_unique_industries(path):
