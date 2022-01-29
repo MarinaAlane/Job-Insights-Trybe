@@ -14,21 +14,16 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
+    filter_job_type = list(
+        filter(lambda jobs_type: jobs_type["job_type"] == job_type, jobs)
+    )
 
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
+    return filter_job_type
 
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+
+# para o requisito 6 usei esse link como referencia ao usar o filter:
+# https://www.digitalocean.com/community/tutorials/how-to-use-the-python-filter-function-pt
+# pesquisa realizada em 28/01/22
 
 
 def get_unique_industries(path):
