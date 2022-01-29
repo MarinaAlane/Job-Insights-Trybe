@@ -4,10 +4,10 @@ import src.jobs as jobs
 def get_unique_job_types(path):
     jobs_list = jobs.read(path)
 
+    jobs_type = []
     for job in jobs_list:
-        # https://docs.python.org/3/tutorial/datastructures.html
-        jobs_type = list(set([job["job_type"]]))
-        print(jobs_type)
+        if job["job_type"] not in jobs_type:
+            jobs_type.append(job["job_type"])
     return jobs_type
 
 
