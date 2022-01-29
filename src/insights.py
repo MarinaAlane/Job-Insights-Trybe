@@ -76,7 +76,7 @@ def matches_salary_range(job, salary):
 
     return salary >= job["min_salary"] and salary <= job["max_salary"]
 
-
+# this is the first comment
 def filter_by_salary_range(jobs, salary):
     jobs_arr = []
     for job in jobs:
