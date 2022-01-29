@@ -1,5 +1,4 @@
 from src.sorting import sort_by
-import pytest
 
 jobs = [
     {"date_posted": "2001-08-03", "max_salary": 3000, "min_salary": 5000},
