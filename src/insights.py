@@ -73,20 +73,14 @@ def get_max_salary(path):
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
+    valore_unicos = read(path)
+    max_s = set()
 
-    Must call `read`
+    for row in valore_unicos:
+        if row['min_salary'] != '' and row['min_salary'] != 'invalid':
+            max_s.add(int(row['min_salary']))
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
+    return min(max_s)
     pass
 
 
