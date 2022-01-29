@@ -41,7 +41,7 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    # feito através do site: 
+    # feito através do site:
     # https://www.programiz.com/python-programming/methods/built-in/filter
     # implementa filtros através da função lambda.
     filter_job = filter(lambda job: job["job_type"] == job_type, jobs)
