@@ -1,10 +1,10 @@
 from functools import lru_cache
+import csv
 
 
 @lru_cache
 def read(path):
     """Reads a file from a given path and returns its contents
-
     Parameters
     ----------
     path : str
@@ -15,4 +15,10 @@ def read(path):
     list
         List of rows as dicts
     """
-    return []
+    with open(path) as job_file:
+        jobs_reader = csv.DictReader(job_file, delimiter=",", quotechar='"')
+        dict_job = []
+        for jobs in jobs_reader:
+            dict_job.append(jobs)
+
+    return dict_job
