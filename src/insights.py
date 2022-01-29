@@ -3,32 +3,19 @@ from src.jobs import read
 
 def get_unique_job_types(path):
     get_jobs_data = read(path)
-    result = {}
+    result = set()
     for get_job_data in get_jobs_data:
-        if not get_job_data["job_type"] in result:
-            result[get_job_data["job_type"]] = 1
-        else:
-            result[get_job_data["job_type"]] += 1
+        result.add(get_job_data["job_type"])
 
     return list(result)
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
+    # para realizar o requisito, utilizei o auxilio de seguinte material:
+    # https://www.programiz.com/python-programming/methods/built-in/filter
+    filtered_jobs = filter(lambda job: (job["job_type"] == job_type), jobs)
 
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    return list(filtered_jobs)
 
 
 def get_unique_industries(path):
