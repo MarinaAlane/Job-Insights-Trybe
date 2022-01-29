@@ -8,20 +8,6 @@ def get_distinct_values_by_key(job_list, key):
 
 
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
     jobs = read(path)
 
     return get_distinct_values_by_key(jobs, 'job_type')
@@ -46,20 +32,6 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
     jobs = read(path)
 
     return get_distinct_values_by_key(jobs, 'industry')
@@ -84,21 +56,14 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
+    jobs = read(path)
+    salaries = get_distinct_values_by_key(jobs, 'max_salary')
+    max_salary = 0
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    for salary in salaries:
+        if salary.isdigit() and float(salary) > float(max_salary):
+            max_salary = float(salary)
+    return max_salary
 
 
 def get_min_salary(path):
