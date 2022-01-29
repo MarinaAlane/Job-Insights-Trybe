@@ -21,7 +21,7 @@ def filter_by_job_type(jobs, job_type):
     return filter_job_type
 
 
-# para o requisito 6 usei esse link como referencia ao usar o filter:
+# para os requisitos de filtro usei esse link como referencia ao usar o filter:
 # https://www.digitalocean.com/community/tutorials/how-to-use-the-python-filter-function-pt
 # pesquisa realizada em 28/01/22
 
@@ -39,21 +39,11 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
+    filter_job_industry = filter(
+        lambda job: job["industry"] == industry, jobs
+    )
 
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+    return list(filter_job_industry)
 
 
 def get_max_salary(path):
