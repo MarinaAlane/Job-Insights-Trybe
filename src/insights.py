@@ -21,7 +21,8 @@ def get_unique_industries(path):
     job_industry = set()
 
     for job in jobs_industries_csv:
-        job_industry.add(job["industry"])
+        if (job["industry"]):
+            job_industry.add(job["industry"])
     return job_industry
 
 
