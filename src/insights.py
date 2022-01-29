@@ -73,6 +73,11 @@ def get_min_salary(path):
 # https://docs.python.org/pt-br/3/tutorial/errors.html
 # https://www.geeksforgeeks.org/python-raise-keyword/
 
+# Pesquisas para o resquisito 9 (valueError, except)
+# https://www.w3schools.com/python/python_try_except.asp
+# https://www.datacamp.com/community/tutorials/exception-handling-python?utm_source=adwords_ppc&utm_medium=cpc&utm_campaignid=1455363063&utm_adgroupid=65083631748&utm_device=c&utm_keyword=&utm_matchtype=&utm_network=g&utm_adpostion=&utm_creative=278443377095&utm_targetid=dsa-429603003980&utm_loc_interest_ms=&utm_loc_physical_ms=1001566&gclid=Cj0KCQiAxc6PBhCEARIsAH8Hff32VfizUsGEOsRAIS4vRYNl5lLiMJfSXkfTPRhR6GXK_TtJ0fM5TbkaArSFEALw_wcB
+
+
 def matches_salary_range(job, salary):
     if "min_salary" not in job or "max_salary" not in job:
         raise ValueError("Values not found")
@@ -91,18 +96,12 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
-    """Filters a list of jobs by salary range
+    salary_range = list()
 
-    Parameters
-    ----------
-    jobs : list
-        The jobs to be filtered
-    salary : int
-        The salary to be used as filter
-
-    Returns
-    -------
-    list
-        Jobs whose salary range contains `salary`
-    """
-    return []
+    for job in jobs:
+        try:
+            if matches_salary_range(job, salary):
+                salary_range.append(job)
+        except ValueError:
+            pass
+    return salary_range
