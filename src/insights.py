@@ -28,22 +28,27 @@ def filter_by_job_type(jobs, job_type):
     return []
 
 
+def remove_empty(array):
+    for item in array:
+        if item != "":
+            return True
+        else:
+            return False
+
+
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
+    industries = read(path)
+    # dict_of_unique_jobs = {}
+    array_of_industries = set()
+    for industry in industries:
+        array_of_industries.add(industry["industry"])
+    # método encontrado em
+    # https://www.programiz.com/python-programming/methods/built-in/filter
+    filtered_industries = filter(remove_empty, array_of_industries)
+    return list(filtered_industries)
 
-    Must call `read`
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+get_unique_industries("src/jobs.csv")
 
 
 def filter_by_industry(jobs, industry):
