@@ -70,21 +70,22 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
+    document = read(path)
+    array_of_salaries = set()
+    for item in document:
+        try:
+            array_of_salaries.add(item["max_salary"])
+            filtered_salaries = filter(remove_empty, array_of_salaries)
+            new_array_of_salaries = set()
+            for salary in filtered_salaries:
+                new_array_of_salaries.add(int(salary))
+        except ValueError:
+            print("Invalid number")
 
-    Must call `read`
+    return max(new_array_of_salaries)
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
 
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+print(get_max_salary("src/jobs.csv"))
 
 
 def get_min_salary(path):
