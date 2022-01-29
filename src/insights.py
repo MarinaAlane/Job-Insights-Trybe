@@ -32,21 +32,8 @@ get_unique_industries('src/jobs.csv')
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+    list_job = [row for row in jobs if row['industry'] == industry]
+    return list_job
 
 
 def get_max_salary(path):
