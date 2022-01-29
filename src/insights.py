@@ -26,7 +26,7 @@ def get_unique_industries(path):
 
     list_industries = []
     for row in csv_file:
-        if row["industry"] != '':
+        if row["industry"] != "":
             list_industries.append(row["industry"])
 
     return list(dict.fromkeys(list_industries))
@@ -51,7 +51,7 @@ def get_max_salary(path):
         if row["max_salary"].isdigit():
             list_max_salary.append(int(row["max_salary"], base=10))
 
-    return max(list_max_salary, key=int) 
+    return max(list_max_salary, key=int)
 
 
 def get_min_salary(path):
@@ -83,5 +83,5 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
-    
+
     return []
