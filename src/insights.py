@@ -103,23 +103,3 @@ def filter_by_salary_range(jobs, salary):
             pass
 
     return filtered_jobs_by_salary_range
-
-    """Filters a list of jobs by salary range
-
-    Parameters
-    ----------
-    jobs : list
-        The jobs to be filtered
-    salary : int
-        The salary to be used as filter
-
-    Returns
-    -------
-    list
-        Jobs whose salary range contains `salary`
-    """
-    # return []
-
-
-# python3 -m pytest -k nome_da_func_de_tests
-# get_max_salary("/home/silva_enilsom/trybe/projetos/sd-011-project-job-insights/src/jobs.csv")
