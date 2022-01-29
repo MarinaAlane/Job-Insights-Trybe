@@ -5,7 +5,7 @@ def get_unique_job_types(path):
     read_job = read(path)
     conjunto_job = set()
     for job in read_job:
-        if (job["job_type"] != ""):
+        if job["job_type"] != "":
             conjunto_job.add(job["job_type"])
     return conjunto_job
     """Checks all different job types and returns a list of them
@@ -44,6 +44,15 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
+    read_job = read(path)
+    conjunto_job = set()
+    for job in read_job:
+        if job["industry"] != "":
+            conjunto_job.add(job["industry"])
+    return conjunto_job
+    # read_job = read(path)
+    # lista = {job["industry"] for job in read_job if job["industry"] != ""}
+    # return lista
     """Checks all different industries and returns a list of them
 
     Must call `read`
