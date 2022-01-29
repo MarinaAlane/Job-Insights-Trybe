@@ -1,6 +1,7 @@
 from .jobs import read
 
 
+# Funções criadas como apoio
 def get_unique_list(path, key):
     jobs = read(path)
     new_set = set()
@@ -12,6 +13,7 @@ def get_unique_list(path, key):
     return new_set
 
 
+# Funções padrão do projeto
 def get_unique_job_types(path):
     result = get_unique_list(path, "job_type")
     return result
@@ -70,29 +72,22 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
-    """Checks if a given salary is in the salary range of a given job
 
-    Parameters
-    ----------
-    job : dict
-        The job with `min_salary` and `max_salary` keys
-    salary : int
-        The salary to check if matches with salary range of the job
-
-    Returns
-    -------
-    bool
-        True if the salary is in the salary range of the job, False otherwise
-
-    Raises
-    ------
-    ValueError
-        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-        If `job["min_salary"]` is greather than `job["max_salary"]`
-        If `salary` isn't a valid integer
-    """
-    pass
+    if not ("max_salary" in job and "min_salary" in job):
+        raise ValueError("Keys sohuld be in dict")
+    elif (
+         type(job["max_salary"]) != int
+         or type(job["min_salary"]) != int
+         or type(salary) != int
+     ):
+        raise ValueError("Values should be int")
+    elif job["min_salary"] > job["max_salary"]:
+        raise ValueError(
+            "max_salary should be biggest than nim_salary"
+          )
+    elif job["min_salary"] <= salary <= job["max_salary"]:
+        return True
+    return False
 
 
 def filter_by_salary_range(jobs, salary):
@@ -111,6 +106,7 @@ def filter_by_salary_range(jobs, salary):
         Jobs whose salary range contains `salary`
     """
     return []
+
 
 # python3 -m pytest -k nome_da_func_de_tests
 # get_max_salary("/home/silva_enilsom/trybe/projetos/sd-011-project-job-insights/src/jobs.csv")
