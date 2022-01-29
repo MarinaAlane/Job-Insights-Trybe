@@ -1,19 +1,23 @@
+from src import jobs
+
+
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
+    jobs_list = jobs.read(path)
+    job_types = []
+    for job in jobs_list:
+        job_types.append(job['job_type'])
+    return list(set(job_types))
 
-    Must call `read`
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
+# importo da pasta SRC o jobs.
+# a função deve retornar uma lista dos tipos de contratação
+# existentes em forma de lista.
+# jobs.read() chama a função read de jobs, abre o arquivo, carrega a info
+# e a atribui em jobs_list. Cria-se uma variavél para armazenar os tipos de
+# contrato. E faz-se o forIn adicionando todas as contratações ao job_types
+# Posteriormente utilizo-me de set, pois o mesmo filtra elementos repetidos.
+# e retorno a lista.
 
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
 
 
 def filter_by_job_type(jobs, job_type):
