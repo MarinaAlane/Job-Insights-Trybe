@@ -1,3 +1,4 @@
+import csv
 from functools import lru_cache
 
 
@@ -15,4 +16,13 @@ def read(path):
     list
         List of rows as dicts
     """
-    return []
+    filename = path[:]
+    try:
+        with open(filename) as csvfile:
+            csv_reader = csv.DictReader(csvfile, delimiter=",", quotechar='"')
+            if csv_reader:
+                data = [*csv_reader]
+            return data
+    except (FileNotFoundError):
+        print('Arquivo não encontrado')
+        return None
