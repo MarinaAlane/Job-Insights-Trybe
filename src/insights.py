@@ -125,6 +125,14 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
+    data = read(path)
+    result_min_salary = set()
+    for salary in data:
+        try:
+            result_min_salary.add(int(salary["min_salary"]))
+        except ValueError:
+            pass
+    return min(result_min_salary)
     pass
 
 
