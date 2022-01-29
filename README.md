@@ -11,7 +11,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 ---
 
-## Sumário testeing remote evaluator
+## Sumário
 
 - [Sumário](#sumário)
 - [Habilidades](#habilidades)
