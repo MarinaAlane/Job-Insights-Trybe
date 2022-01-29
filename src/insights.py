@@ -39,9 +39,7 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
-    filter_job_industry = filter(
-        lambda job: job["industry"] == industry, jobs
-    )
+    filter_job_industry = filter(lambda job: job["industry"] == industry, jobs)
 
     return list(filter_job_industry)
 
@@ -69,30 +67,27 @@ def get_min_salary(path):
     pass
 
 
+# Para o requisito 8 e 9, um colega de trabalho me direcionou na resolução e
+# indicou pesquisar sobre erros (excessões).
+# Todas as pesquisas foram realizadas em 29/01/22
+# https://docs.python.org/pt-br/3/tutorial/errors.html
+# https://www.geeksforgeeks.org/python-raise-keyword/
+
 def matches_salary_range(job, salary):
-    """Checks if a given salary is in the salary range of a given job
-
-    Parameters
-    ----------
-    job : dict
-        The job with `min_salary` and `max_salary` keys
-    salary : int
-        The salary to check if matches with salary range of the job
-
-    Returns
-    -------
-    bool
-        True if the salary is in the salary range of the job, False otherwise
-
-    Raises
-    ------
-    ValueError
-        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-        If `job["min_salary"]` is greather than `job["max_salary"]`
-        If `salary` isn't a valid integer
-    """
-    pass
+    if "min_salary" not in job or "max_salary" not in job:
+        raise ValueError("Values not found")
+    elif (
+        not isinstance(job["min_salary"], int)
+        or not isinstance(job["max_salary"], int)
+        or not isinstance(salary, int)
+    ):
+        raise ValueError("Invalid values")
+    elif job["min_salary"] > job["max_salary"]:
+        raise ValueError("min_salary higher than max_salary")
+    elif salary < job["min_salary"] or salary > job["max_salary"]:
+        return False
+    else:
+        return True
 
 
 def filter_by_salary_range(jobs, salary):
