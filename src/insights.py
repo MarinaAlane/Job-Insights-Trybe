@@ -50,9 +50,6 @@ def get_unique_industries(path):
         if job["industry"] != "":
             conjunto_job.add(job["industry"])
     return conjunto_job
-    # read_job = read(path)
-    # lista = {job["industry"] for job in read_job if job["industry"] != ""}
-    # return lista
     """Checks all different industries and returns a list of them
 
     Must call `read`
