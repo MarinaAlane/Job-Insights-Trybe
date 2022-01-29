@@ -31,15 +31,12 @@ sort_by_date_posted = [
 
 def test_sort_by_criteria(jobs):  # passa fixture
     # arrange/act
-    jobs_copy = jobs.copy()
-    sort_by(jobs_copy, "min_salary")
+    sort_by(jobs, "min_salary")
     # assert - expectativa de retorno
-    assert jobs_copy == sort_by_min_salary
+    assert jobs == sort_by_min_salary
 
-    jobs_copy = jobs.copy()
-    sort_by(jobs_copy, "max_salary")
-    assert jobs_copy == sort_by_max_salary
+    sort_by(jobs, "max_salary")
+    assert jobs == sort_by_max_salary
 
-    jobs_copy = jobs.copy()
-    sort_by(jobs_copy, "date_posted")
-    assert jobs_copy == sort_by_date_posted
+    sort_by(jobs, "date_posted")
+    assert jobs == sort_by_date_posted
