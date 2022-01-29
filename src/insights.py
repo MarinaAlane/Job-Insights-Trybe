@@ -21,8 +21,11 @@ def get_unique_industries(path):
 
     list_industries = []
     for row in csv_file:
-        list_industries.append(row["industry"])
+        if row["industry"] != '':
+            list_industries.append(row["industry"])
 
+    print(list(dict.fromkeys(list_industries)))
+    
     return list(dict.fromkeys(list_industries))
 
 
