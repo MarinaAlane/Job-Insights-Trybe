@@ -46,7 +46,7 @@ def get_unique_industries(path):
     for industry in industries:
         industries_list.append(industry)
 
-    return industries_list
+    return list(filter(None, industries_list))
 
 
 def filter_by_industry(jobs, industry):
