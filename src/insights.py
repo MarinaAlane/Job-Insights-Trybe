@@ -71,11 +71,17 @@ def get_max_salary(path):
     csv_data = read(path)
 
     salaries = []
+    salaries_formatted = []
 
     for salary in csv_data:
-        salaries.append(int(salary['salary']))
+        salaries.append(salary['max_salary'])
 
-    return max(salaries)
+    salaries = list(filter(None, salaries))
+
+    for salary in salaries:
+        salaries_formatted.append(int(salary))
+
+    return max(salaries_formatted)
 
 
 def get_min_salary(path):
