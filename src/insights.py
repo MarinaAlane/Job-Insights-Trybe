@@ -78,10 +78,6 @@ def get_max_salary(path):
     return max(salaries)
 
 
-if __name__ == '__main__':
-    print(get_max_salary('../tests/mocks/jobs.csv'))
-
-
 def get_min_salary(path):
     """Get the minimum salary of all jobs
 
