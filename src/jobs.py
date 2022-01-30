@@ -17,6 +17,5 @@ def read(path):
         List of rows as dicts
     """
     with open(path) as file:
-        jobs_header = csv.DictReader(file, delimiter=',', quotechar='"')
-        header, *data = jobs_header
-    return [header, *data]
+        jobs_list = csv.DictReader(file)
+        return list(jobs_list)
