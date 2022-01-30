@@ -20,21 +20,18 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
+    filtered_jobs = []
+    for job in jobs:
+        if job['job_type'] == job_type:
+            filtered_jobs.append(job)
+    return filtered_jobs
 
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
 
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+# a função filter_by_job_type tem dois parametros, sendo o primeiro
+# uma lista de jobs contendo id e tipo de trabalho(o tipo de trabalho se
+# repete). O forIN em jobs tem como filtro o job_type. Portanto toda
+# vez que o job_type da lista for igual ao job_type do parametro o
+# job será adicionado na filtered_jobs, com seus ids e job_types
 
 
 def get_unique_industries(path):
@@ -70,39 +67,23 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    jobs_list = jobs.read(path)
+    salaries = []
+    for job in jobs_list:
+        if job['max_salary']:
+            salaries.append(int(job['max_salary']))
+    greater_salary = max(salaries)
+    return greater_salary
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    jobs_list = jobs.read(path)
+    salaries = []
+    for job in jobs_list:
+        if job['min_salary']:
+            salaries.append(int(job['min_salary']))
+    less_salary = min(salaries)
+    return less_salary
 
 
 def matches_salary_range(job, salary):
