@@ -1,5 +1,13 @@
 from src.jobs import read
 
+# referêcias:
+# https://pt.stackoverflow.com/questions/322/qual-a-diferen%C3%A7a-entre-break-pass-e-continue-em-python
+# https://www.pythonprogressivo.net/2018/02/Operadores-logicos-AND-OR-NOT.html
+# https://www.alura.com.br/artigos/tratamento-de-excecoes-no-python
+# https://www.caelum.com.br/apostila-python-orientacao-a-objetos/excecoes-e-erros#levantando-excecoes
+# https://www.geeksforgeeks.org/python-set-method/
+# https://www.w3schools.com/python/ref_string_isnumeric.asp
+
 
 def get_unique_job_types(path):
     data_jobs = read(path)
