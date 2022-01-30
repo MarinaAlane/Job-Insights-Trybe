@@ -62,13 +62,16 @@ def get_max_salary(path):
     result = read(path)
     salary = set()
     for job in result:
-        salary.add(job["max_salary"])
-    salary_array = list(salary)
-    salary_without_empty = []
-    for salary in salary_array:
-        if salary != "":
-            salary_without_empty.append(int(salary))
-    return salary_without_empty
+        try:
+            salary.add(int(job["max_salary"]))
+        except ValueError:
+            pass
+    # salary_array = list(salary)
+    # salary_without_empty = []
+    # for salary in salary_array:
+    #     if salary != "":
+    #         salary_without_empty.append(int(salary))
+    return salary
 
 
 def get_min_salary(path):
