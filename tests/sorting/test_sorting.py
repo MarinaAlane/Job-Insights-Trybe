@@ -2,7 +2,8 @@ from src.sorting import sort_by
 import pytest
 
 # Amandha W. Barok
-# - https://github.com/tryber/sd-011-project-job-insights/pull/106/commits/528696db686e61bd17a390a2cc58cae744ddf2bc
+# https://github.com/tryber/sd-011-project-job-insights/pull/106/
+# commits/528696db686e61bd17a390a2cc58cae744ddf2bc
 
 # mock
 job = [
