@@ -79,7 +79,8 @@ def get_max_salary(path):
     salary_formatted = list(filter(None, salaries_not_formatted))
 
     for salary in salary_formatted:
-        salary_numbered_list.append(int(salary))
+        if salary != 'invalid':
+            salary_numbered_list.append(int(salary))
 
     return (max(salary_numbered_list))
 
@@ -96,7 +97,8 @@ def get_min_salary(path):
     salary_formatted = list(filter(None, salaries_not_formatted))
 
     for salary in salary_formatted:
-        salary_numbered_list.append(int(salary))
+        if salary != 'invalid':
+            salary_numbered_list.append(int(salary))
 
     return (min(salary_numbered_list))
 
