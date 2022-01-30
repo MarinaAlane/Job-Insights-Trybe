@@ -89,6 +89,6 @@ def filter_by_salary_range(jobs, salary):
     jobs_filtered = []
     for job in jobs:
         is_valid = matches_salary_range(job, salary)
-        if is_valid:
+        if is_valid == True:
             jobs_filtered.append(job)
     return jobs_filtered
