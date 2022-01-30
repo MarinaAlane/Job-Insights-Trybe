@@ -2,7 +2,9 @@ from datetime import date
 
 
 def sort_by_any_criteria(jobs, criteria):
-
+    if criteria not in ['max_salary', 'min_salary', 'date_posted']:
+        raise ValueError
+    
     valid_jobs = []
     invalid_jobs = []
 
@@ -61,6 +63,6 @@ def sort_by_descending(jobs, criteria):
     if criteria in ["max_salary", "min_salary"]:
         valid_jobs.sort(key=lambda job: int(job[criteria]), reverse=True)
     elif criteria == "date_posted":
-        valid_jobs.sort(key=lambda job: date(job[criteria]), reverse=True)
+        valid_jobs.sort(key=lambda job: date.fromisoformat(job[criteria]), reverse=True)
 
     return valid_jobs + invalid_jobs

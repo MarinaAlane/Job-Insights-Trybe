@@ -94,3 +94,4 @@ def sort_by(jobs, criteria):
     reverse = criteria in ["max_salary", "date_posted"]
 
     jobs.sort(key=key, reverse=reverse)
+    return jobs
