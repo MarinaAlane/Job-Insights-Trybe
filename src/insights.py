@@ -70,12 +70,18 @@ def filter_by_industry(jobs, industry):
 def get_max_salary(path):
     csv_data = read(path)
 
-    salaries = []
+    salaries_not_formatted = []
+    salary_numbered_list = []
 
     for salary in csv_data:
-        salaries.append(salary['max_salary'])
+        salaries_not_formatted.append(salary['max_salary'])
 
-    return max((list(filter(None, salaries))))
+    salary_formatted = list(filter(None, salaries_not_formatted))
+
+    for salary in salary_formatted:
+        salary_numbered_list.append(int(salary))
+
+    return (max(salary_numbered_list))
 
 
 def get_min_salary(path):
