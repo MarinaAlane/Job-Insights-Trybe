@@ -36,7 +36,7 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
+    return [job for job in jobs if job["job_type"] == job_type]
 
 
 def get_unique_industries(path):
@@ -140,6 +140,37 @@ def get_min_salary(path):
     return min(salaries)
 
 
+def is_integer(n):
+    try:
+        float(n)
+    except (ValueError, TypeError):
+        return False
+    else:
+        return float(n).is_integer()
+
+
+def check_args_salary_range(job, salary):
+    if not (
+            str(job["max_salary"]).isdigit()
+            and str(job["min_salary"]).isdigit()
+    ):
+        return False
+    else:
+        if not (
+            is_integer(job["min_salary"])
+            and is_integer(job["max_salary"])
+            and is_integer(salary)
+        ):
+            return False
+        else:
+            min_salary = job["min_salary"]
+            max_salary = job["max_salary"]
+            if min_salary > max_salary:
+                return False
+            else:
+                return True
+
+
 def matches_salary_range(job, salary):
     """Checks if a given salary is in the salary range of a given job
 
@@ -163,7 +194,18 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
+    try:
+        if check_args_salary_range(job, salary):
+            min_salary = job["min_salary"]
+            max_salary = job["max_salary"]
+            if min_salary <= salary <= max_salary:
+                return True
+            else:
+                return False
+        else:
+            raise ValueError
+    except (ValueError, KeyError):
+        raise ValueError
 
 
 def filter_by_salary_range(jobs, salary):
