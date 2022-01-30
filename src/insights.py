@@ -1,4 +1,4 @@
-from src.jobs import read
+from jobs import read
 
 
 def get_unique_job_types(path):
@@ -68,21 +68,18 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
+    csv_data = read(path)
 
-    Must call `read`
+    salaries = []
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
+    for salary in csv_data:
+        salaries.append(int(salary['salary']))
 
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    return max(salaries)
+
+
+if __name__ == '__main__':
+    print(get_max_salary('../tests/mocks/jobs.csv'))
 
 
 def get_min_salary(path):
