@@ -3,31 +3,22 @@ from src.jobs import read
 
 def get_unique_job_types(path):
     jobs = read(path)
-    job_type = list()
+    list_job_type = list()
 
     for job in jobs:
-        if not job['job_type'] in job_type:
-            job_type.append(job['job_type'])
+        if not job['job_type'] in list_job_type:
+            list_job_type.append(job['job_type'])
 
-    return job_type
+    return list_job_type
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
+    list_jobs = list()
 
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
+    for job in jobs:
+        if job['job_type'] == job_type:
+            list_jobs.append(job)
 
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
-
+    return list_jobs
 
 def get_unique_industries(path):
     industries = read(path)
