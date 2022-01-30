@@ -71,7 +71,8 @@ def get_max_salary(path):
     # for salary in salary_array:
     #     if salary != "":
     #         salary_without_empty.append(int(salary))
-    return salary
+    max_salary = max(salary)
+    return max_salary
 
 
 def get_min_salary(path):
