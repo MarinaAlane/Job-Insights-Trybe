@@ -85,29 +85,31 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
-    """Checks if a given salary is in the salary range of a given job
+    if 'min_salary' not in job or 'max_salary' not in job:
+        raise ValueError('min_salary/max_salary are necessary')
+    elif (
+        type(job["min_salary"]) != int
+        or type(job["max_salary"]) != int
+        or type(salary) != int
+    ):
+        raise ValueError('min_salary/max_salary needs to be a number')
+    elif job['min_salary'] > job['max_salary']:
+        raise ValueError('min_salary is greater than max_salary!')
+    elif salary < job['min_salary'] or salary > job['max_salary']:
+        return False
+    else:
+        return True
 
-    Parameters
-    ----------
-    job : dict
-        The job with `min_salary` and `max_salary` keys
-    salary : int
-        The salary to check if matches with salary range of the job
-
-    Returns
-    -------
-    bool
-        True if the salary is in the salary range of the job, False otherwise
-
-    Raises
-    ------
-    ValueError
-        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-        If `job["min_salary"]` is greather than `job["max_salary"]`
-        If `salary` isn't a valid integer
-    """
-    pass
+# a função matches_salary_range indica a faixa salarial em que a
+# pessoa necessita filtrar os trabalhos.
+# a primeira linha verifica se foram informados min_salary ou max_salary.
+# se houver um erro o raise será acionado e um erro será lançado.
+# Se o primeiro if for satisfeito deve-se verificar se os dados em max_salary e
+# min_salary são múmeros.
+# sendo também satisfeitos, verifica-se se o min_salary é realmente menor que
+# max_salary
+# E tbm se o salario está entre min e max, se todas informações forem
+# corretas a função retorna true. Se não retorna false, ou os erros;
 
 
 def filter_by_salary_range(jobs, salary):
