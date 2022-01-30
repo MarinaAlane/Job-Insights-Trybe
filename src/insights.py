@@ -59,21 +59,16 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    result = read(path)
+    salary = set()
+    for job in result:
+        salary.add(job["max_salary"])
+    salary_array = list(salary)
+    salary_without_empty = []
+    for salary in salary_array:
+        if salary != "":
+            salary_without_empty.append(int(salary))
+    return salary_without_empty
 
 
 def get_min_salary(path):
