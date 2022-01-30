@@ -1,109 +1,70 @@
+from src.jobs import read
+
+
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
+    data = read(path)
+    jobs_type = []
+    # Se não tiver a linha job_type dentro do array vazio, é adicionado ao
+    # array
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
+    for row in data:
+        if row["job_type"] not in jobs_type:
+            jobs_type.append(row["job_type"])
+    return jobs_type
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    filtered_jobs = []
+    # Verifica o job_types do jobs, e adiciona na lista.
+    for job in jobs:
+        if job["job_type"] == job_type:
+            filtered_jobs.append(job)
+    return filtered_jobs
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    content = read(path)
+    industries = []
+    # A cada linha verifica se não existe 'industry' dentro do array e
+    # se não é vazio então coloca dentro do array industries
+    for row in content:
+        if row["industry"] not in industries and row["industry"] != "":
+            industries.append(row["industry"])
+    return industries
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+    filtered_industries = []
+    # Verifica o job_types do jobs, e adiciona na lista.
+    for job in jobs:
+        if job["industry"] == industry:
+            filtered_industries.append(job)
+    return filtered_industries
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    content = read(path)
+    salaries = []
+    # A cada linha verifica se o max_salary é um dígito,
+    # e adiciona na lista salaries.
+    # colocando como inteiro e retorna a lista
+    for row in content:
+        if row["max_salary"].isdigit():
+            salaries.append(int(row["max_salary"]))
+    return max(salaries)
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    content = read(path)
+    salaries = []
+    # A cada linha verifica se o min_salary é um dígito, e adiciona
+    # na lista salaries, colocando como inteiro e retorna a lista
+    for row in content:
+        if row["min_salary"].isdigit():
+            salaries.append(int(row["min_salary"]))
+    return min(salaries)
 
 
 def matches_salary_range(job, salary):
