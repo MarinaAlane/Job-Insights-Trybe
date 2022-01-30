@@ -74,7 +74,7 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    return []
+    return [job for job in jobs if job["industry"] == industry]
 
 
 def get_salaries(jobs, type_):
@@ -141,6 +141,17 @@ def get_min_salary(path):
 
 
 def is_integer(n):
+    """Check if a number is integer
+
+    Parameters
+    ----------
+    n : int
+
+    Returns
+    -------
+    bool
+        True if n is interger. False otherwise
+    """
     try:
         float(n)
     except (ValueError, TypeError):
