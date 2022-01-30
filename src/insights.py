@@ -82,12 +82,11 @@ def matches_salary_range(job, salary):
         raise ValueError("As chaves não são números")
     elif job["max_salary"] < job["min_salary"]:
         raise ValueError("Salário Inválido")
-    else:
-        pass
-        # Se todas as condições anteriores forem falsas, a função
-        # vai retornar o salário menores ou iguais ao salario min
-        # e os salários maiores ou iguais ao salário maximo.
-    return salary >= job["min_salary"] and salary <= job["max_salary"]
+    elif job["min_salary"] <= salary <= job["max_salary"]:
+        return True
+    return False
+# Ref: linhas 85 - 87 repositório
+# https://github.com/tryber/sd-011-project-job-insights/pull/106/files
 
 
 def filter_by_salary_range(jobs, salary):
