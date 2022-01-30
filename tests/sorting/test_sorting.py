@@ -27,7 +27,6 @@ ordered_by_date = [
 
 
 def test_sort_by_criteria():
-    pass
     sort_by(jobs_list, "min_salary")
     assert jobs_list == ordered_by_min_salary
 
@@ -41,4 +40,4 @@ def test_sort_by_criteria():
         sort_by(jobs_list, "invalid_criteria")
 
 # ref linha 40 a 42 :
-# https://github.com/tryber/sd-011-project-job-insights/pull/132/fil
+# https://github.com/tryber/sd-011-project-job-insights/pull/106/files
