@@ -1,19 +1,19 @@
+from src.jobs import read
+
+
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
+    csv_data = read(path)
 
-    Must call `read`
+    job_types = set()
+    job_types_list = []
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
+    for job in csv_data:
+        job_types.add(job['job_type'])
 
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
+    for job_type in job_types:
+        job_types_list.append(job_type)
+
+    return job_types_list
 
 
 def filter_by_job_type(jobs, job_type):
@@ -35,21 +35,18 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
+    csv_data = read(path)
 
-    Must call `read`
+    industries = set()
+    industries_list = []
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
+    for industry in csv_data:
+        industries.add(industry['industry'])
 
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    for industry in industries:
+        industries_list.append(industry)
+
+    return industries_list
 
 
 def filter_by_industry(jobs, industry):
