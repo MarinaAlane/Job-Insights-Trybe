@@ -1,18 +1,25 @@
 from functools import lru_cache
+import csv
 
 
 @lru_cache
 def read(path):
-    """Reads a file from a given path and returns its contents
 
-    Parameters
-    ----------
-    path : str
-        Full path to file
+    with open(path) as file:
+        list_of_jobs = []
+        jobs = csv.reader(file)
 
-    Returns
-    -------
-    list
-        List of rows as dicts
-    """
-    return []
+        # separa o cabeçalho do restante dos dados.
+        header, *data = jobs
+
+        # a cada nova linha vai ser criado um novo dicionário
+        # que vai ser modificado a cada novo header e nova linha
+        # e essa modificação vai ser incluída no dicionário antes vazio
+        for row in data:
+            jobs = dict()
+            for index in range(len(header)):
+                jobs[header[index]] = row[index]
+
+            list_of_jobs.append(jobs)
+
+    return list_of_jobs
