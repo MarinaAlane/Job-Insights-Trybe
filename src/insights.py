@@ -49,21 +49,19 @@ def get_unique_industries(path):
 # adiciona-o na vriavel, retornando os tipos cadastrados.
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
+    filtered_inds = []
+    print('ooooooooo', jobs, 'hhhhhhhhhh', industry)
+    for job in jobs:
+        if job['industry'] == industry:
+            filtered_inds.append(job)
+    return filtered_inds
 
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
 
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+# a função filter_by_industry tem dois parametros, sendo o primeiro
+# uma lista de jobs contendo id e tipo de industria(o tipo de industria se
+# repete). O forIN em jobs tem como filtro o industry. Portanto toda
+# vez que a industria da lista for igual ao industry do parametro o
+# job será adicionado na filtered_jobs, com seus ids e industrias
 
 
 def get_max_salary(path):
