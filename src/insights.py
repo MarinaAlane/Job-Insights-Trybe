@@ -207,9 +207,9 @@ def matches_salary_range(job, salary):
     """
     try:
         if check_args_salary_range(job, salary):
-            min_salary = job["min_salary"]
-            max_salary = job["max_salary"]
-            if min_salary <= salary <= max_salary:
+            min_salary = int(job["min_salary"])
+            max_salary = int(job["max_salary"])
+            if min_salary <= int(salary) <= max_salary:
                 return True
             else:
                 return False
