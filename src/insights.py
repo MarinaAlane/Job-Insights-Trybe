@@ -60,7 +60,7 @@ def get_unique_industries(path):
 
     """
     https://note.nkmk.me/en/python-list-clear-pop-remove-del/
-    
+
     Checks all different industries and returns a list of them
 
     Must call `read`
@@ -140,7 +140,7 @@ def get_min_salary(path):
     return min_salary
     """
     https://stackoverflow.com/questions/5320871/how-to-find-the-min-max-value-of-a-common-key-in-a-list-of-dicts
-    
+
     Get the minimum salary of all jobs
 
     Must call `read`

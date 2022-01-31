@@ -16,7 +16,7 @@ def read(path):
 
     """
     https://stackoverflow.com/questions/209840/how-do-i-convert-two-lists-into-a-dictionary
-    
+
     Reads a file from a given path and returns its contents
 
     Parameters
