@@ -70,7 +70,8 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
-
+    industry_job = [job for job in jobs if industry == job["industry"]]
+    return industry_job
     """Filters a list of jobs by industry
 
     Parameters
@@ -139,6 +140,15 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
+    for jobs in job:
+        if "min_salary" and "max_salary" not in job or type(job[jobs]) != int:
+            raise ValueError
+        if job["min_salary"] > job["max_salary"] or type(salary) != int:
+            raise ValueError
+        if job["min_salary"] <= salary <= job["max_salary"]:
+            return True
+        else:
+            return False
     """Checks if a given salary is in the salary range of a given job
 
     Parameters
