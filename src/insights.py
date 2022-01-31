@@ -68,20 +68,35 @@ def get_max_salary(path):
     jobs_list = jobs.read(path)
     salaries = []
     for job in jobs_list:
-        if job['max_salary']:
+        if job['max_salary'].isdigit():
             salaries.append(int(job['max_salary']))
     greater_salary = max(salaries)
     return greater_salary
+
+
+# os instrutores Rodrigo Curvo e Isaac Prates, e tbm o colega Hugo Somers
+# me ajudaram a resolver o problema que tive com a transformação de dados
+# em int, uma vez que existiam células vazias e células com caracteres
+# diferentes de numeros.
+
+# a função get_max_salary le o arquivo CSV, abre uma variavel salaries
+# faz se um forIn em jobs e verifica-se se o dado é um digito, se for
+# faz o append em salaries. Seleciona o salário máximo e o retorna.
 
 
 def get_min_salary(path):
     jobs_list = jobs.read(path)
     salaries = []
     for job in jobs_list:
-        if job['min_salary']:
+        if job['min_salary'].isdigit():
             salaries.append(int(job['min_salary']))
     less_salary = min(salaries)
     return less_salary
+
+
+# a função get_min_salary le o arquivo CSV, abre uma variavel salaries
+# faz se um forIn em jobs e verifica-se se o dado é um digito, se for
+# faz o append em salaries. Seleciona o salário mínimo e o retorna.
 
 
 def matches_salary_range(job, salary):
