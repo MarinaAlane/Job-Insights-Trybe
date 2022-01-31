@@ -66,12 +66,12 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
-    filtered_by_salary_range = []
+    filtered_by_salary_range = list()
 
     for job in jobs:
         try:
             if matches_salary_range(job, salary):
                 filtered_by_salary_range.append(job)
         except ValueError:
-            raise ValueError("Job does not have a salary range")
+            pass
     return filtered_by_salary_range
