@@ -1,3 +1,6 @@
+import jobs
+
+
 def get_unique_job_types(path):
     """Checks all different job types and returns a list of them
 
@@ -13,7 +16,9 @@ def get_unique_job_types(path):
     list
         List of unique job types
     """
-    return []
+    jobs_ = jobs.read(path)
+    job_type = {job["job_type"] for job in jobs_}
+    return job_type
 
 
 def filter_by_job_type(jobs, job_type):
@@ -31,7 +36,7 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
+    return [job for job in jobs if job["job_type"] == job_type]
 
 
 def get_unique_industries(path):
@@ -49,7 +54,9 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
+    jobs_ = jobs.read(path)
+    industries = {job["industry"] for job in jobs_ if job["industry"] != ""}
+    return industries
 
 
 def filter_by_industry(jobs, industry):
@@ -67,7 +74,30 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    return []
+    return [job for job in jobs if job["industry"] == industry]
+
+
+def get_salaries(jobs, type_):
+    """Get all salaries jobs
+
+    Parameters
+    ----------
+    jobs: list[dict[str,str]]
+        It can be from read
+
+    Returns
+    -------
+    list[int]
+        List of all salaries paid out
+
+    """
+    amount_type = f"{type_}_salary"
+    salaries = []
+    for job in jobs:
+        if job[amount_type] != "" and job[amount_type].isdigit():
+            salary = int(job[amount_type])
+            salaries.append(salary)
+    return salaries
 
 
 def get_max_salary(path):
@@ -85,7 +115,9 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+    jobs_ = jobs.read(path)
+    salaries = get_salaries(jobs_, "max")
+    return max(salaries)
 
 
 def get_min_salary(path):
@@ -103,7 +135,51 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    jobs_ = jobs.read(path)
+    salaries = get_salaries(jobs_, "min")
+    return min(salaries)
+
+
+def is_integer(n):
+    """Check if a number is integer
+
+    Parameters
+    ----------
+    n : int
+
+    Returns
+    -------
+    bool
+        True if n is interger. False otherwise
+    """
+    try:
+        float(n)
+    except (ValueError, TypeError):
+        return False
+    else:
+        return float(n).is_integer()
+
+
+def check_args_salary_range(job, salary):
+    if not (
+            str(job["max_salary"]).isdigit()
+            and str(job["min_salary"]).isdigit()
+    ):
+        return False
+    else:
+        if not (
+            is_integer(job["min_salary"])
+            and is_integer(job["max_salary"])
+            and is_integer(salary)
+        ):
+            return False
+        else:
+            min_salary = job["min_salary"]
+            max_salary = job["max_salary"]
+            if min_salary > max_salary:
+                return False
+            else:
+                return True
 
 
 def matches_salary_range(job, salary):
@@ -129,7 +205,18 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
+    try:
+        if check_args_salary_range(job, salary):
+            min_salary = int(job["min_salary"])
+            max_salary = int(job["max_salary"])
+            if min_salary <= int(salary) <= max_salary:
+                return True
+            else:
+                return False
+        else:
+            raise ValueError()
+    except (ValueError, KeyError):
+        raise ValueError()
 
 
 def filter_by_salary_range(jobs, salary):
@@ -147,4 +234,11 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
+    filtered_jobs = []
+    for job in jobs:
+        try:
+            if matches_salary_range(job, salary):
+                filtered_jobs.append(job)
+        except ValueError:
+            pass
+    return filtered_jobs
