@@ -13,21 +13,7 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    return [job for job in jobs if job['job_type'] == job_type]
 
 
 def get_unique_industries(path):
@@ -76,8 +62,6 @@ def get_min_salary(path):
             min_salary.append(int(job['min_salary']))
     min_salary.sort()
     return min_salary[0]
-
-# print(get_min_salary('jobs.csv'))
 
 
 def matches_salary_range(job, salary):
