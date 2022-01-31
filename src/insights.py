@@ -1,6 +1,13 @@
 from src.jobs import read
 
 
+def filter_dicts_in_list_by_key_value(list_of_dicts, key, value):
+    if value == '':
+        return list()
+
+    return list(job for job in list_of_dicts if job[key] == value)
+
+
 def get_distinct_values_by_key(job_list, key):
     results = [job[key] for job in job_list if job[key]]
 
@@ -14,10 +21,7 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    if job_type == '':
-        return list()
-
-    return [job for job in jobs if job['job_type'] == job_type]
+    return filter_dicts_in_list_by_key_value(jobs, 'job_type', job_type)
 
 
 def get_unique_industries(path):
@@ -27,27 +31,13 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+    return filter_dicts_in_list_by_key_value(jobs, 'industry', industry)
 
 
 def get_max_salary(path):
     jobs = read(path)
     salaries = get_distinct_values_by_key(jobs, 'max_salary')
-    max_salary = 0
+    max_salary = 0.00
 
     for salary in salaries:
         if salary.isdigit() and float(salary) > float(max_salary):
