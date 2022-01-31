@@ -46,7 +46,22 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
+
+    all_industries = jobs.read(path)
+
+    unique_industries = set()
+
+    for industry in all_industries:
+        unique_industries.add(industry["industry"])
+
+    unique_industires_without_empty_value = [
+        industry for industry in list(unique_industries) if industry != ""
+    ]
+
+    """
+    https://note.nkmk.me/en/python-list-clear-pop-remove-del/
+    
+    Checks all different industries and returns a list of them
 
     Must call `read`
 
@@ -60,7 +75,7 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
+    return unique_industires_without_empty_value
 
 
 def filter_by_industry(jobs, industry):
