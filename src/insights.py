@@ -141,6 +141,18 @@ def get_min_salary(path):
     return min_salary
 
 
+def validate_salary(salary, max_salary, min_salary):
+    if type(min_salary) != int or type(max_salary) != int:
+        raise ValueError("min_salary or max_salary aren't valid integers")
+    # if min_salary.isalpha() or max_salary.isalpha():
+
+    if max_salary < min_salary:
+        raise ValueError("min_salary is greather than max_salary")
+
+    if type(salary) != int:
+        raise ValueError("salary isn't a valid integer")
+
+
 def matches_salary_range(job, salary):
     """Checks if a given salary is in the salary range of a given job
 
@@ -168,15 +180,8 @@ def matches_salary_range(job, salary):
     if "min_salary" not in job or "max_salary" not in job:
         raise ValueError("min_salary or max_salary doesn't exists")
     min_salary, max_salary = job["min_salary"], job["max_salary"]
-    if type(min_salary) != int or type(max_salary) != int:
-        raise ValueError("min_salary or max_salary aren't valid integers")
-    # if min_salary.isalpha() or max_salary.isalpha():
 
-    if max_salary < min_salary:
-        raise ValueError("min_salary is greather than max_salary")
-
-    if type(salary) != int:
-        raise ValueError("salary isn't a valid integer")
+    validate_salary(salary, max_salary, min_salary)
 
     if int(max_salary) >= int(salary) >= int(min_salary):
         return True
@@ -205,5 +210,5 @@ def filter_by_salary_range(jobs, salary):
             if matches_salary_range(job, salary):
                 filtered_jobs.append(job)
         except ValueError:
-            print("teste")
+            False
     return filtered_jobs
