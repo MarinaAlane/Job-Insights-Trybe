@@ -29,3 +29,12 @@ def test_sort_by_criteria(jobs):
     jobs_max = jobs.copy()
     sort_by(jobs_max, "max_salary")
     assert jobs_max == order_by_max_salary
+
+    order_by_date_posted = [
+        {"min_salary": 1500, "max_salary": 25000, "date_posted": "2022-09-13"},
+        {"min_salary": 1000, "max_salary": 15000, "date_posted": "2022-07-05"},
+        {"min_salary": 500, "max_salary": 10000, "date_posted": "2022-06-27"},
+    ]
+    jobs_date = jobs.copy()
+    sort_by(jobs_date, "date_posted")
+    assert jobs_date == order_by_date_posted
