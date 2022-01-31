@@ -214,9 +214,9 @@ def matches_salary_range(job, salary):
             else:
                 return False
         else:
-            raise ValueError
+            raise ValueError()
     except (ValueError, KeyError):
-        raise ValueError
+        raise ValueError()
 
 
 def filter_by_salary_range(jobs, salary):
