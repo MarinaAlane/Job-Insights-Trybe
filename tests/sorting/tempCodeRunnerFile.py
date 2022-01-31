@@ -1,0 +1,1 @@
+print(sort_by(jobs, criteria[0]))
