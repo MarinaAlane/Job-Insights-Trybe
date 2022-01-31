@@ -21,7 +21,8 @@ correctReturn = [
 
 
 def test_sort_by_criteria():
+    assert sort_by(jobs=jobs, criteria=criteria[0]) is None
     with pytest.raises(
         ValueError, match=f"invalid sorting criteria: {criteria[-1]}"
     ):
-        sort_by(jobs, criteria[-1])
+        sort_by(jobs=jobs, criteria=criteria[-1])
