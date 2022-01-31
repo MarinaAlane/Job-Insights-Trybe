@@ -62,26 +62,21 @@ def get_max_salary(path):
 
     for salary in salaries:
         if salary.isdigit() and float(salary) > float(max_salary):
-            max_salary = float(salary)
-    return max_salary
+            max_salary = salary
+    return float(max_salary)
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
+    jobs = read(path)
+    salaries = get_distinct_values_by_key(jobs, 'min_salary')
+    min_salary = 0.00
 
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    for i, salary in enumerate(salaries):
+        if i == 0:
+            min_salary = salary
+        elif salary.isdigit() and float(salary) < float(min_salary):
+            min_salary = salary
+    return float(min_salary)
 
 
 def matches_salary_range(job, salary):
