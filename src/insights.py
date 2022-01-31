@@ -1,5 +1,5 @@
 from src.jobs import read
-from importlib.resources import path
+# from importlib.resources import path
 
 
 def get_unique_job_types(path):
