@@ -38,3 +38,9 @@ def test_sort_by_criteria(jobs):
     jobs_date = jobs.copy()
     sort_by(jobs_date, "date_posted")
     assert jobs_date == order_by_date_posted
+
+    not_a_criteria = "not_a_criteria"
+    with pytest.raises(
+        ValueError, match="invalid sorting criteria: not_a_criteria"
+    ):
+        sort_by(jobs, not_a_criteria)
