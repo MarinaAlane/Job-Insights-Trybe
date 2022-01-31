@@ -61,7 +61,7 @@ def sort_by_descending(jobs, criteria):
             invalid_jobs.append(job)
 
     if criteria in ["max_salary", "min_salary"]:
-        valid_jobs.sort(key=lambda job: int(job[criteria]), reverse=True)
+        valid_jobs.sort(key=lambda job: int(job[criteria]), reverse=False)
     elif criteria == "date_posted":
         valid_jobs.sort(key=lambda job: date.fromisoformat(job[criteria]), reverse=True)
 
