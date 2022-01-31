@@ -41,7 +41,7 @@ def get_max_salary(path):
 
 def get_min_salary(path):
     job_list = jobs.read(path)
-    min_salary = 0
+    min_salary = get_max_salary(path)
     for job in job_list:
         if (
             job["min_salary"].isnumeric()
@@ -66,18 +66,7 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
-    """Filters a list of jobs by salary range
-
-    Parameters
-    ----------
-    jobs : list
-        The jobs to be filtered
-    salary : int
-        The salary to be used as filter
-
-    Returns
-    -------
-    list
-        Jobs whose salary range contains `salary`
-    """
-    return []
+    filtered_by_salary_range = [
+        job for job in jobs if matches_salary_range(job, salary)
+    ]
+    return filtered_by_salary_range
