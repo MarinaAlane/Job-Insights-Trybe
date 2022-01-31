@@ -1,19 +1,16 @@
 from functools import lru_cache
 import csv
+from unittest import result
 
 
 @lru_cache()
 def read(path):
     with open(path) as file:
-        file_content = list(csv.reader(file))
+        file_content = csv.reader(file, delimiter=",", quotechar='"')
         header, *data = file_content
 
-        list_of_dicts = []
-
+        result_dicts = []
         for row in data:
-            new_dict = dict()
-            for i in range(len(row)):
-                new_dict[header[i]] = row[i]
-            list_of_dicts.append(new_dict)
+            result.append(dict(zip(header, row)))
 
-    return list_of_dicts
+    return result_dicts
