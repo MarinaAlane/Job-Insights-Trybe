@@ -1,19 +1,14 @@
+import csv
+from src.jobs import read
+
+
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
+    jobs_types = []
+    jobs = read(path)
+    for item in jobs:
+        if not item["job_type"] in jobs_types:
+            jobs_types.append(item["job_type"])
+    return jobs_types
 
 
 def filter_by_job_type(jobs, job_type):
@@ -35,21 +30,14 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
+    all_jobs = read(path)
+    industry_values = set()
 
-    Must call `read`
+    for item in all_jobs:
+        if item["industry"] != "":
+            industry_values.add(item["industry"])
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    return industry_values
 
 
 def filter_by_industry(jobs, industry):
@@ -71,39 +59,25 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    with open(path) as jobs:
+        max_salary = 0
+        all_jobs_list = csv.DictReader(jobs)
+        for item in all_jobs_list:
+            if item["max_salary"].isdigit():
+                if int(item["max_salary"]) > max_salary:
+                    max_salary = int(item["max_salary"])
+    return max_salary
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    with open(path) as jobs:
+        min_salary = get_max_salary(path)
+        all_jobs_list = csv.DictReader(jobs)
+        for item in all_jobs_list:
+            if item["min_salary"].isdigit():
+                if int(item["min_salary"]) < min_salary:
+                    min_salary = int(item["min_salary"])
+    return min_salary
 
 
 def matches_salary_range(job, salary):
