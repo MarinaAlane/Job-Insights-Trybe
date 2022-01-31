@@ -24,6 +24,7 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
+    # jobs dicionário
     """Filters a list of jobs by job_type
 
     Parameters
@@ -38,7 +39,11 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
+    filter_by_job = []
+    for job in jobs:
+        if job["job_type"] == job_type:
+            filter_by_job.append(job)
+    return filter_by_job
 
 
 def get_unique_industries(path):
@@ -125,6 +130,7 @@ def get_min_salary(path):
     jobs = read(path)
 
     min_salary = 20000
+    # refact min_salary
     for job in jobs:
         if job["min_salary"].isnumeric():
             if int(job["min_salary"]) < min_salary:
