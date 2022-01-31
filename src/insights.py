@@ -39,6 +39,7 @@ def get_max_salary(path):
     content = read(path)
     salaries = []
     for row in content:
+        # https://www.w3schools.com/python/ref_string_isdigit.asp
         if row["max_salary"].isdigit():
             salaries.append(int(row["max_salary"]))
     return max(salaries)
@@ -68,4 +69,11 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
-    return []
+    filtered_jobs = []
+    for job in jobs:
+        try:
+            if matches_salary_range(job, salary):
+                filtered_jobs.append(job)
+        except ValueError:
+            pass
+    return filtered_jobs
