@@ -1,4 +1,5 @@
 from functools import lru_cache
+import csv
 
 
 @lru_cache
@@ -15,4 +16,14 @@ def read(path):
     list
         List of rows as dicts
     """
-    return []
+    jobs = []
+    try:
+        file = open(path)
+    except OSError:
+        print("arquivo inexistente")
+    else:
+        dicts = csv.DictReader(file, delimiter=",", quotechar='"')
+        for row in dicts:
+            jobs.append(row)
+        file.close()
+    return jobs
