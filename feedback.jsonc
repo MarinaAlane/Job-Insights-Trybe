@@ -1,12 +1,12 @@
 {
     // Coloque seu nome para sabermos de quem foi o comentário =D (opcional)
-    "nome": "",
+    "nome": "Vitor Mauricio Cardoso",
     // Dê uma nota ao projeto *^* (int de 0 a 10) (obrigatório)
-    "nota": ,
+    "nota": 9,
     // O que você mais gostou no projeto? (obrigatório, mas pode colocar "não há")
-    "pontos_positivos": "",
+    "pontos_positivos": "Gostei muito de fixar meus conhecimentos em Python e aprendi muitas coisas novas realizando este projeto",
     // O que você menos gostou no projeto? (obrigatório, mas pode colocar "não há")
-    "pontos_negativos": "",
+    "pontos_negativos": "Em alguns casos achei os testes meio confusos e nao tao objetivos quanto as mensagens de erro em seu retorno, o que dificultava um pouco o desenvolvimento",
     // Comentário livre sobre o que você achou do projeto (opcional)
-    "comentário": ""
+    "comentário": "Projeto bem desafiador"
 }
