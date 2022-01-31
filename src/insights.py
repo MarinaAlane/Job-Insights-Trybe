@@ -1,4 +1,3 @@
-from cgitb import reset
 import csv
 from src.jobs import read
 
