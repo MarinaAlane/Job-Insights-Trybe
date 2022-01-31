@@ -126,7 +126,22 @@ def get_max_salary(path):
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
+
+    data = jobs.read(path)
+
+    min_salary = min(
+        [
+            int(job["min_salary"])
+            for job in data
+            if job["min_salary"].isnumeric()
+        ]
+    )
+
+    return min_salary
+    """
+    https://stackoverflow.com/questions/5320871/how-to-find-the-min-max-value-of-a-common-key-in-a-list-of-dicts
+    
+    Get the minimum salary of all jobs
 
     Must call `read`
 
@@ -140,7 +155,6 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
 
 
 def matches_salary_range(job, salary):
