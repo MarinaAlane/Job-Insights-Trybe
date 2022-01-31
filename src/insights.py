@@ -177,7 +177,24 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
-    """Checks if a given salary is in the salary range of a given job
+
+    if "min_salary" not in job or "max_salary" not in job:
+        raise (ValueError())
+
+    min_salary, max_salary = job["min_salary"], job["max_salary"]
+
+    if not isinstance(min_salary, int) or not isinstance(max_salary, int):
+        raise (ValueError())
+
+    if min_salary > max_salary:
+        raise (ValueError())
+
+    if not isinstance(salary, int):
+        raise (ValueError())
+    """
+    https://www.kite.com/python/answers/how-to-check-if-a-number-is-an-integer-in-python
+
+    Checks if a given salary is in the salary range of a given job
 
     Parameters
     ----------
@@ -199,7 +216,7 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
+    return min_salary <= salary <= max_salary
 
 
 def filter_by_salary_range(jobs, salary):
