@@ -1,4 +1,5 @@
 import pytest
+from unittest.mock import patch
 from src.sorting import sort_by
 
 
@@ -37,13 +38,18 @@ def jobs_for_sort_by():
 
 
 def test_sort_by_criteria(jobs_for_sort_by):
-    with pytest.raises(ValueError):
-        sort_by(jobs_for_sort_by, "anyString")
 
-    result_min_salary = sort_by(jobs_for_sort_by, "min_salary")
-    result_max_salary = sort_by(jobs_for_sort_by, "max_salary")
-    result_date_posted = sort_by(jobs_for_sort_by, "date_posted")
+    with patch("src.sorting.sort_by", wraps=sort_by) as mock_sort_by:
+        print(mock_sort_by.call_args)
+        with pytest.raises(ValueError):
+            sort_by(jobs_for_sort_by, "anyString")
+            mock_sort_by.assert_called_with(
+                ["min_salary", "max_salary", "min_salary"]
+            )
 
-    assert result_min_salary[0]["id"] == 4
-    assert result_max_salary[0]["id"] == 4
-    assert result_date_posted[1]["id"] == 3
+        result_min_salary = sort_by(jobs_for_sort_by, "min_salary")
+        assert result_min_salary[0]["id"] == 1
+        result_max_salary = sort_by(jobs_for_sort_by, "max_salary")
+        assert result_max_salary[0]["id"] == 4
+        result_date_posted = sort_by(jobs_for_sort_by, "date_posted")
+        assert result_date_posted[1]["id"] == 3
