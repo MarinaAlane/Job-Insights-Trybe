@@ -9,6 +9,7 @@ from src.insights import (
     matches_salary_range,
     filter_by_salary_range
 )
+from src.sorting import sort_by
 
 read("src/jobs.csv")
 
@@ -29,3 +30,5 @@ salarys = {"max_salary": 10, "min_salary": 0}
 matches_salary_range(salarys, 1000)
 
 filter_by_salary_range(read("src/jobs.csv"), 1000)
+
+print(sort_by(read("src/jobs.csv"), 'max_salary'))
