@@ -17,6 +17,7 @@ def max_salary_key(job):
     -------
     Job's max salary as an int, or -infinite.
     """
+
     try:
         return int(job["max_salary"])
     except (KeyError, TypeError, ValueError):
