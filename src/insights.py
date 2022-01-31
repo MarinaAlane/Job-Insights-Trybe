@@ -48,29 +48,14 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
-    """Checks if a given salary is in the salary range of a given job
+    for value in job:
+        if "min_salary" and "max_salary" not in job or type(job[value]) != int:
+            raise ValueError()
 
-    Parameters
-    ----------
-    job : dict
-        The job with `min_salary` and `max_salary` keys
-    salary : int
-        The salary to check if matches with salary range of the job
+        if job["min_salary"] > job["max_salary"] or not (isinstance(salary, int)):
+            raise ValueError()
 
-    Returns
-    -------
-    bool
-        True if the salary is in the salary range of the job, False otherwise
-
-    Raises
-    ------
-    ValueError
-        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-        If `job["min_salary"]` is greather than `job["max_salary"]`
-        If `salary` isn't a valid integer
-    """
-    pass
+    return salary >= job["min_salary"] and salary <= job["max_salary"]
 
 
 def filter_by_salary_range(jobs, salary):
@@ -88,4 +73,13 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
+    jobs_by_salary = []
+
+    for job in jobs:
+        try:
+            if matches_salary_range(job, salary):
+                jobs_by_salary.append(job)
+        except ValueError:
+            print(f"{job} invalid")
+
+    return jobs_by_salary
