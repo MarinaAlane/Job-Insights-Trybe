@@ -11,7 +11,7 @@ jobs = [
 
 def test_sort_by_criteria():
     with pytest.raises(TypeError):
-        sort_by(jobs, "invalid")
+        sort_by(jobs, "invalid", "teste")
 
     sort_by(jobs, "max_salary")
     assert jobs == [
