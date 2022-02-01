@@ -6,7 +6,7 @@ def get_unique_job_types(path):
 
     job_types = set()
     for row in data:
-        job_types.add(row['job_type'])
+        job_types.add(row["job_type"])
 
     return list(job_types)
 
@@ -25,8 +25,9 @@ def get_unique_industries(path):
 
     industries = set()
     for row in data:
-        if not row['industry'] == '':
-            industries.add(row['industry'])
+        industry = data["industry"]
+        if industry:
+            industries.add(industry)
 
     return list(industries)
 
