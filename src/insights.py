@@ -17,19 +17,19 @@ def get_distinct_values_by_key(job_list, key):
 def get_max_or_min_salary(salaries, comparator, max_or_min):
     for i, salary in enumerate(salaries):
         if i == 0:
-            max_or_min = salary
+            max_or_min = float(salary)
         elif (
             (comparator == '<' and salary.isdigit()) and
-            (float(salary) < float(max_or_min))
+            (float(salary) < max_or_min)
         ):
-            max_or_min = salary
+            max_or_min = float(salary)
         elif (
             (comparator == '>' and salary.isdigit()) and
-            (float(salary) > float(max_or_min))
+            (float(salary) > max_or_min)
         ):
-            max_or_min = salary
+            max_or_min = float(salary)
 
-    return float(max_or_min)
+    return max_or_min
 
 
 def get_unique_job_types(path):
