@@ -8,6 +8,22 @@ def filter_dicts_in_list_by_key_value(list_of_dicts, key, value):
     return list(job for job in list_of_dicts if job[key] == value)
 
 
+def verify_incorrect_values(job, salary):
+    if "min_salary" not in job or "max_salary" not in job:
+        raise ValueError
+
+    else:
+        min_salary = job["min_salary"]
+        max_salary = job["max_salary"]
+
+        if (
+            type(min_salary) and type(max_salary) not in (int, float)
+            or min_salary > max_salary
+            or type(salary) is not int
+        ):
+            raise ValueError
+
+
 def get_distinct_values_by_key(job_list, key):
     results = [job[key] for job in job_list if job[key]]
 
@@ -69,24 +85,14 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
-    if "min_salary" not in job or "max_salary" not in job:
-        raise ValueError
+    try:
+        verify_incorrect_values(job, salary)
 
-    else:
-        min_salary = job["min_salary"]
-        max_salary = job["max_salary"]
-
-        if (
-            type(min_salary) and type(max_salary) not in (int, float)
-            or min_salary > max_salary
-            or type(salary) is not int
-        ):
-            raise ValueError
-
-    if (min_salary <= salary) and (max_salary >= salary):
-        return True
-
-    return False
+        if job['min_salary'] <= salary <= job['max_salary']:
+            return True
+        return False
+    except ValueError:
+        return 'Algum dos valores informados não existem ou são inválidos.'
 
 
 def filter_by_salary_range(jobs, salary):
