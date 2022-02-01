@@ -1,6 +1,5 @@
 from functools import lru_cache
 import csv
-from unittest import result
 
 
 @lru_cache()
@@ -11,6 +10,6 @@ def read(path):
 
         result_dicts = []
         for row in data:
-            result.append(dict(zip(header, row)))
+            result_dicts.append(dict(zip(header, row)))
 
     return result_dicts
