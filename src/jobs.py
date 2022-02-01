@@ -11,8 +11,8 @@ def read(path):
 
         # joblist = list(jobs)
 
-        jobsList = []
+        jobs_list = []
         for job in jobs:
-            jobsList.append(job)
+            jobs_list.append(job)
 
-    return jobsList
+    return jobs_list
