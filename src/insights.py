@@ -11,7 +11,7 @@ def get_unique_job_types(path):
     return job_types
 
 
-get_unique_job_types("src/jobs.csv")
+# print(get_unique_job_types("src/jobs.csv"))
 
 
 def filter_by_job_type(jobs, job_type):
@@ -37,7 +37,8 @@ def get_unique_industries(path):
     industries = set()
 
     for job in jobs_list:
-        industries.add(job["industry"])
+        if job["industry"] != "":
+            industries.add(job["industry"])
 
     return industries
 
@@ -64,7 +65,8 @@ def get_max_salary(path):
     jobs_list = jobs.read(path)
     max_salary = set()
     for job in jobs_list:
-        max_salary.add(int(job['max_salary']))
+        if job['max_salary'].isnumeric():
+            max_salary.add(int(job['max_salary']))
     return max(max_salary)
 
 
@@ -72,7 +74,8 @@ def get_min_salary(path):
     jobs_list = jobs.read(path)
     min_salary = set()
     for job in jobs_list:
-        min_salary.add(int(job['min_salary']))
+        if job['min_salary'].isnumeric():
+            min_salary.add(int(job['min_salary']))
     return min(min_salary)
 
 
