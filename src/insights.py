@@ -25,7 +25,7 @@ def get_unique_industries(path):
 
     industries = set()
     for row in data:
-        industry = data["industry"]
+        industry = row["industry"]
         if industry:
             industries.add(industry)
 
