@@ -62,10 +62,10 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    read_files = read(path)
+    jobs = read(path)
 
     res = {
-        file['industry'] for file in read_files if not file['industry'] == ""
+        job['industry'] for job in jobs if not job['industry'] == ""
         }
 
     return list(res)
@@ -86,7 +86,12 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    return []
+    jobs_list_industries = list()
+
+    for job in jobs:
+        if job['industry'] == industry:
+            jobs_list_industries.append(job)
+    return jobs_list_industries
 
 
 def get_max_salary(path):
