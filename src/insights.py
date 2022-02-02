@@ -10,7 +10,7 @@ def filter_dicts_in_list_by_key_value(list_of_dicts, key, value):
 
 def verify_incorrect_values(job, salary):
     if "min_salary" not in job or "max_salary" not in job:
-        raise ValueError
+        return 'Alguma chaves está ausente nesse dicionário!'
 
     else:
         min_salary = job["min_salary"]
@@ -21,7 +21,7 @@ def verify_incorrect_values(job, salary):
             or min_salary > max_salary
             or type(salary) is not int
         ):
-            raise ValueError
+            return 'Algum valor está incorreto ou desbalanceado!'
 
 
 def get_distinct_values_by_key(job_list, key):
@@ -30,22 +30,20 @@ def get_distinct_values_by_key(job_list, key):
     return list(set(results))
 
 
-def get_max_or_min_salary(salaries, comparator, max_or_min):
-    for i, salary in enumerate(salaries):
-        if i == 0:
-            max_or_min = float(salary)
-        elif (
-            (comparator == '<' and salary.isdigit()) and
-            (float(salary) < max_or_min)
-        ):
-            max_or_min = float(salary)
-        elif (
-            (comparator == '>' and salary.isdigit()) and
-            (float(salary) > max_or_min)
-        ):
-            max_or_min = float(salary)
+def get_max_or_min_salary(salaries, max_or_min):
+    result = 0.00
 
-    return max_or_min
+    for salary in salaries:
+        try:
+            salary = float(salary)
+            if max_or_min == 'min':
+                result = salary if not result or salary < result else result
+
+            else:
+                result = salary if not result or salary > result else result
+        except ValueError:
+            continue
+    return result
 
 
 def get_unique_job_types(path):
@@ -71,28 +69,26 @@ def filter_by_industry(jobs, industry):
 def get_max_salary(path):
     jobs = read(path)
     salaries = get_distinct_values_by_key(jobs, "max_salary")
-    max_salary = 0.00
 
-    return get_max_or_min_salary(salaries, '>', max_salary)
+    return get_max_or_min_salary(salaries, 'max')
 
 
 def get_min_salary(path):
     jobs = read(path)
     salaries = get_distinct_values_by_key(jobs, "min_salary")
-    min_salary = 0.00
 
-    return get_max_or_min_salary(salaries, '<', min_salary)
+    return get_max_or_min_salary(salaries, 'min')
 
 
 def matches_salary_range(job, salary):
-    try:
-        verify_incorrect_values(job, salary)
+    error = verify_incorrect_values(job, salary)
 
-        if job['min_salary'] <= salary <= job['max_salary']:
-            return True
-        return False
-    except ValueError:
-        return 'Algum dos valores informados não existem ou são inválidos.'
+    if error:
+        raise ValueError
+
+    if job['min_salary'] <= salary <= job['max_salary']:
+        return True
+    return False
 
 
 def filter_by_salary_range(jobs, salary):
