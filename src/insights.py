@@ -16,9 +16,9 @@ def get_unique_job_types(path):
     list
         List of unique job types
     """
-    read_files = read(path)
+    jobs = read(path)
 
-    res = {file['job_type'] for file in read_files}
+    res = {job['job_type'] for job in jobs}
 
     return list(res)
 
@@ -38,7 +38,13 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
+    job_list = list()
+
+    for job in jobs:
+        if job['job_type'] == job_type:
+            job_list.append(job)
+
+    return job_list
 
 
 def get_unique_industries(path):
