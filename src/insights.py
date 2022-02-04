@@ -103,7 +103,20 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+    all_jobs = jobs.read(path)
+
+    highest_max_salary = 0
+
+    try:
+        for job in all_jobs:
+            max_salary = int(job["max_salary"])
+
+            if max_salary > highest_max_salary:
+                highest_max_salary = max_salary
+    except ValueError:
+        pass
+
+    return highest_max_salary
 
 
 def get_min_salary(path):
