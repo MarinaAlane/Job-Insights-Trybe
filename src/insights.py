@@ -64,26 +64,20 @@ def get_max_salary(path):
         if linha["max_salary"].isnumeric():
             conjunto.add(int(linha["max_salary"]))
 
-    maxxx = max(conjunto)
-    return maxxx
+    maior_salario = max(conjunto)
+    return maior_salario
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
+    conjunto = set()
+    arquivo_csv = jobs.read(path)
 
-    Must call `read`
+    for linha in arquivo_csv:
+        if linha["min_salary"].isnumeric():
+            conjunto.add(int(linha["min_salary"]))
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    menor_salario = min(conjunto)
+    return menor_salario
 
 
 def matches_salary_range(job, salary):
