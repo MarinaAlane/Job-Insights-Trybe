@@ -3,8 +3,8 @@ from src import jobs
 
 def get_unique_job_types(path):
     conjunto = set()
-    dicionario = jobs.read(path)
-    for linha in dicionario:
+    arquivo_csv = jobs.read(path)
+    for linha in arquivo_csv:
         conjunto.add(linha["job_type"])
     return conjunto
 
@@ -28,21 +28,14 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
+    conjunto = set()
+    arquivo_csv = jobs.read(path)
 
-    Must call `read`
+    for linha in arquivo_csv:
+        conjunto.add(linha["industry"])
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    conjunto = list(filter(None, conjunto))
+    return conjunto
 
 
 def filter_by_industry(jobs, industry):
