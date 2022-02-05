@@ -6,8 +6,8 @@ def get_unique_job_types(path):
     types = []
 
     for t in jobs:
-        if types.__contains__(t['types']) is False:
-            types.append(t['types'])
+        if types.__contains__(t['job_type']) is False:
+            types.append(t['job_type'])
     return types
 
 
@@ -30,21 +30,14 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
+    file_content = read(path)
+    inds = []
 
-    Must call `read`
+    for i in file_content:
+        if inds.__contains__(i['industry']) is False and i['industry'] != '':
+            inds.append(i['industry'])
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    return inds
 
 
 def filter_by_industry(jobs, industry):
