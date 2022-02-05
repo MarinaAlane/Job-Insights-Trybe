@@ -6,27 +6,14 @@ def get_unique_job_types(path):
     types = []
 
     for t in jobs:
-        if types.__contains__(t['job_type']) is False:
-            types.append(t['job_type'])
+        if types.__contains__(t["job_type"]) is False:
+            types.append(t["job_type"])
     return types
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    filtered_job_typy = [r for r in jobs if r["job_type"] == job_type]
+    return filtered_job_typy
 
 
 def get_unique_industries(path):
@@ -34,8 +21,8 @@ def get_unique_industries(path):
     inds = []
 
     for i in file_content:
-        if inds.__contains__(i['industry']) is False and i['industry'] != '':
-            inds.append(i['industry'])
+        if inds.__contains__(i["industry"]) is False and i["industry"] != "":
+            inds.append(i["industry"])
 
     return inds
 
@@ -63,8 +50,8 @@ def get_max_salary(path):
     max_salaries = set()
 
     for s in salaries:
-        if s['max_salary'] != 'invalid' and s['max_salary'] != '':
-            max_salaries.add(int(s['max_salary']))
+        if s["max_salary"] != "invalid" and s["max_salary"] != "":
+            max_salaries.add(int(s["max_salary"]))
     return max(max_salaries)
     pass
 
@@ -74,8 +61,8 @@ def get_min_salary(path):
     min_salaries = set()
 
     for s in salaries:
-        if s['min_salary'] != 'invalid' and s['min_salary'] != '':
-            min_salaries.add(int(s['min_salary']))
+        if s["min_salary"] != "invalid" and s["min_salary"] != "":
+            min_salaries.add(int(s["min_salary"]))
     return min(min_salaries)
     pass
 
