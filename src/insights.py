@@ -29,6 +29,7 @@ def get_unique_industries(path):
         conjunto.add(linha["industry"])
 
     conjunto = list(filter(None, conjunto))
+
     return conjunto
 
 
@@ -51,6 +52,7 @@ def get_max_salary(path):
             conjunto.add(int(linha["max_salary"]))
 
     maior_salario = max(conjunto)
+
     return maior_salario
 
 
@@ -63,6 +65,7 @@ def get_min_salary(path):
             conjunto.add(int(linha["min_salary"]))
 
     menor_salario = min(conjunto)
+
     return menor_salario
 
 
@@ -86,18 +89,13 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
-    """Filters a list of jobs by salary range
+    salario = []
 
-    Parameters
-    ----------
-    jobs : list
-        The jobs to be filtered
-    salary : int
-        The salary to be used as filter
+    for job in jobs:
+        try:
+            if matches_salary_range(job, salary):
+                salario.append(job)
+        except ValueError:
+            pass
 
-    Returns
-    -------
-    list
-        Jobs whose salary range contains `salary`
-    """
-    return []
+    return salario
