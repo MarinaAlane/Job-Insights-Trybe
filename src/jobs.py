@@ -10,3 +10,6 @@ def read(path):
         )
         print(list_dict)
     return list_dict
+
+
+# print(read("./src/jobs.csv"))
