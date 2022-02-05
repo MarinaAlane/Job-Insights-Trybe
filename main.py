@@ -5,7 +5,7 @@ from src.insights import (
     get_max_salary,
     get_min_salary,
     filter_by_job_type,
-    matches_salary_range,
+    # matches_salary_range,
     filter_by_salary_range,
 )
 
@@ -40,5 +40,5 @@ get_unique_industries(csv_file)
 get_max_salary(csv_file)
 get_min_salary(csv_file)
 filter_by_job_type(job_types, "FULL_TIME")
-print(matches_salary_range(job, '200'))
+# matches_salary_range(job, '200')
 filter_by_salary_range(jobs, 1000)
