@@ -1,10 +1,11 @@
 from src.jobs import read
 
+
 def get_unique_job_types(path):
     jobs = read(path)
     job_Types = set()
     for job in jobs:
-        job_Types.append(job["job_type"])
+        job_Types.add(job["job_type"])
     return job_Types
 
 
