@@ -31,7 +31,7 @@ def get_unique_industries(path):
     industries = read(path)
     industry_Types = set()
     for industry in industries:
-        if(industry["industry"])
+        if (industry["industry"]):
             industry_Types.add(industry["industry"])
     return industry_Types
 
