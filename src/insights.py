@@ -5,64 +5,26 @@ def get_unique_job_types(path):
     # utiliza a função feita no requisito 1
     data = jobs.read(path)
 
-    # cria um set, que é uma
+    # cria um set, pois se trata de um conjunto de eleme
     types_of_jobs = set()
     for job in data:
         types_of_jobs.add(job["job_type"])
-
-    # print(types_of_jobs[1])
-
-    """Checks all different job types and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
     return types_of_jobs
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
     return []
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
+    data = jobs.read(path)
+    industries = set()
 
-    Must call `read`
+    for job in data:
+        if job["industry"]:
+            industries.add(job["industry"])
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    return industries
 
 
 def filter_by_industry(jobs, industry):
@@ -84,39 +46,27 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
+    data = jobs.read(path)
+    salaries = []
 
-    Must call `read`
+    for job in data:
+        salary = job["max_salary"]
+        if salary.isdigit():
+            salaries.append(int(salary))
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    return max(salaries)
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
+    data = jobs.read(path)
+    salaries = []
 
-    Must call `read`
+    for job in data:
+        salary = job["min_salary"]
+        if salary.isdigit():
+            salaries.append(int(salary))
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    return min(salaries)
 
 
 def matches_salary_range(job, salary):
