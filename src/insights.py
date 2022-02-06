@@ -57,10 +57,11 @@ def filter_by_industry(jobs, industry):
 def get_max_salary(path):
     jobs = read(path)
     salaries_maximum = [
-        int(salary["max_salary"])   # convertendo o que vier (string ou float) para inteiro
-        for job in jobs
-        if job["max_salary"] != ""
-            and job["max_salary"].isnumeric()
+        int(salary["max_salary"])   
+    # convertendo o que vier (string ou float) para inteiro
+        for salary in jobs
+        if salary["max_salary"] != ""
+            and salary["max_salary"].isnumeric()
     ]
     return max(salaries_maximum)
 
