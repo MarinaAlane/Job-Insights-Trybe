@@ -18,4 +18,4 @@ def read(path):
     """
     return []
     with open(path) as file:
-        return list(csv.DictReader(file))    
+        return list(csv.DictReader(file))
