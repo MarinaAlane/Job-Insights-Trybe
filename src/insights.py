@@ -29,7 +29,6 @@ def filter_by_job_type(jobs, job_type):
     for job in jobs:
         if (job["job_type"] == job_type):
             Alljobs.append(job)
-            
     return Alljobs
 
 
@@ -48,10 +47,8 @@ def filter_by_industry(jobs, industry):
     for job in jobs:
         if (job["industry"] == industry):
             industries.append(job)
-            
     return industries
     
-
 
 def get_max_salary(path):
     jobs = read(path)
