@@ -68,22 +68,23 @@ def get_min_salary(path):
     return min_salary
 
 
-# RAISE: https://www.w3schools.com/python/ref_keyword_raise.asp
-# https://www.kite.com/python/answers/how-to-raise-a-valueerror-in-python
-# VALUERROR: https://www.w3schools.com/python/python_ref_exceptions.asp
+# refatorando condicional - retirando excesso de if
 def matches_salary_range(job, salary):
     if "min_salary" not in job or "max_salary" not in job:
         raise ValueError("Values doesn't exists")
+
+    min_salary = job["min_salary"]
+    max_salary = job["max_salary"]
+
     if (
-        type(job["min_salary"]) is not int
-        or type(job["max_salary"]) is not int
+        type(min_salary) is not int
+        or type(min_salary) is not int
+        or type(salary) is not int
     ):
-        raise ValueError("Min. Salary or Max. Salary aren't valid integers")
-    if job["min_salary"] > job["max_salary"]:
+        raise ValueError("Some value entered is not an integer")
+    elif min_salary > max_salary:
         raise ValueError("Min. salary is greather than Max. salary")
-    if type(salary) is not int:
-        raise ValueError("Salary isn't a valid integer")
-    return job["min_salary"] <= salary <= job["max_salary"]
+    return min_salary <= salary <= max_salary
 
 
 def filter_by_salary_range(jobs, salary):
