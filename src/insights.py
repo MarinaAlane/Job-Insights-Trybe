@@ -1,12 +1,13 @@
 from .jobs import read
 
 
+# refatorando - usando set() - buscando valores unicos
 def get_unique_job_types(path):
     jobs_csv = read(path)
-    jobs_types_list = []
+    jobs_types_list = set()
     for job in jobs_csv:
         if job["job_type"] not in jobs_types_list:
-            jobs_types_list.append(job["job_type"])
+            jobs_types_list.add(job["job_type"])
     return jobs_types_list
 
 
