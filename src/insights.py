@@ -58,10 +58,10 @@ def get_max_salary(path):
     jobs = read(path)
     salaries_maximum = [
         int(salary["max_salary"])   
-    # convertendo o que vier (string ou float) para inteiro
+        # convertendo o que vier (string ou float) para inteiro
         for salary in jobs
         if salary["max_salary"] != ""
-            and salary["max_salary"].isnumeric()
+        and salary["max_salary"].isnumeric()
     ]
     return max(salaries_maximum)
 
