@@ -5,7 +5,7 @@ def get_unique_job_types(path):
     # utiliza a função feita no requisito 1
     data = jobs.read(path)
 
-    # cria um set, pois se trata de um conjunto de eleme
+    # cria um set, pois se trata de um conjunto de elementos unicos
     types_of_jobs = set()
     for job in data:
         types_of_jobs.add(job["job_type"])
@@ -13,7 +13,12 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    return []
+    selected_jobs = []
+    for job in jobs:
+        if job["job_type"] == job_type:
+            selected_jobs.append(job)
+
+    return selected_jobs
 
 
 def get_unique_industries(path):
@@ -28,21 +33,12 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
+    selected_industries = []
+    for job in jobs:
+        if job["industry"] == industry:
+            selected_industries.append(job)
 
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+    return selected_industries
 
 
 def get_max_salary(path):
