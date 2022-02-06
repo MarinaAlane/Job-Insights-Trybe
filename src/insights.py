@@ -47,7 +47,8 @@ def filter_by_industry(jobs, industry):
     for job in jobs:
         if (job["industry"] == industry):
             industries.append(job)
-    return industries    
+    return industries
+
 
 def get_max_salary(path):
     jobs = read(path)
@@ -71,6 +72,7 @@ def get_min_salary(path):
         and salary["min_salary"].isnumeric()
     ]
     return min(salaries_minimum)
+
 
 def matches_salary_range(job, salary):
     """Checks if a given salary is in the salary range of a given job
