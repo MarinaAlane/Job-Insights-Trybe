@@ -27,9 +27,9 @@ def filter_by_job_type(jobs, job_type):
     Alljobs = list()
 
     for job in jobs:
-        if (job["job_type"] == job_type):
+        if job["job_type"] == job_type
             Alljobs.append(job)
-
+            
     return Alljobs
 
 
