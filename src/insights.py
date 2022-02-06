@@ -75,7 +75,7 @@ def get_min_salary(path):
         if salary["min_salary"] != ""
         and salary["min_salary"].isnumeric()
     ]
-    return max(salaries_minimum)
+    return min(salaries_minimum)
 
 
 def matches_salary_range(job, salary):
