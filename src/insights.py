@@ -43,20 +43,6 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
     industries = list()
 
     for job in jobs:
@@ -89,7 +75,6 @@ def get_min_salary(path):
         and salary["min_salary"].isnumeric()
     ]
     return min(salaries_minimum)
-
 
 def matches_salary_range(job, salary):
     """Checks if a given salary is in the salary range of a given job
