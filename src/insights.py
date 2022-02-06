@@ -11,11 +11,13 @@ def get_unique_job_types(path):
     return jobs_types_list
 
 
+# refatorado - usando list comprehension
+# https://pythonacademy.com.br/blog/list-comprehensions-no-python
 def filter_by_job_type(jobs, job_type):
-    job_type_list = []
-    for job in jobs:
-        if job["job_type"] == job_type:
-            job_type_list.append(job)
+    job_type_list = [
+        job for job in jobs
+        if job["job_type"] == job_type
+    ]
     return job_type_list
 
 
@@ -32,11 +34,13 @@ def get_unique_industries(path):
     return industry_list
 
 
+# refatorado - usando list comprehension
+# https://pythonacademy.com.br/blog/list-comprehensions-no-python
 def filter_by_industry(jobs, industry):
-    job_industry_list = []
-    for job in jobs:
-        if job["industry"] == industry:
-            job_industry_list.append(job)
+    job_industry_list = [
+        job for job in jobs
+        if job["industry"] == industry
+    ]
     return job_industry_list
 
 
