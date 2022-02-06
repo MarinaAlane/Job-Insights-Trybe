@@ -15,3 +15,5 @@ def read(path):
         return jobs_list
 
 # read("src/jobs.csv")
+# python3 -m pytest tests/test_jobs.py
+# https://betterprogramming.pub/how-to-pretty-print-in-python-9b1d8764d151#:~:text=stream%20(None)%20%3A%20When%20you,when%20specific%20formatting%20is%20needed.

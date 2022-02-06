@@ -1,37 +1,17 @@
+from src.jobs import read
+
+# import pprint
+
+
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
+    data_jobs = read(path)
+    unique_job_types = list({job["job_type"] for job in data_jobs})
+    return unique_job_types
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    filtered_list = [job for job in jobs if job["job_type"] == job_type]
+    return filtered_list
 
 
 def get_unique_industries(path):
@@ -148,3 +128,6 @@ def filter_by_salary_range(jobs, salary):
         Jobs whose salary range contains `salary`
     """
     return []
+
+
+# https://learncodeimprove.com/python/list-of-unique-items-comprehension/
