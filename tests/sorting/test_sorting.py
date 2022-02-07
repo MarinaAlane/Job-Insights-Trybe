@@ -1,7 +1,5 @@
 from src.sorting import sort_by
 
-import pytest
-
 jobs = [
     {
         "min_salary": 900,
