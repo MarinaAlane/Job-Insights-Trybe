@@ -20,7 +20,6 @@ jobs = [
 
 
 def test_sort_by_criteria():
-    pass
     job_list_min_salary_mock = [
         {
             "min_salary": 900,
@@ -58,7 +57,7 @@ def test_sort_by_criteria():
     ]
 
     sort_by(jobs, "min_salary")
-    assert jobs == job_list_min_salary_mock
+    assert(jobs) == job_list_min_salary_mock
 
     sort_by(jobs, "date_posted")
-    assert jobs == job_list_date_posted_mock
+    assert(jobs) == job_list_date_posted_mock
