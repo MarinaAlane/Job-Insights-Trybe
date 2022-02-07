@@ -1,12 +1,12 @@
 {
     // Coloque seu nome para sabermos de quem foi o comentário =D (opcional)
-    "nome": "",
+    "nome": "Marcos Paulo da Silva Albuquerque",
     // Dê uma nota ao projeto *^* (int de 0 a 10) (obrigatório)
-    "nota": ,
+    "nota": 6,
     // O que você mais gostou no projeto? (obrigatório, mas pode colocar "não há")
-    "pontos_positivos": "",
+    "pontos_positivos": "não há",
     // O que você menos gostou no projeto? (obrigatório, mas pode colocar "não há")
-    "pontos_negativos": "",
+    "pontos_negativos": "organização",
     // Comentário livre sobre o que você achou do projeto (opcional)
-    "comentário": ""
+    "comentário": "A ambiguidade está muito grande, trazendo no nível de abstração muito alto"
 }

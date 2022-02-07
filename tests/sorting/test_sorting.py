@@ -36,4 +36,4 @@ def test_sort_by_criteria(jobs):
     for job in jobs:
         menor_salario.append(job["min_salary"])
 
-    assert menor_salario == [500, 800, 1000, 2000]
+    assert menor_salario == [500, 1000, 2000, 3000]
