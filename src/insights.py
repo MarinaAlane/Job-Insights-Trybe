@@ -75,7 +75,7 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
-    min_salary, max_salary = job.get("min_salary")
+    min_salary = job.get("min_salary")
     max_salary = job.get("max_salary")
     # ja verifica se o max_salary e
     # o min_salary existem em job, senao retorna null
