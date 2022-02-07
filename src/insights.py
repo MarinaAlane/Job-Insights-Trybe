@@ -28,8 +28,8 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
-    filter_i = [i for i in jobs if i["industry"] == i]
-    return filter_i
+    filtered_by_industry = [r for r in jobs if r["industry"] == industry]
+    return filtered_by_industry
 
 
 def get_max_salary(path):
