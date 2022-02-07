@@ -18,15 +18,15 @@ jobs = [
     }
 ]
 
-mock = [
-    "min_salary": [jobs]
-    "max_salary": [jobs]
+mock = {
+    "min_salary": [jobs],
+    "max_salary": [jobs],
     "date_posted": [jobs]
-]
+}
 
 
 def test_sort_by_criteria():
-    
+
     sort_by(jobs, "min_salary")
     assert jobs == mock["min_salary"]
 
