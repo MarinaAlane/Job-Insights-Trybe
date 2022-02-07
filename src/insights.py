@@ -88,7 +88,8 @@ def matches_salary_range(job, salary):
     ):
         raise ValueError
 
-     return min_salary <= salary <= max_salary
+        return min_salary <= salary <= max_salary
+
 
 def filter_by_salary_range(jobs, salary):
     """Filters a list of jobs by salary range
