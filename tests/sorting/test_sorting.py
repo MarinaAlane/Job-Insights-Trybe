@@ -37,5 +37,8 @@ def test_sort_by_criteria():
     sort_by(data, "date_posted")
     assert data == date_posted
 
-    with pytest.raises(ValueError):
-        sort_by(data, "invalid_criteria")
+    invalid_criteria = [None, "wrong_criteria"]
+
+    for invalid in invalid_criteria:
+        with pytest.raises(ValueError):
+            sort_by(data, invalid)
