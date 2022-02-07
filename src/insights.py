@@ -80,6 +80,8 @@ def matches_salary_range(job, salary):
         type(job["max_salary"]) != int or
         type(salary) != int or
         job["min_salary"] > job["max_salary"]
+        or "min_salary" not in job
+        or "max_salary" not in job
     ):
         raise ValueError
         return job["min_salary"] <= salary <= job["max_salary"]
