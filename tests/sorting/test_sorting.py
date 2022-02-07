@@ -28,7 +28,7 @@ mock = {
 
 
 def test_sort_by_criteria():
-    with pytest.raises(TypeError, match="wrong_criteria"):
+    with pytest.raises(TypeError, "wrong_criteria"):
         sort_by(jobs, "wrong_criteria")
 
     sort_by(jobs, "min_salary")
