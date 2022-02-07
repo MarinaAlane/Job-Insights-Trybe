@@ -2,13 +2,11 @@ from src.jobs import read
 
 
 def get_unique_job_types(path):
-    jobs = read(path)
-    types = []
-
-    for t in jobs:
-        if types.__contains__(t["types"]) is False:
-            types.append(t["types"])
-    return types
+    data = read(path)
+    unique_jobs = set()
+    for job in data:
+        unique_jobs.add(job["job_type"])
+    return list(unique_jobs)
 
 
 def filter_by_job_type(jobs, job_type):
