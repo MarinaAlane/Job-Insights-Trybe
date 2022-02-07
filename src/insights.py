@@ -86,7 +86,7 @@ def matches_salary_range(job, salary):
         type(salary != int) or
         min_salary > max_salary
     ):
-    raise ValueError()
+        raise ValueError()
 
     return salary >= min_salary and salary <= max_salary
 
