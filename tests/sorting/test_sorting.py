@@ -1,5 +1,7 @@
 from src.sorting import sort_by
 
+import pytest
+
 jobs = [
     {
         "min_salary": 900,
@@ -26,6 +28,8 @@ mock = {
 
 
 def test_sort_by_criteria():
+    with pytest.raises(TypeError):
+        sort_by(jobs, "test", "test2")
 
     sort_by(jobs, "min_salary")
     assert jobs == mock["min_salary"]
