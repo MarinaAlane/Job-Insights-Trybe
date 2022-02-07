@@ -44,7 +44,7 @@ def filter_by_industry(jobs, industry):
 def get_max_salary(path):
     datas = read(path)
 
-    max_salaries = set()
+    max_salaries = list()
     for data in datas:
         salary = data["max_salary"]
         if salary.isdigit():
@@ -56,7 +56,7 @@ def get_max_salary(path):
 def get_min_salary(path):
     datas = read(path)
 
-    min_salaries = set()
+    min_salaries = list()
     for data in datas:
         salary = data["min_salary"]
         if salary.isdigit():
