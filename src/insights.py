@@ -102,3 +102,4 @@ def filter_by_salary_range(jobs, salary):
 
 
 # https://learncodeimprove.com/python/list-of-unique-items-comprehension/
+# https://www.w3schools.com/python/ref_string_isnumeric.asp
