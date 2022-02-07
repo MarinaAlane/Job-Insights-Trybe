@@ -5,9 +5,9 @@ def get_unique_job_types(path):
     jobs = read(path)
     types = []
 
-    for job in jobs:
-        if types.__contains__(job['types']) is False:
-            types.append(job['types'])
+    for t in jobs:
+        if types.__contains__(t["types"]) is False:
+            types.append(t["types"])
     return types
 
 
