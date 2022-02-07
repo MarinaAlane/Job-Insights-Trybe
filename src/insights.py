@@ -28,7 +28,7 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
-    filter_i = [i for i in jobs if i['industry'] == i]
+    filter_i = [i for i in jobs if i["industry"] == i]
     return filter_i
 
 
@@ -73,18 +73,11 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
-    """Filters a list of jobs by salary range
-
-    Parameters
-    ----------
-    jobs : list
-        The jobs to be filtered
-    salary : int
-        The salary to be used as filter
-
-    Returns
-    -------
-    list
-        Jobs whose salary range contains `salary`
-    """
-    return []
+    jobs_by_salary_rage = []
+    for jo in jobs:
+        try:
+            if matches_salary_range(jo, salary):
+                jobs_by_salary_rage.append(jo)
+        except ValueError:
+            pass
+    return jobs_by_salary_rage
