@@ -18,18 +18,18 @@ def filter_by_job_type(jobs, job_type):
 
 def get_unique_industries(path):
     file_content = read(path)
-    industrie = []
+    indu = []
 
-    for indu in file_content:
-        if industrie.__contains__(indu['industry']) is False and indu['industry'] != '':
-            industrie.append(indu['industry'])
+    for i in file_content:
+        if indu.__contains__(i["industry"]) is False and i["industry"] != '':
+            indu.append(i["industry"])
 
-    return industrie
+    return indu
 
 
 def filter_by_industry(jobs, industry):
-    filter_industry = [industry for industry in jobs if industry['industry'] == industry]
-    return filter_industry
+    filter_i = [i for i in jobs if i['industry'] == i]
+    return filter_i
 
 
 def get_max_salary(path):
