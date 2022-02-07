@@ -95,12 +95,12 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
-    jobs_filter = []
+    jobs_salary_filter = list()
 
     for job in jobs:
         try:
             if matches_salary_range(job, salary):
-                jobs_filter.append(job)
+                jobs_salary_filter.append(job)
         except ValueError:
             pass
-            return jobs_filter
+            return jobs_salary_filter
